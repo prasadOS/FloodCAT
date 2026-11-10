@@ -44,3 +44,11 @@ At thresholds of 0, 1, and 2 m, area is respectively 1,206.56, 430.13, and 335.9
 ## M2A-1 calculation-only extension
 
 No WorldPop or GHSL pixels have been acquired or integrated. The new engine is tested only on hand-calculated fixtures. Its input units, alignment, aggregation, coverage and edge assumptions are specified in [EXPOSURE.md](EXPOSURE.md). Existing catalog inspection is not evidence of usable exposure coverage.
+
+## M2A-2 calculation-only aggregation
+
+No additional datasets were downloaded. Fabricated population and built-up totals
+exercise area-overlap aggregation, including a fine grid over the native WRI
+transform. This is not evidence of real WorldPop/GHSL coverage. The method accepts
+shared-CRS grids only; native GHSL World Mollweide-to-WRI reprojection remains
+unimplemented. See [coverage, geometry and conservation assumptions](EXPOSURE.md).

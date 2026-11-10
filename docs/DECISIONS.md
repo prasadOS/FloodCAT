@@ -9,3 +9,5 @@
 - D07: Keep Earth Engine in the local acquisition script. The real Streamlit view validates a local TIFF and manifest before showing metrics.
 
 - D08 (M2A-1): Keep the aligned-grid exposure engine separate from the dashboard. Report independent population/built-up coverage and known subtotals; incomplete flooded exposure has no complete total. Require conservative upstream aggregation and explicit missing-data handling. See [exposure assumptions](EXPOSURE.md).
+
+- D09 (M2A-2): Allocate extensive cell totals by physical intersection/source area, assuming uniform density within each source pixel. Preserve known subtotals, distinguish source-footprint and valid-source area coverage, and mark incomplete target totals missing. Clip at target boundaries without renormalizing. Use shared-CRS rectilinear WGS84 ellipsoid or caller-verified equal-area geometry; reject cross-CRS inputs until conservative reprojection is separately validated. Keep aggregation independent of the dashboard and hazard calculations. See [exposure assumptions](EXPOSURE.md).

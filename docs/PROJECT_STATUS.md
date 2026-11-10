@@ -1,10 +1,30 @@
 # FloodCAT project status
 
-## Current engine milestone · M2A-1 (2026-11-10)
+## Current engine milestone · M2A-2 (2026-11-10)
+
+Started branch `m2a-2-conservative-aggregation` from freshly fetched remote `main`
+`84a7c63` (the M2A-1 merge), rather than the previous feature branch. Added an
+independent NumPy area-overlap method for extensive population counts and built-up
+m², with WGS84 ellipsoid or caller-verified shared equal-area coordinates. Offset
+grids, resolution differences, target-extent clipping, source nodata and area
+coverage are explicit. Partial target totals are NaN with a completeness mask;
+known subtotals remain available without imputation or renormalization.
+
+All 42 unit tests pass on Python 3.11.17: 18 new aggregation tests plus all 24
+regressions. See [assumptions and API](EXPOSURE.md) and [exact evidence](TEST_RESULTS.md).
+The M1B dashboard, WRI calculations, M2A-1 engine, dependencies and bundled assets
+are unchanged. No real exposure data acquired, packages installed or CLIMADA added.
+
+This is shared-CRS aggregation, not a completed native GHSL-to-WRI integration.
+Cross-CRS grids are explicitly rejected. Next single task: validate conservative
+cross-CRS remapping on in-memory fixtures before real GHSL acquisition/integration.
+Changes are prepared for a PR targeting `main`; merging is outside this task.
+
+## Previous engine milestone · M2A-1 (2026-11-10)
 
 Implemented an independent NumPy exposure engine on branch `feature/m2a-exposure-engine`. It accepts already aligned population counts and GHSL built-up m², uses strict valid-depth thresholds, preserves zero, and reports missing exposure and cell coverage separately for both measures. Complete totals remain unknown when flooded exposure is missing. All 24 unit tests pass in the prepared Python 3.11.17 environment, including the original 12 M1B tests. See [engine assumptions and API contract](EXPOSURE.md) and [test evidence](TEST_RESULTS.md).
 
-No real exposure data were acquired or integrated. The application remains the M1B dashboard and REAL — WRI remains hazard-only. No WRI calculations or dependencies changed. The engine is prepared for feature-branch review; merging and deployment remain outside this milestone. Next single task: M2A-2 conservative aggregation on in-memory fixtures with edge, coverage and conservation tests.
+No real exposure data were acquired or integrated. The application remains the M1B dashboard and REAL — WRI remains hazard-only. No WRI calculations or dependencies changed. M2A-1 was merged into `main` in PR #1 (`84a7c63`). Its original next task, M2A-2 aggregation, is recorded above. Deployment remains separate.
 
 ## Preserved application baseline · M1B (2026-11-10)
 

@@ -1,6 +1,6 @@
 # FloodCAT
 
-FloodCAT is a Streamlit application for regional flood-hazard and physical exposure screening. **M1B** is the preserved application baseline. **M2A-1** adds a tested, independent aligned-grid exposure engine; see [its API and scientific assumptions](docs/EXPOSURE.md).
+FloodCAT is a Streamlit application for regional flood-hazard and physical exposure screening. **M1B** is the preserved application baseline. **M2A-1** adds an independent aligned-grid exposure engine. **M2A-2** adds conservative area-overlap aggregation of population counts and built-up m², with explicit partial coverage and missing data; see [the APIs and scientific assumptions](docs/EXPOSURE.md). Both remain separate from the dashboard.
 
 - **Synthetic demo** opens by default. It provides six sections with five illustrative depth scenarios, hypothetical population and built-up exposure, and CSV and JSON exports.
 - **REAL — WRI** shows modeled riverine flood depth for one historical WATCH 100-year return-period tile near Patna. It reports thresholded flooded area and cell counts and provides GeoTIFF, source manifest, and summary CSV downloads. The view reads the bundled files locally without Earth Engine credentials. If either file is missing, it shows a warning and Synthetic demo remains selectable.
