@@ -9,6 +9,8 @@ WRI depths support regional screening. Real population and built-up exposure, fu
 
 **M2B-1:** official source-catalog facts and a tested bounded acquisition/validation route are documented in [ACQUISITION.md](docs/ACQUISITION.md). Real WorldPop/GHSL acquisition is blocked by the current cloud network policy and unresolved native masks/metadata; no real exposure data or totals are bundled. Optional tools use `requirements-acquisition.txt`.
 
+**M2B-2:** a [manual GitHub Actions provider-access diagnostic](docs/ACTIONS_ACCESS_CHECK.md) is available for review. It runs only via `workflow_dispatch`, saves bounded HTTP metadata, and does not acquire rasters. GitHub-hosted access remains unverified until a real manual run is reviewed.
+
 ## Run locally
 
 Clone the repository or extract the ZIP into a new folder. Open a terminal at the project root and activate an environment with Python 3.11 and the packages in `requirements.txt`.

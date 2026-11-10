@@ -281,3 +281,12 @@ No financial loss, vulnerability or production REAL exposure dashboard is added.
 Next single task: enable permitted producer access, resolve exact file/variant
 identity and inspect/review native WKT and masks, then run bounded acquisition
 within the existing authorization. Do not claim this milestone acquired data.
+
+## M2B-2 GitHub-hosted access diagnostic
+
+A separate [manual Actions workflow](ACTIONS_ACCESS_CHECK.md) can check official
+endpoint connectivity and optional one-byte TIFF Range support from a GitHub-hosted
+runner. It does not acquire rasters, establish mask/coverage semantics or change
+these review gates. No hosted run has completed in this task: the new
+`workflow_dispatch` file must first exist on default main, and the PR is left
+unmerged. The local Codex proxy result cannot be used as GitHub-hosted evidence.
