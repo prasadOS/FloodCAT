@@ -131,3 +131,117 @@ assumes uniform exposure over physical source-pixel area and makes no observed
 inundation, damage, financial-loss or real-exposure coverage claims. Complete
 target values remain NaN when source coverage is partial or missing. See
 [EXPOSURE.md](EXPOSURE.md) for the full contract and next task.
+
+## M2A-3 conservative cross-CRS remapping (2026-11-10)
+
+Confirmed `prasadOS/FloodCAT`, fetched remote `main` at
+`45d59d2a1b88e9c78bb0ad301a96b02928ab1fe2` (merged PR #2), and created
+`m2a-3-cross-crs-remapping` from it. Final remote-head check returned the same
+SHA. No changes were based on the previous feature branch.
+
+### Environment and installation
+
+Inspected the connected cloud environment and network policy: ready, current
+observations, enforced package-manager/GitHub access. Neither pyproj nor Shapely
+was initially installed. The user authorized this scientific milestone and
+optional dependency work; the original Python 3.11.17 application environment
+was retained unchanged.
+
+Commands from the repository root:
+
+```sh
+UV_CACHE_DIR=/workspace/.floodcat-cache uv venv --python /workspace/.floodcat-venv/bin/python /workspace/work/m2a-3/venv
+UV_CACHE_DIR=/workspace/.floodcat-cache uv pip install --python /workspace/work/m2a-3/venv/bin/python -r requirements.txt 'pyproj==3.7.2' 'shapely==2.1.2'
+```
+
+Both exited 0. The isolated scientific environment has 37 packages, including
+Python 3.11.17, NumPy 2.4.6, pyproj 3.7.2 / PROJ 9.5.1 and Shapely 2.1.2 /
+GEOS 3.13.1. `requirements-science.txt` now declares the optional NumPy/pyproj/
+Shapely pipeline; install it alongside `requirements.txt` for the full test suite.
+No system packages, hosted dependency changes, CLIMADA or datasets added.
+
+### Tests and independent accuracy
+
+- Baseline `PYTHONDONTWRITEBYTECODE=1 /workspace/.floodcat-venv/bin/python -m unittest discover -s tests -v`
+  — **42 passed**, no failures/errors/skips, in **0.070 s**.
+- Initial 10-test cross-CRS run exposed three errors from an overly strict
+  projection round-trip guard. PROJ CEA inverse residuals were measured at
+  millimetre scale; EPSG:6933 now retains native area coordinates directly and
+  the domain guard uses a documented 1 cm projected residual allowance. The
+  corrected 10-test run passed. Three further tests added explicit uncertainty,
+  tiny missing overlap/overflow and a dense geodesic area cross-check.
+- Final full scientific regression:
+  `PYTHONDONTWRITEBYTECODE=1 /workspace/work/m2a-3/venv/bin/python -m unittest discover -s tests -v`
+  — **55 passed**, no failures, errors or skips, in **3.675 s**. Includes all
+  42 original tests and 13 cross-CRS tests. Prior full run: 55 passed in 3.792 s;
+  the final run also checks convergence of the independent quadrature oracle.
+- Lightweight-runtime regression with the original interpreter:
+  `PYTHONDONTWRITEBYTECODE=1 /workspace/.floodcat-venv/bin/python -m unittest discover -s tests -v`
+  — 55 discovered in **0.070 s**, **42 passed, 13 explicitly skipped** because
+  science dependencies are absent. This is not the complete science evidence.
+- Projection checks use independent exact Mollweide identities at selected
+  auxiliary angles (2e-8 m coordinate tolerance), plus inverse and regional
+  round-trip checks (1e-11 / 2e-11 degrees). A direct ellipsoid differential-area
+  integral checks geographic rectangle area within 1e-10 relative. Native
+  Mollweide Jacobian quadrature checks source physical areas within 2e-8 relative
+  at -30°, 0°, 25.7° and 65°, using 100 m and 300 km cells.
+- The curved 300 km fixture has quadrature area 89,623,161,267.10747 m²;
+  default polygon area is 89,623,161,322.55556 m² (6.19e-10 relative difference).
+  Independent clipped allocation is 60.19218571628636 from 120 units; default
+  gives 60.192187692795606 and tighter 0.1 mm / 1 km refinement gives
+  60.19218572400746. Absolute budget tolerance is 5e-6 units; default/tight
+  agreement tolerance is 2e-6. Doubling independent quadrature from 512 to
+  1,024 y panels leaves the reference unchanged at the printed precision.
+- The dense geodesic cross-check gives 89,623,161,268.63834 m², agreeing with
+  default footprint area to 6.02e-10 relative. It shares PROJ transformations and
+  the WGS84 ellipsoid, so this is supplementary rather than independent proof
+  of those ingredients. Conservation/refinement alone cannot prove geography.
+- Independent hand budgets check 80 → 40 + 40 and a 20-unit clip across CRSs
+  within 1e-8 units, and full-domain conservation of 52.5 people / 21,000 m²
+  within 1e-10 relative. Tests also cover missing source, masked sentinels,
+  valid zero, partial/absent coverage, positive tiny nodata slivers, uncertainty
+  near domain/missing boundaries, touching edges, rotation/reversed axes,
+  integer/float overflow, no mutation, exposure handoff and failure limits.
+
+### Representative-grid performance
+
+`PYTHONDONTWRITEBYTECODE=1 /workspace/work/m2a-3/venv/bin/python -m scripts.benchmark_remapping`
+— exit 0. Fabricated 32×32 100 m World Mollweide grid on a 100 m lattice near
+Patna → 6×6 WRI-style EPSG:4326 cells at 1/120° resolution:
+
+- Cold map build **0.261345267 s**; two cached-map applications **0.037984678 s**.
+- **1,307** intersection pairs; **5,300** footprint vertices; **5** complete
+  targets and no uncertain targets (remaining cells partial or absent).
+- Known population **1280.0000000000018**, built-up **256000.00000000035 m²**:
+  **1.33e-15 relative** aggregate conservation error for each.
+- Maximum per-source allocation residual **3.42e-12**; physical source pixel
+  areas **9958.090197592835–9958.137701606182 m²**.
+- Default 1 cm chord accuracy, 10 km maximum segment, 2 cm classification margin.
+
+This is a small single-machine timing, not a large-raster throughput claim.
+Footprints, edge construction and sparse pairs are in memory; unions/GEOS and
+refinement cost grow with grid size, curvature and tighter tolerance. No tiling,
+large-raster memory validation or global/polar/dateline coverage is provided.
+
+### Preserved runtime and final checks
+
+- `PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 /workspace/.floodcat-venv/bin/python /workspace/work/m2a-2/smoke_app.py`
+  — exit 0. The retained temporary AppTest harness passed default Synthetic demo
+  and all six sections; REAL — WRI at 0 m / 1 m (1,206.56 / 430.13 km²), three
+  download controls, missing-asset warning and switch back to Synthetic demo.
+  Existing Streamlit bare-context/width warnings remain. No browser download
+  clicks, hosted deployment or new dashboard behavior claimed.
+- `UV_CACHE_DIR=/workspace/.floodcat-cache uv pip check --python /workspace/work/m2a-3/venv/bin/python`
+  — all **37** science-environment packages compatible.
+- `UV_CACHE_DIR=/workspace/.floodcat-cache uv pip check --python /workspace/.floodcat-venv/bin/python`
+  — all **35** original-runtime packages compatible, without installing science
+  packages in that environment.
+- `git diff --exit-code origin/main -- app.py requirements.txt src/floodcat/aggregation.py src/floodcat/exposure.py src/floodcat/demo.py src/floodcat/wri.py src/floodcat/wri_view.py src/floodcat/exports.py data tests/test_aggregation.py tests/test_exposure.py tests/test_demo.py tests/test_wri.py`
+  — exit 0. `git diff --check` and staged whitespace checks passed.
+
+Accuracy is empirically validated for the stated fixtures, not formally bounded
+for arbitrary projections. The method is regional, uses WGS84 without datum
+shifts and rejects unsupported boundaries/failed refinement. Exact real GHSL WKT,
+mask semantics, source vintage, usable coverage and raster-scale performance are
+still unverified. See [REMAPPING.md](REMAPPING.md) for the scientific contract,
+explicit missingness/uncertainty and next single task.

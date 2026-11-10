@@ -80,10 +80,9 @@ rectangle areas. Declaring a non-equal-area projection planar does not correct
 its distortion. EPSG:4326 cannot be declared planar.
 
 Rotation, shear, longitude wrapping, arbitrary polygon clipping and cross-CRS
-reprojection are rejected or outside this API. In particular, native GHSL World
-Mollweide pixels cannot yet be passed directly to an EPSG:4326 WRI grid. Do not
-relabel their CRS or apply ordinary interpolation to per-cell totals. A separately
-validated conservative cross-CRS method is needed before that real integration.
+reprojection are rejected or outside this API. For cross-CRS grids, use the separate optional M2A-3 method below. Do not
+relabel a CRS or apply ordinary interpolation to per-cell totals. The M2A-2 API
+continues to reject cross-CRS inputs.
 No additional dependencies, real datasets or CLIMADA are used in M2A-2.
 
 ### Allocation and conservation
@@ -159,9 +158,24 @@ subtotal. Partial source subtotals remain available in aggregation's
 `known_values`; they must not be passed as complete whole-cell exposure. Hazard
 validity and flood thresholds do not participate in aggregation.
 
+## M2A-3 conservative cross-CRS remapping
+
+The optional `src/floodcat/remapping.py` API adds `RasterGrid`,
+`build_conservative_map` and reusable `ConservativeMap.apply`. It uses PROJ
+boundary transformations and GEOS polygon intersections in WGS84 ellipsoidal
+equal-area coordinates, with adaptive edge densification. It preserves the
+M2A-2 result fields and adds a boundary-accuracy uncertainty mask; incomplete
+or uncertain target totals remain NaN. Existing engines and the dashboard do
+not import it. Install `requirements-science.txt` only for the scientific pipeline.
+
+See [REMAPPING.md](REMAPPING.md) for the complete API, supported regional domains,
+scientific assumptions, independent accuracy evidence, numerical tolerances,
+performance and limitations. Native GHSL projected m² are not automatically
+physical ellipsoid areas. The World Mollweide fixtures do not verify the exact
+WKT or masks of a future acquired GHSL asset. No real exposure rasters were acquired.
+
 ## Next single verifiable milestone
 
-Validate conservative cross-CRS remapping on in-memory fixtures, especially World
-Mollweide to WGS84, before acquiring or integrating real GHSL exposure. Real
-WorldPop/GHSL selection, licensing, mask verification and acquisition remain
-separate approval-dependent work. Neither exposure API is wired into the dashboard.
+Validate exact candidate WorldPop/GHSL source metadata and design a bounded
+acquisition/processing plan. Acquisition remains separately authorized work;
+no exposure API is connected to the dashboard yet.

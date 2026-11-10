@@ -1,6 +1,34 @@
 # FloodCAT project status
 
-## Current engine milestone · M2A-2 (2026-11-10)
+## Current engine milestone · M2A-3 (2026-11-10)
+
+Branch `m2a-3-cross-crs-remapping` starts from freshly fetched remote `main`
+`45d59d2`, which contains merged PR #2. Added reusable sparse physical-area
+remapping between regional WGS84 CRSs, especially World Mollweide to EPSG:4326.
+PROJ transforms adaptively densified pixel boundaries; GEOS intersects them in
+ellipsoidal equal-area coordinates. Complete, partial, nodata, zero and boundary
+uncertainty remain explicit, without redistribution or imputation.
+
+The optional scientific requirements are NumPy, pyproj 3.7.2 and Shapely 2.1.2.
+The hosted requirements, dashboard, M2A-1 exposure and M2A-2 aggregation sources,
+original tests and bundled assets are unchanged. No real rasters acquired or
+CLIMADA/vulnerability added. See [method, accuracy and limits](REMAPPING.md) and
+[exact test evidence](TEST_RESULTS.md).
+
+The full scientific suite has 55 passing tests (42 regressions + 13 new), with no
+skips. The 32×32 100 m to 6×6 WRI-style fixture built in 0.261 s and applied twice
+in 0.038 s; known totals conserved within 1.33e-15 relative error. Source area and
+clipped budgets were checked independently of polygon area, with analytic
+projection controls and a separate geodesic-area cross-check.
+
+Validation is calculation-only and regional: empirical edge accuracy is not a
+universal projection error bound, global/polar/dateline grids and datum shifts
+are unsupported, and memory scaling remains unvalidated for large rasters.
+Next single task: verify exact candidate source metadata and design a bounded
+acquisition/processing plan before separately authorized raster acquisition.
+Changes are for a PR targeting `main`; merging is outside this task.
+
+## Previous engine milestone · M2A-2 (2026-11-10)
 
 Started branch `m2a-2-conservative-aggregation` from freshly fetched remote `main`
 `84a7c63` (the M2A-1 merge), rather than the previous feature branch. Added an
@@ -18,7 +46,7 @@ are unchanged. No real exposure data acquired, packages installed or CLIMADA add
 This is shared-CRS aggregation, not a completed native GHSL-to-WRI integration.
 Cross-CRS grids are explicitly rejected. Next single task: validate conservative
 cross-CRS remapping on in-memory fixtures before real GHSL acquisition/integration.
-Changes are prepared for a PR targeting `main`; merging is outside this task.
+M2A-2 was merged into `main` in PR #2 (`45d59d2`). Its next task, cross-CRS remapping, is recorded above.
 
 ## Previous engine milestone · M2A-1 (2026-11-10)
 

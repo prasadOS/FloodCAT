@@ -1,0 +1,5 @@
+# Optional scientific pipeline; not needed by the hosted dashboard.
+# Install alongside requirements.txt to run the complete application test suite.
+numpy==2.4.6
+pyproj==3.7.2
+shapely==2.1.2
