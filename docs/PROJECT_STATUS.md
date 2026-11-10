@@ -1,6 +1,29 @@
 # FloodCAT project status
 
-## Current milestone · M2C-1 — validated real common-footprint bundle (2026-11-10)
+## Current milestone · M2C-2 — first REAL exposure dashboard (2026-11-10)
+
+Started from latest remote main `0040e09` containing merged M2C-1. Added a
+third opt-in **REAL — Patna common-footprint exposure** mode. Synthetic remains
+the default; the historical small WRI pilot and all processing engines are unchanged.
+A separate repository manifest pins SHA-256 of all three processed artifacts.
+The NumPy-only loader requires a passing audit, checks array/grid/mask/area
+invariants and rejects invalid bundles with a useful warning. `allow_pickle=False`
+is mandatory. No dependencies were added or hosted requirements changed.
+
+The UI recalculates strict-threshold exposure with M2A-1, uses the existing WRI
+area helper, and displays depth plus joint-coverage maps, exposure/area/counts,
+prominent coverage and excluded flooded cells, attribution, limitations and two
+CSV downloads. Display rounding does not affect downloaded precision.
+These are complete common-cell screening estimates in the uploaded buffered
+bounding rectangle, **not district totals or observed damage**. No missing value
+is imputed. M2C-1 provenance uncertainties and selection bias remain; there is
+no new scientific blocker for this explicitly restricted screening view.
+
+See [test evidence](TEST_RESULTS.md). Next single task: review the feature PR
+and run the three modes in the hosted app after an owner-approved deployment.
+District-only analysis still requires the exact boundary and a separate validation.
+
+## Previous milestone · M2C-1 — validated real common-footprint bundle (2026-11-10)
 
 Started from remote main `2ee214a`; fast-forwarded the feature-branch base to
 `7fe68c8` after an AGENTS-only update arrived during validation.
@@ -28,8 +51,8 @@ refinement and independent threshold/readback audits pass. The compact NPZ is
 323,391 bytes with source/derived SHA-256 and coverage/budget/provenance records.
 See [full findings](PATNA_VALIDATION.md) and [test evidence](TEST_RESULTS.md).
 
-Smallest next step: checksum-verified NumPy bundle loading and an opt-in REAL
-common-footprint exposure panel with explicit coverage/exclusions. District-only
+The former next step, checksum-verified loading and an opt-in exposure panel,
+is implemented in M2C-2 above. District-only
 metrics require the exact polygon. Task IDs/times and the upstream NaN cause
 remain unverified; no damage/financial model or new dependencies were added.
 

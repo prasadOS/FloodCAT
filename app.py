@@ -10,11 +10,18 @@ from src.floodcat.exports import table_csv, metadata_json
 
 st.set_page_config(page_title="FloodCAT | Physical Flood Exposure", page_icon="🌊", layout="wide")
 
-mode = st.sidebar.radio("Data mode", ["Synthetic demo", "REAL — WRI"])
+mode = st.sidebar.radio("Data mode", ["Synthetic demo", "REAL — WRI", "REAL — Patna common-footprint exposure"])
+controls = st.sidebar.empty()
 if mode == "REAL — WRI":
     from src.floodcat.wri_view import render
 
     render()
+    st.stop()
+
+if mode == "REAL — Patna common-footprint exposure":
+    from src.floodcat.patna_view import render
+
+    render(sidebar=controls.container())
     st.stop()
 
 @st.cache_data(show_spinner=False)
@@ -26,7 +33,7 @@ st.title("FloodCAT")
 st.caption("Flood hazard and physical exposure screening | Portable interview demonstration")
 st.warning("**SYNTHETIC DEMO DATA — NOT REAL FLOOD MAPS.** All depth, population and built-up grids in this mode are hypothetical.", icon="⚠️")
 
-with st.sidebar:
+with controls.container():
     st.header("Controls")
     section = st.radio("Module", ["Overview", "Hazard", "Exposure", "Depth severity", "Compare", "Data & methods"])
     scenario = st.selectbox("Hazard scenario (illustrative labels)", SCENARIO_NAMES, index=1)
