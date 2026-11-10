@@ -77,3 +77,57 @@ complete built-up total. No additional scientific dependencies or app/WRI change
 Source-to-target aggregation, real exposure pixels, browser download clicks and
 hosted deployment remain unverified. Feature-branch commit/push and a PR are
 authorized; main is not to be pushed or merged by this task.
+
+## M2A-2 conservative aggregation (2026-11-10)
+
+Repository confirmed as `prasadOS/FloodCAT`. Initial local branch `work` was at
+`7c981b0`, behind the requested base; this mismatch was reported before changes.
+`git fetch origin main` obtained `84a7c6396899806ea4b488e33845a10669c44ec3`, the
+M2A-1 merge. New branch `m2a-2-conservative-aggregation` starts from that commit.
+A final `git ls-remote origin refs/heads/main` confirmed the same remote base.
+
+Interpreter: `/workspace/.floodcat-venv/bin/python`, Python 3.11.17, NumPy 2.4.6.
+No packages installed or upgraded, real data acquired, or CLIMADA added.
+
+- Baseline `/workspace/.floodcat-venv/bin/python -m unittest discover -s tests -v`
+  — **24 passed**, no skips, in 0.055 s.
+- Initial targeted aggregation run:
+  `PYTHONDONTWRITEBYTECODE=1 /workspace/.floodcat-venv/bin/python -m unittest discover -s tests -p test_aggregation.py -v`
+  — **16 passed**, no skips, in 0.044 s. Two further fixtures were added for
+  excluded missing pixels and simultaneous clipped/missing coverage.
+- Final full regression command:
+  `PYTHONDONTWRITEBYTECODE=1 /workspace/.floodcat-venv/bin/python -m unittest discover -s tests -v`
+  — **42 passed**, no failures, errors or skips, in **0.087 s**. Includes all
+  12 M1B tests, all 12 M2A-1 tests and 18 new aggregation tests.
+- Independent hand budgets check noninteger coarsening (population 21 → 8.5 +
+  12.5; built-up 910 m² → 315 + 595 m²), two-axis offsets, partial source and
+  target coverage, clipping without renormalization, NaN/explicit masks, valid
+  zero, all-missing and absent coverage, touching boundaries, tiny missing
+  overlaps, axis direction, fractional allocation and conservation. A separate
+  numerical integration of the ellipsoid differential area checks WGS84 latitude
+  weights. Fabricated fine-grid counts conserve 90 people onto a WRI-transform
+  fixture. Other tests check input validity, integer/float overflow, immutability,
+  explicit cross-CRS rejection and safe handoff to the M2A-1 engine.
+- `PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 /workspace/.floodcat-venv/bin/python /workspace/work/m2a-2/smoke_app.py`
+  — exit 0. The temporary AppTest harness verified default Synthetic demo and
+  all six sections; REAL — WRI at 0 m (1,206.56 km²) and 1 m (430.13 km²),
+  three download controls, mocked missing-asset warning and switch back to
+  Synthetic demo. The first harness invocation used a relative app path, which
+  AppTest resolved relative to the temporary harness; corrected to an absolute
+  path before the successful run. Existing Streamlit bare-context and width
+  deprecation warnings remain. No browser download clicks or hosted build tested.
+- `UV_CACHE_DIR=/workspace/.floodcat-cache uv pip check --python /workspace/.floodcat-venv/bin/python`
+  — all **35 installed packages compatible**. The baseline attempt to use
+  `python -m pip check` found no pip module; uv performed the compatibility check
+  without installing anything.
+- `git diff --exit-code origin/main -- app.py src/floodcat/exposure.py src/floodcat/wri.py src/floodcat/wri_view.py src/floodcat/demo.py src/floodcat/exports.py requirements.txt data tests/test_demo.py tests/test_exposure.py tests/test_wri.py`
+  — exit 0: application, existing engines, dependencies, assets and old tests
+  unchanged. `git diff --check` — passed.
+
+These are calculation-only fixtures. Shared-CRS rectilinear grids are supported;
+rotation, wrapping, arbitrary polygon clipping and cross-CRS remapping are not.
+Native GHSL World Mollweide pixels have not been reprojected to WRI. The method
+assumes uniform exposure over physical source-pixel area and makes no observed
+inundation, damage, financial-loss or real-exposure coverage claims. Complete
+target values remain NaN when source coverage is partial or missing. See
+[EXPOSURE.md](EXPOSURE.md) for the full contract and next task.
