@@ -7,3 +7,5 @@
 - D05: Do not present the earlier `E:\Citi` Codex/Claude outputs as recovered data.
 - D06: Keep the pilot on its native WRI grid, using whole cells that cover the requested box and WGS84 ellipsoid cell areas. Report the snapped bounds explicitly.
 - D07: Keep Earth Engine in the local acquisition script. The real Streamlit view validates a local TIFF and manifest before showing metrics.
+
+- D08 (M2A-1): Keep the aligned-grid exposure engine separate from the dashboard. Report independent population/built-up coverage and known subtotals; incomplete flooded exposure has no complete total. Require conservative upstream aggregation and explicit missing-data handling. See [exposure assumptions](EXPOSURE.md).

@@ -47,3 +47,33 @@ Commands used the existing `citi` interpreter.
 ## Documentation refresh and publication package (2026-11-10)
 
 The owner independently verified the initial publication archive, its SHA-256, and all 12 tests. After the documentation refresh, `python -B -m unittest discover -s tests -v` ran in the existing Python 3.11.18 environment and passed all 12 tests in 0.119 s. The app, tests, scripts, dependencies, and raster assets were unchanged.
+
+## M2A-1 cloud evidence (2026-11-10)
+
+Prepared interpreter: `/workspace/.floodcat-venv/bin/python`, Python 3.11.17,
+NumPy 2.4.6. Branch: `feature/m2a-exposure-engine` from `7c981b0`.
+
+- `PYTHONDONTWRITEBYTECODE=1 /workspace/.floodcat-venv/bin/python -m unittest discover -s tests -v` — 22 passed, no skips, in 0.043 s. Includes all original 12 and 10 new exposure tests.
+- New hand-calculated fixtures cover strict thresholds/equality, dry cells, excluded hazard nodata, valid zero, independent missing exposure and masks, overall/flooded cell coverage, missing dry exposure, entirely missing exposure, empty flooded/valid domains, fractional counts, partition conservation, invalid dimensions/shapes/types/values/thresholds, integer overflow avoidance, sum overflow rejection and input immutability.
+- Inline `PYTHONDONTWRITEBYTECODE=1 /workspace/.floodcat-venv/bin/python -` with `streamlit.testing.v1.AppTest.from_file('app.py')` — all six synthetic sections passed without exceptions. REAL — WRI passed at 0 m (1,206.56 km²) and 1 m (430.13 km²), with three download controls. Existing Streamlit bare-context and `use_container_width` deprecation warnings were emitted. No browser download clicks or hosted build were tested.
+
+These are calculation-only tests with fabricated exposure arrays, not evidence of
+real WorldPop/GHSL coverage or conservative real-raster aggregation. No source
+rasters acquired, packages installed, CLIMADA added, or WRI/dashboard code changed.
+Prior verification left untracked Python 3.12 `__pycache__` directories; retained.
+
+## M2A-1 final feature-branch review (2026-11-10)
+
+Branch `feature/m2a-exposure-engine`, based on confirmed remote main `7c981b0`.
+Reviewed engine validation, strict threshold semantics, independent exposure masks,
+float summation, units and coverage assumptions. Added two independent tests for
+positive depth outside the hazard mask and population-only missingness with a
+complete built-up total. No additional scientific dependencies or app/WRI changes.
+
+- `PYTHONDONTWRITEBYTECODE=1 /workspace/.floodcat-venv/bin/python -m unittest discover -s tests -v` — **24 passed**, no skips, in 0.067 s (12 original + 12 exposure tests).
+- `UV_CACHE_DIR=/workspace/.floodcat-cache uv pip check --python /workspace/.floodcat-venv/bin/python` — all 35 installed packages compatible.
+- `git diff --check` — passed. The earlier AppTest evidence above remains applicable; app and hazard sources are unchanged.
+
+Source-to-target aggregation, real exposure pixels, browser download clicks and
+hosted deployment remain unverified. Feature-branch commit/push and a PR are
+authorized; main is not to be pushed or merged by this task.
