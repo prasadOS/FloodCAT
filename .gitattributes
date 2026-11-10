@@ -1,0 +1,2 @@
+# Preserve pinned upstream Leaflet distribution bytes (including CRLF for SRI).
+src/floodcat/static/leaflet/* -text whitespace=cr-at-eol

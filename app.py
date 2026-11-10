@@ -10,15 +10,9 @@ from src.floodcat.exports import table_csv, metadata_json
 
 st.set_page_config(page_title="FloodCAT | Physical Flood Exposure", page_icon="🌊", layout="wide")
 
-mode = st.sidebar.radio("Data mode", ["Synthetic demo", "REAL — WRI", "REAL — Patna common-footprint exposure"])
+mode = st.sidebar.radio("Data mode", ["Synthetic Demo", "REAL — Patna"])
 controls = st.sidebar.empty()
-if mode == "REAL — WRI":
-    from src.floodcat.wri_view import render
-
-    render()
-    st.stop()
-
-if mode == "REAL — Patna common-footprint exposure":
+if mode == "REAL — Patna":
     from src.floodcat.patna_view import render
 
     render(sidebar=controls.container())
@@ -31,7 +25,7 @@ def cached_data():
 data = cached_data()
 st.title("FloodCAT")
 st.caption("Flood hazard and physical exposure screening | Portable interview demonstration")
-st.warning("**SYNTHETIC DEMO DATA — NOT REAL FLOOD MAPS.** All depth, population and built-up grids in this mode are hypothetical.", icon="⚠️")
+st.caption("SYNTHETIC DEMO · Hypothetical hazard and exposure · Not actual flood impacts")
 
 with controls.container():
     st.header("Controls")
@@ -57,7 +51,7 @@ def heatmap(values, title, ztitle, colorscale='Blues'):
                              colorbar=dict(title=ztitle), hovertemplate="Lon %{x:.3f}<br>Lat %{y:.3f}<br>Value %{z:.2f}<extra></extra>"))
     fig.update_layout(title=title, xaxis_title="Longitude (°E)", yaxis_title="Latitude (°N)",
                       height=480, margin=dict(l=30,r=25,t=55,b=30), yaxis=dict(scaleanchor='x',scaleratio=1))
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 if section == "Overview":
     st.subheader("Scenario snapshot")
@@ -88,18 +82,18 @@ elif section == "Depth severity":
     rows = severity(data,scenario,threshold)
     df=pd.DataFrame(rows)
     l,r=st.columns(2)
-    with l: st.plotly_chart(px.bar(df,x='Depth band',y='Area (km²)',title='Area by depth band'),use_container_width=True)
-    with r: st.plotly_chart(px.bar(df,x='Depth band',y='People (synthetic)',title='People by depth band'),use_container_width=True)
-    st.dataframe(df,use_container_width=True,hide_index=True)
+    with l: st.plotly_chart(px.bar(df,x='Depth band',y='Area (km²)',title='Area by depth band'),width='stretch')
+    with r: st.plotly_chart(px.bar(df,x='Depth band',y='People (synthetic)',title='People by depth band'),width='stretch')
+    st.dataframe(df,width='stretch',hide_index=True)
     st.download_button("Download severity CSV",table_csv(rows),file_name='floodcat_demo_severity.csv',mime='text/csv')
 elif section == "Compare":
     st.subheader("Scenario comparison")
     rows=[summarize(data,s,threshold) for s in SCENARIO_NAMES]
     df=pd.DataFrame(rows)
-    st.dataframe(df,use_container_width=True,hide_index=True)
+    st.dataframe(df,width='stretch',hide_index=True)
     c1,c2=st.columns(2)
-    with c1: st.plotly_chart(px.bar(df,x='Scenario',y='Inundated area (km²)',title='Flooded area'),use_container_width=True)
-    with c2: st.plotly_chart(px.bar(df,x='Scenario',y='Exposed people (synthetic)',title='Exposed population'),use_container_width=True)
+    with c1: st.plotly_chart(px.bar(df,x='Scenario',y='Inundated area (km²)',title='Flooded area'),width='stretch')
+    with c2: st.plotly_chart(px.bar(df,x='Scenario',y='Exposed people (synthetic)',title='Exposed population'),width='stretch')
     st.caption("RCP labels are illustrative scenario names, not actual downscaled or WRI-calculated future climate projections. Do not interpret these differences as predicted change.")
     st.download_button("Download comparison CSV",table_csv(rows),file_name='floodcat_demo_comparison.csv',mime='text/csv')
 else:

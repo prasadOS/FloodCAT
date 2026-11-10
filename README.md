@@ -1,17 +1,21 @@
 # FloodCAT
 
-FloodCAT is a Streamlit application for regional flood-hazard and physical exposure screening. **M1B** is the preserved application baseline. **M2A-1** adds an independent aligned-grid exposure engine. **M2A-2** adds conservative area-overlap aggregation of population counts and built-up m², with explicit partial coverage and missing data; see [the APIs and scientific assumptions](docs/EXPOSURE.md). **M2A-3** adds optional [conservative cross-CRS remapping](docs/REMAPPING.md), validated with World Mollweide → WGS84 fixtures. M2C-2 adds an opt-in real common-footprint dashboard using the audited M2C-1 outputs. Scientific dependencies are isolated in `requirements-science.txt`; hosted requirements are unchanged.
+FloodCAT is a Streamlit application for regional flood-hazard and physical exposure screening. The interface has exactly two modes, each with **Overview, Hazard, Exposure, Depth severity, Compare, Data & methods**.
 
-- **Synthetic demo** opens by default. It provides six sections with five illustrative depth scenarios, hypothetical population and built-up exposure, and CSV and JSON exports.
-- **REAL — WRI** shows modeled riverine flood depth for one historical WATCH 100-year return-period tile near Patna. It reports thresholded flooded area and cell counts and provides GeoTIFF, source manifest, and summary CSV downloads. The view reads the bundled files locally without Earth Engine credentials. If either file is missing, it shows a warning and Synthetic demo remains selectable.
+- **Synthetic Demo** is the default: deterministic, hypothetical hazard and exposure with illustrative scenarios, charts and CSV exports.
+- **REAL — Patna** uses the unchanged audited M2C-1/M2C-2 common-footprint bundle. A strict depth threshold recalculates estimated people, built-up surface, flooded area/cells and excluded flooded cells. The Leaflet map overlays native WRI cells on OpenStreetMap, with selectable depth/coverage layers, zoom, pan, fit and native-cell hover/click. Missing tile access leaves the scientific layers usable. The verified small WRI pilot remains in Hazard and Data & methods as a reference with its original GeoTIFF, manifest and summary downloads.
 
-WRI depths support regional screening. Real exposure is available in a separate opt-in common-footprint view; both preserved M1B modes remain available. Future scenarios and local hydraulic validation remain unimplemented.
+**REAL metrics cover complete common WRI cells in the uploaded buffered bounding rectangle, not all of Patna district.** Coverage and exclusions remain visible on every real results page. These are modeled screening estimates, not observed impacts, measured damage or monetary loss. Depth-band totals reconcile to the selected strict threshold; Compare uses actual T100 thresholds, not invented climate scenarios.
+
+The checksum loader pins all three processed artifacts, requires a passing audit and uses NumPy `allow_pickle=False`. Missing, changed or malformed artifacts display a warning instead of exposure results. No raw rasters or heavy geospatial packages are loaded by the new map. Hosted Python requirements remain unchanged; a pinned local Leaflet 1.9.4 distribution (BSD-2-Clause) adds no Python dependency or map token. [UI/map details, screenshots and limitations](docs/UI_MAPS.md).
+
+Optional scientific processing remains isolated in `requirements-science.txt` and `requirements-acquisition.txt`; see [aggregation](docs/EXPOSURE.md) and [remapping](docs/REMAPPING.md).
 
 **M2B-1:** official source-catalog facts and a tested bounded acquisition/validation route are documented in [ACQUISITION.md](docs/ACQUISITION.md). Direct producer acquisition was blocked in that milestone. M2C-1 subsequently validates user-uploaded exports below; this is distinct from a successful provider download. Optional tools use `requirements-acquisition.txt`.
 
 **M2B-2:** a [manual GitHub Actions provider-access diagnostic](docs/ACTIONS_ACCESS_CHECK.md) is available for review. It runs only via `workflow_dispatch`, saves bounded HTTP metadata, and does not acquire rasters. GitHub-hosted access remains unverified until a real manual run is reviewed.
 
-**M2C-1:** [uploaded real Patna rasters are validated](docs/PATNA_VALIDATION.md), with a compact audited common-cell exposure bundle. Metrics apply to complete cells in the export bounding rectangle, **not the district polygon or whole upload**. The verified bundle now powers the opt-in M2C-2 view.
+**M2C-1:** [uploaded real Patna rasters are validated](docs/PATNA_VALIDATION.md), with a compact audited common-cell exposure bundle. Metrics apply to complete cells in the export bounding rectangle, **not the district polygon or whole upload**. The verified bundle powers REAL — Patna.
 
 - **REAL — Patna common-footprint exposure** loads checksum-pinned `aligned_common.npz`, `validation.json` and passing `audit.json` using NumPy with `allow_pickle=False`. It shows historical T100 depth and joint-coverage maps, a strict depth threshold, estimated population and built-up exposure, common flooded area/cells, excluded flooded cells and current/comparison CSV downloads. Metrics cover complete common WRI cells in the uploaded buffered bounding rectangle, **not all of Patna district**. Missing/changed/malformed artifacts disable this view with a warning. No raw-raster reads or heavy geospatial dependencies run in Streamlit.
 
@@ -25,7 +29,7 @@ python -m unittest discover -s tests -v
 python -m streamlit run app.py
 ```
 
-Open [the local app](http://localhost:8501) and choose **Data mode → REAL — WRI** in the sidebar. At a threshold of 0 m, the summary reports 1,206.56 km² across 1,562 cells. Hover over a cell to inspect its depth. At 1 m, the flooded area drops to 430.13 km². The threshold changes the metrics, while the map displays all valid depths. Expand **Source and acquisition metadata** for the provenance. Press **Ctrl+C** in the terminal to stop the app.
+Open [the local app](http://localhost:8501), then choose **REAL — Patna** and a module in the sidebar. At >0 m, the common-footprint view reports 2,840,321 estimated people, 32.216 km² built surface, 1,637.31 km² flooded area and 2,116 flooded cells, with 55.98% joint cell coverage and 3,101 excluded flooded cells. Values are calculated from arrays, not hardcoded. At >1 m, estimated exposed people drop to 438,591. Expand Export summaries for CSVs, or Data & methods for provenance and conservation. In Hazard, expand the small pilot reference to retain the original 1,206.56 km² (>0 m) / 430.13 km² (>1 m) hazard comparison and source downloads. Press **Ctrl+C** to stop.
 
 ## Deployment target
 

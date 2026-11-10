@@ -1,7 +1,7 @@
 # FloodCAT development instructions
 
 ## Scope
-FloodCAT is a Python/Streamlit application for regional physical flood-hazard and exposure screening. **M1B** is the current verified milestone. Preserve the default **Synthetic demo** and the separate **REAL — WRI** historical Patna WATCH T100 hazard view. Keep synthetic exposure separate from real hazard.
+FloodCAT is a Python/Streamlit application for regional physical flood-hazard and exposure screening. **M2C-3** consolidates the interface into **Synthetic Demo** (default) and **REAL — Patna**, each with six modules. Preserve verified common-footprint data and the historical small WRI pilot reference/downloads inside REAL — Patna. Keep hypothetical and real exposure distinct.
 
 Keep claims within the evidence. Treat WRI depths as modeled screening data and population and built-up overlays as exposure. Avoid claims of observed inundation, calibrated hydraulics, or physical damage. Financial loss, AAL/PML, insurance and credit are outside scope. Label RCP/CMIP5 and SSP/CMIP6 distinctly.
 

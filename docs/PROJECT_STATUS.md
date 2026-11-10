@@ -1,6 +1,34 @@
 # FloodCAT project status
 
-## Current milestone · M2C-2 — first REAL exposure dashboard (2026-11-10)
+## Current milestone · M2C-3 — two-mode UI and geographic maps (2026-11-10)
+
+Started from latest remote main `a071692`; user authorized tested commits directly
+to main without force-push. Exactly two modes: Synthetic Demo (default), REAL —
+Patna; all six modules are available in each. The formerly separate small WRI
+pilot remains a hazard reference/download expander inside REAL — Patna.
+
+Real results reuse the unchanged checksummed/audited arrays and M2A-1 exposure
+engine. Four KPIs and compact coverage/exclusion qualification replace the large
+banners. Depth bands reconcile at strict thresholds; Compare uses historical T100
+thresholds only. Exact domain/source/mask/budget/uncertainty details and CSVs are
+in Data & methods and expanders.
+
+Locally bundled Leaflet 1.9.4 (BSD-2-Clause) provides OSM basemap, native-cell depth
+and joint-coverage layers, scroll zoom, pan, +/−, fit and native-cell hover/click.
+The canvas renderer projects geographic cell boundaries for display only; no
+resampling or scientific processing is added. No Python dependencies changed.
+Browser tests verify alignment, all interactions and desktop/mobile fallback.
+**Actual OSM tile access is blocked by this cloud's network policy**; overlays
+remain visible. Basemap success and hosted deployment are not claimed.
+See [map design/evidence](UI_MAPS.md) and [test results](TEST_RESULTS.md).
+
+Remaining scientific limitations are unchanged: partial common-cell selection,
+no district-only polygon, export task metadata gaps, unknown upstream GHSL NaN
+cause and sampled geometric accuracy. Next single task: verify ordinary OSM tile
+loading and the two modes in the deployed Community Cloud app; avoid bulk tile
+requests and review OSM policy if usage grows.
+
+## Previous milestone · M2C-2 — first REAL exposure dashboard (2026-11-10)
 
 Started from latest remote main `0040e09` containing merged M2C-1. Added a
 third opt-in **REAL — Patna common-footprint exposure** mode. Synthetic remains

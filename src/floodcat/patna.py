@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[2]
 DIRECTORY = ROOT / 'data/processed_real/patna_common'
 MANIFEST = ROOT / 'config/patna_dashboard_checksums.json'
 DOMAIN = 'Complete common WRI cells in the uploaded buffered bounding rectangle; NOT all of Patna district'
-MODE = 'REAL — Patna common-footprint exposure'
+MODE = 'REAL — Patna'
 
 
 class BundleError(ValueError):

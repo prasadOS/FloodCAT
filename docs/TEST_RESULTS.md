@@ -685,3 +685,54 @@ home directory or credentials are written. This limitation does not affect
 AppTest or the scientific arrays. Bare Chromium's profile failure is likewise
 avoided by Playwright's temporary profile. These are cloud smoke-harness
 adaptations, not deployment changes.
+
+## M2C-3 · two-mode interface / native-cell OSM map (2026-11-10)
+
+Base: latest remote main `a071692`. Direct-main commit/push explicitly authorized
+by the task; no force-push. No source/processed rasters, checksum pins, scientific
+engines or Python requirements changed. Leaflet 1.9.4 JS/CSS/license vendored from
+pinned npm URLs; JS/CSS SHA-256 match upstream SRI pins. See [UI_MAPS.md](UI_MAPS.md)
+for exact display assumptions, screenshots, performance and tile-policy caveats.
+
+Commands (repository root; Python 3.11.17):
+
+- Baseline `PYTHONDONTWRITEBYTECODE=1 /workspace/work/m2b-1/venv/bin/python -m unittest discover -s tests -q`:
+  **97 passed, 7.232 s**, no skips.
+- Focused `PYTHONDONTWRITEBYTECODE=1 /workspace/.floodcat-venv/bin/python -m unittest discover -s tests -p 'test_patna_*.py' -v`:
+  **17 discovered: 10 passed / 7 optional raster-pipeline skips, 1.344 s**.
+  An initial run caught a stale test expectation for coverage now in a caption;
+  updated the assertion, preserving the actual coverage check.
+- Full `PYTHONDONTWRITEBYTECODE=1 /workspace/work/m2b-1/venv/bin/python -m unittest discover -s tests -v`:
+  **102 passed, 6.298 s**, no failures/errors/skips.
+- Lightweight runtime, same full command using `/workspace/.floodcat-venv/bin/python`:
+  **102 discovered: 66 passed / 36 optional science skips, 1.234 s**.
+- `UV_CACHE_DIR=/workspace/.floodcat-cache uv pip check --python /workspace/.floodcat-venv/bin/python`:
+  **35 installed packages compatible**, no installs or upgrades.
+- `FLOODCAT_URL=http://localhost:8503 FLOODCAT_SCREENSHOTS=/workspace/work/m2c-3 node tests/browser/patna_map.cjs`:
+  **exit 0**, all native-bounds/first-last-cell, zoom +/−, wheel, pan, fit, layer,
+  click popup, failed-tiles canvas, CSV control and desktop/mobile checks passed.
+  Initial real map readiness 2,542 ms, native draws 8.6/6.2 ms desktop, 2.9 ms mobile.
+  Actual initial OSM requests were blocked; deterministic smoke aborts tiles.
+  Scratch telemetry adaptation for read-only home documented in UI_MAPS; no hosted
+  build or successful OSM tile access is claimed.
+
+New independent hand fixture includes depths exactly 0, 1, 2, 5 m, >5 m,
+valid zero built surface, NaN and missing exposure. Expected band populations
+10/20/30/40, areas 2/3/4/5, built surface 0/2/3/4 and counts 1/1/1/1 pass;
+threshold >2 keeps only 30+40, >8 is empty. Real band sums reconcile all four
+quantities to engine totals at 0, .25, 1, 1.5, 2, 4.75, 5, 8 m with acceptance
+1e-12 relative / 1e-8 absolute. Map payloads preserve every native float value,
+all 65×168 cells and mask values, and compare against independently specified
+source bounds at 1e-12 degrees. Existing audit/conservation tests still pass.
+
+AppTest visits all six modules in both exact mode options, checks real domain,
+coverage/exclusion labels and pilot downloads, strict-threshold population changes
+and missing/invalid artifact warnings. Existing checksum/failed audit/malformed
+array rejection remains tested. Raw uploaded rasters and all existing engines
+remain unchanged. Real bundle loading/summary imports no Rasterio/Shapely/pyproj.
+
+Final publication checks: raw/processed data, scientific engines, checksum pins
+and all requirements compare unchanged to `a071692`. `.gitattributes` preserves
+vendored upstream bytes (including CRLF/SRI) and recognizes their line endings;
+staged `git diff --check` passes. Remote main was re-fetched and still matched the
+base before the normal direct-main commit/push. No history rewriting.

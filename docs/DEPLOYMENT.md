@@ -1,13 +1,13 @@
-# FloodCAT M1B deployment manifest
+# FloodCAT deployment manifest
 
-Prepared 2026-11-10. Publication requires owner approval. The ZIP is a portable file snapshot of the M1B package.
+Updated for M2C-3 on 2026-11-10. Git publication for this task is owner-authorized; hosted deployment has not been verified. Earlier ZIP references describe the historical M1B snapshot.
 
 ## Repository layout
 
 | Files | Role |
 | --- | --- |
 | `app.py`, `requirements.txt`, `.streamlit/config.toml`, `src/floodcat/*.py` | Runtime entry point, five pinned direct dependencies, theme and application modules |
-| `data/demo_real/patna_wri_watch_t100.tif`, `data/demo_real/patna_wri_watch_t100.json` | Optional as a pair. Required for REAL — WRI. Synthetic mode needs neither. |
+| `data/demo_real/patna_wri_watch_t100.tif`, `data/demo_real/patna_wri_watch_t100.json` | Optional pair for the small WRI pilot reference inside REAL — Patna. Synthetic mode needs neither. |
 | `tests/test_demo.py`, `tests/test_wri.py` | Regression and raster checks |
 | `scripts/inspect_gee_catalog.py`, `scripts/acquire_patna_wri.py` | Local-only acquisition tooling. The Earth Engine API is separate from Cloud requirements. |
 | `config/scenarios.json`, `data/sample/README.md` | Synthetic scenario reference and sample directory description |
@@ -25,9 +25,9 @@ FloodCAT code licensing is a separate owner decision. No source-code license fil
 
 ## Community Cloud settings
 
-Choose the approved GitHub repository and branch, set the entry point to `app.py`, and select Python 3.11 in Advanced settings. The root `requirements.txt` pins Streamlit, NumPy, pandas, Plotly, and Pillow to the tested local versions. No secrets or OS packages are required by the app. Include the two WRI files together to enable real mode. When either is absent, real mode shows a missing-data warning and the synthetic demo remains selectable. [Community Cloud deployment](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy) · [Dependency setup](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/app-dependencies)
+Choose the approved GitHub repository and branch, set the entry point to `app.py`, and select Python 3.11 in Advanced settings. The root `requirements.txt` pins Streamlit, NumPy, pandas, Plotly, and Pillow to the tested local versions. No secrets or OS packages are required by the app. Include the compact processed artifacts and checksum manifest for REAL — Patna (below). The optional pilot needs its matching TIFF/JSON pair. Missing or invalid artifacts show warnings; Synthetic Demo remains selectable. [Community Cloud deployment](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy) · [Dependency setup](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/app-dependencies)
 
-After approval, confirm the first hosted build and inspect the real map, attribution and downloads. The current smoke evidence is from Windows.
+After a hosted build, inspect both modes, real map layers/OSM tiles, attribution and downloads. Current M2C-3 smoke evidence is from Linux, not a verified Community Cloud deployment.
 
 ## M2C-2 real common-footprint mode
 
@@ -38,3 +38,16 @@ SHA-256 on every render (under 0.4 MiB), then parses and validates the bundle.
 Do not regenerate checksum pins merely to silence a failure: revalidate any new
 scientific artifact and review its passing audit before updating the pins. Pins
 protect against accidental corruption, not malicious repository changes.
+
+## M2C-3 map assets and network
+
+Ship `src/floodcat/static/native_map.html` and `src/floodcat/static/leaflet/`
+(JS, CSS, license and source/hash notes). Leaflet is embedded locally: no CDN, API
+key or Python package is required at runtime. Retain the BSD-2-Clause notice.
+Only current-viewport OSM tiles use an external service,
+`https://tile.openstreetmap.org/{z}/{x}/{y}.png`; retain visible OSM attribution
+and follow its usage policy. Do not disable referrers, bypass limits, prefetch or
+bulk-cache tiles. The app performs no tile downloads server-side. Scientific
+layers and map controls remain usable if tile access fails; geographic context
+is then limited to coordinates and the study raster. Large deployments should
+review an appropriate tile service rather than assume unlimited OSM capacity.
