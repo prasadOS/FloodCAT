@@ -235,3 +235,14 @@ observed inundation. M2B-1 authorizes bounded acquisition; its verified catalog 
 network/native-metadata blockers are recorded in [ACQUISITION.md](ACQUISITION.md).
 No real-data remapping has run. Next single task: resolve access and exact native
 file/variant/WKT/mask verification, then acquire within that authorization.
+
+## M2C-1 native-data scaling evidence
+
+[Real GHSL remapping](PATNA_VALIDATION.md) now uses the actual uploaded WKT,
+matching World Mollweide, through an external bounded-strip adapter. The core
+mapper is unchanged. At most 33,250 source cells are mapped at once; 33 strips
+took 269.74 s with peak process RSS 310.67 MiB. Known built-source balance error
+is 7.83e-14 relative. Ten actual common cells pass sampled refinements to 0.1 mm
+and 1 µm; this supplements earlier independent fixtures without asserting a global
+error bound. Native NaNs remain missing and complete coverage is required for
+published exposure. Full-monolithic million-cell memory scaling is still untested.

@@ -1,0 +1,179 @@
+{
+  "status": "passed",
+  "ready_for": "Opt-in common-rectangle screening dashboard; not district-only metrics",
+  "independent_threshold_sums": "passed",
+  "source_checksums": "passed",
+  "known_source_budgets": "passed",
+  "coverage": {
+    "hazard_valid_cells": 10920,
+    "common_cells": 6113,
+    "excluded_cells_without_population": 4807,
+    "excluded_cells_without_built_surface": 462,
+    "thresholds": [
+      {
+        "threshold_m": 0.0,
+        "full_uploaded_hazard_flooded_cells": 5217,
+        "common_flooded_cells": 2116,
+        "excluded_flooded_cells": 3101,
+        "missing_population_flooded_cells": 3101,
+        "missing_built_surface_flooded_cells": 235
+      },
+      {
+        "threshold_m": 1.0,
+        "full_uploaded_hazard_flooded_cells": 1382,
+        "common_flooded_cells": 264,
+        "excluded_flooded_cells": 1118,
+        "missing_population_flooded_cells": 1118,
+        "missing_built_surface_flooded_cells": 80
+      },
+      {
+        "threshold_m": 2.0,
+        "full_uploaded_hazard_flooded_cells": 1110,
+        "common_flooded_cells": 183,
+        "excluded_flooded_cells": 927,
+        "missing_population_flooded_cells": 927,
+        "missing_built_surface_flooded_cells": 66
+      },
+      {
+        "threshold_m": 5.0,
+        "full_uploaded_hazard_flooded_cells": 318,
+        "common_flooded_cells": 55,
+        "excluded_flooded_cells": 263,
+        "missing_population_flooded_cells": 263,
+        "missing_built_surface_flooded_cells": 14
+      }
+    ]
+  },
+  "software": {
+    "python": "3.11.17",
+    "numpy": "2.4.6",
+    "rasterio": "1.4.4",
+    "gdal": "3.10.3",
+    "pyproj": "3.7.2",
+    "proj": "9.5.1",
+    "shapely": "2.1.2",
+    "geos": "3.13.1"
+  },
+  "geometry_refinement": {
+    "samples": [
+      {
+        "wri_row_col": [
+          1,
+          2
+        ],
+        "default_built_m2": 0.0,
+        "refined_0_1mm_built_m2": 0.0,
+        "refined_1um_built_m2": 0.0,
+        "default_to_1um_absolute_difference_m2": 0.0,
+        "refinement_absolute_difference_m2": 0.0
+      },
+      {
+        "wri_row_col": [
+          13,
+          79
+        ],
+        "default_built_m2": 100441.5256579812,
+        "refined_0_1mm_built_m2": 100441.52281171388,
+        "refined_1um_built_m2": 100441.52185798092,
+        "default_to_1um_absolute_difference_m2": 0.0038000002823537216,
+        "refinement_absolute_difference_m2": 0.0009537329606246203
+      },
+      {
+        "wri_row_col": [
+          23,
+          9
+        ],
+        "default_built_m2": 8273.33898034601,
+        "refined_0_1mm_built_m2": 8273.334323950614,
+        "refined_1um_built_m2": 8273.332688302458,
+        "default_to_1um_absolute_difference_m2": 0.0062920435520936735,
+        "refinement_absolute_difference_m2": 0.0016356481555703795
+      },
+      {
+        "wri_row_col": [
+          31,
+          165
+        ],
+        "default_built_m2": 159.93944000713,
+        "refined_0_1mm_built_m2": 159.93976386311098,
+        "refined_1um_built_m2": 159.93986715049942,
+        "default_to_1um_absolute_difference_m2": 0.0004271433694214011,
+        "refinement_absolute_difference_m2": 0.00010328738844123109
+      },
+      {
+        "wri_row_col": [
+          32,
+          84
+        ],
+        "default_built_m2": 26331.335529773667,
+        "refined_0_1mm_built_m2": 26331.348043597343,
+        "refined_1um_built_m2": 26331.352144748573,
+        "default_to_1um_absolute_difference_m2": 0.016614974905678537,
+        "refinement_absolute_difference_m2": 0.004101151229406241
+      },
+      {
+        "wri_row_col": [
+          39,
+          54
+        ],
+        "default_built_m2": 9529.43474551399,
+        "refined_0_1mm_built_m2": 9529.432244919552,
+        "refined_1um_built_m2": 9529.431428523045,
+        "default_to_1um_absolute_difference_m2": 0.0033169909456773894,
+        "refinement_absolute_difference_m2": 0.0008163965067069512
+      },
+      {
+        "wri_row_col": [
+          45,
+          114
+        ],
+        "default_built_m2": 6301.616496927422,
+        "refined_0_1mm_built_m2": 6301.6120874356075,
+        "refined_1um_built_m2": 6301.610399134111,
+        "default_to_1um_absolute_difference_m2": 0.00609779331171012,
+        "refinement_absolute_difference_m2": 0.0016883014968698262
+      },
+      {
+        "wri_row_col": [
+          52,
+          53
+        ],
+        "default_built_m2": 4030.954203798351,
+        "refined_0_1mm_built_m2": 4030.9544299945087,
+        "refined_1um_built_m2": 4030.9545770720247,
+        "default_to_1um_absolute_difference_m2": 0.00037327367363104713,
+        "refinement_absolute_difference_m2": 0.00014707751597597962
+      },
+      {
+        "wri_row_col": [
+          58,
+          50
+        ],
+        "default_built_m2": 16477.308530566796,
+        "refined_0_1mm_built_m2": 16477.3089182179,
+        "refined_1um_built_m2": 16477.30903169715,
+        "default_to_1um_absolute_difference_m2": 0.0005011303546780255,
+        "refinement_absolute_difference_m2": 0.00011347925101290457
+      },
+      {
+        "wri_row_col": [
+          63,
+          144
+        ],
+        "default_built_m2": 0.0,
+        "refined_0_1mm_built_m2": 0.0,
+        "refined_1um_built_m2": 0.0,
+        "default_to_1um_absolute_difference_m2": 0.0,
+        "refinement_absolute_difference_m2": 0.0
+      }
+    ],
+    "default_tolerance_m": 0.01,
+    "refined_tolerances_m": [
+      0.0001,
+      1e-06
+    ],
+    "absolute_acceptance_m2": 0.1,
+    "relative_acceptance": 1e-06,
+    "note": "Sampled convergence only, shares PROJ/GEOS physical-area model; not a global accuracy bound"
+  }
+}

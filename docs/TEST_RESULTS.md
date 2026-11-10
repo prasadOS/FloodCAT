@@ -464,3 +464,169 @@ Existing hosted requirements, app, WRI calculations, M2A/M2B-1 source code,
 original tests, acquisition review flags and datasets are unchanged. No CLIMADA,
 real acquisition, source-value processing or deployment. `git diff --check`,
 staged whitespace checks and the explicit unchanged-file comparison passed.
+
+## M2C-1 actual uploaded Patna rasters (2026-11-10)
+
+Started branch `m2c-1-validate-uploaded-rasters` from fetched remote main
+`2ee214a`, after the three native uploads and merged PR #5. Read repository and
+acquisition/exposure/remapping guidance. The optional M2B-1 environment was reused
+unchanged; **no packages installed or upgraded** in this milestone.
+
+### Real input evidence and export recipe
+
+Read-only Rasterio inspection and independent SHA-256 checks found three real
+little-endian BigTIFFs, no LFS pointers:
+
+- WRI: 65×168, 13,086 bytes, EPSG:4326, float32, SHA-256
+  `9983264d5f3ef2c4bebde726c9e6ab10715c2906996002e03ebe89f478f8da8c`.
+- WorldPop: 644×1,672, 5,758,647 bytes, EPSG:4326, float32, SHA-256
+  `1125b05a9fe37c741a7762ac5ec0d6977f73781f98d01cce7301fdb543d57fb9`.
+- GHSL: 638×1,532, 1,741,467 bytes, actual WGS84 World Mollweide WKT resolving to
+  ESRI:54009, float32, SHA-256
+  `c4c5f4d188c58fae04d056caaedc0a9328d4d79d9d44c8b621a8b9f252432393`.
+
+All declare nodata -9999, scale 1 / offset 0, and pixel-is-area. TIFF unit tags and
+asset IDs are absent. The user supplied the export recipe during this task,
+identifying exact historical WATCH T100, legacy WorldPop `IND_2020` and GHSL 2020
+`built_surface`, native projection/affine export and toFloat/unmask(-9999,false).
+The source operations are transcribed with explicit attribution/limitations in
+`scripts/gee/export_patna_native.js`; raw hashes/units/IDs are bound in
+`config/patna_upload_provenance.json`. No export task IDs or acquisition times
+were provided; these remain null, not inferred from commit/processing times.
+The recipe exports the 500 m buffered district **bounding rectangle**, not the
+GAUL district polygon. This distinction governs all published results.
+
+WRI's **2,030 overlapping pilot samples** (35×58) are bitwise equal: 2,030 equal,
+maximum difference **0 m**. The new window starts at column 39, row 0; the pilot
+overlap starts at column 0, row 13. This corroborates identity on the overlap;
+full outside-overlap source identity is supported by the user-supplied recipe.
+
+Real missingness: population 115,214 masked -9999 pixels, zero valid zeros;
+GHSL 141,151 NaNs despite all-valid stored masks, 628,967 valid zeros. Availability
+is stored-valid AND finite, with no raw rewriting/zero imputation. Full WKT,
+affine, bounds, band/tag/value statistics and source known numeric sums are in
+`data/processed_real/patna_common/validation.json`.
+
+### Processing and numerical audit
+
+Initial bounded feasibility check: actual 33,200-cell GHSL window to two WRI rows
+built/applied in 9.666 s, peak process RSS 281,132 KiB. This supported strip
+processing rather than a full million-polygon allocation. Population full-grid
+feasibility completed in 1.194 s with 6,113 complete targets and exact known-source
+retention at printed precision.
+
+Full processing command (exit 0):
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 /workspace/work/m2b-1/venv/bin/python -m scripts.validate_patna_uploads --output /workspace/work/m2c-1/processed
+```
+
+It reused M2A-2 population aggregation, M2A-3 physical-area maps through disjoint
+row strips and M2A-1 strict-threshold exposure. Measured population time **1.065 s**;
+GHSL **33 strips**, maximum **33,250 source cells**, sum of map/apply times
+**269.739738 s**, maximum **9.433031 s** per strip. Peak process RSS
+**318,128 KiB / 310.67 MiB**. No monolithic million-cell map or new runtime dependency.
+
+The known population source extent is fully contained by WRI, independently
+establishing expected clipping zero: **15,827,395.092694104 people** retained,
+**0 balance error**. The first draft used a residual for clipping; corrected to
+independent expected zero with an explicit extent guard and audited the real
+source/retained equality. The spatial allocation arrays did not change.
+Known GHSL source **244,426,882 m²** → retained **244,425,812.59697458 m²** + clipped
+**1,069.4030445377978 m²**; balance error **1.913309097290039e-5 m²**, relative
+**7.827735974188138e-14** (acceptance 1e-10 relative / 1e-6 absolute). Unknown source
+values remain outside these known-subtotal conservation statements.
+
+Audit command:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 /workspace/work/m2b-1/venv/bin/python -m scripts.validate_patna_uploads --output /workspace/work/m2c-1/processed --audit-only
+```
+
+Final exit **0**, `audit.json` **passed**. An initial real-cell comparison found
+0.012514 m² default-to-0.1mm change, exceeding a provisional 0.001 m² / 1e-7
+threshold. Additional 1µm checks on ten distributed/common-centre cells established
+maximum default-to-1µm change **0.016614974905678537 m²** and maximum 0.1mm-to-1µm
+change **0.004101151229406241 m²**. Declared sampled acceptance is max(0.1 m²,
+1 ppm of target quantity) and refinement-to-refinement ≤0.01 m². The absolute
+allowance is below the observed native 1 m² value quantization (all available
+uploaded GHSL values checked integral). This is sampled convergence, not a global
+bound or independent verification of shared PROJ/GEOS assumptions. Existing
+M2A-3 analytic/quadrature tests provide the independent geometry evidence.
+Independent direct real-grid threshold sums, source hashes, common-mask/readback
+invariants and retained/clipped budgets all pass.
+
+### Common domain and real exposure
+
+Population complete: **6,113 cells**; built surface complete: **10,458 cells**;
+joint complete common domain **6,113 cells / 4,730.679260130684 km²**,
+**55.97985347985348%** of uploaded WRI cells. No geometrically uncertain cells in
+this run. Common-domain population before threshold: **9,602,732.2571902**;
+built-up **154,887,440.49699715 m²**. Known retained quantities outside common
+cells remain separately reported, not redistributed.
+
+Strict-threshold results (common domain only):
+
+| Threshold m | Common flooded cells | Flooded km² | Estimated people | Built surface m² |
+| ---: | ---: | ---: | ---: | ---: |
+| >0 | 2,116 | 1,637.3100663957925 | 2,840,320.5021073623 | 32,216,343.94410771 |
+| >1 | 264 | 204.14047819214085 | 438,591.0037895779 | 6,166,476.587884915 |
+| >2 | 183 | 141.50462578269597 | 331,405.76219787373 | 4,659,542.437944938 |
+| >5 | 55 | 42.48104781106 | 145,829.6454354833 | 2,169,140.9575118953 |
+
+At those thresholds the full upload has 5,217 / 1,382 / 1,110 / 318 flooded cells;
+**3,101 / 1,118 / 927 / 263** are excluded by joint missing coverage. These are
+not complete district/upload totals. Flooded area uses the existing WRI WGS84
+ellipsoid area helper, unchanged. No observed inundation, physical damage or
+financial loss is inferred.
+
+### Final regression and packaging
+
+- Baseline `PYTHONDONTWRITEBYTECODE=1 /workspace/work/m2b-1/venv/bin/python -m unittest discover -s tests -v`
+  — **85 passed**, no failures/errors/skips, **3.646 s**.
+- Focused new tests:
+  `PYTHONDONTWRITEBYTECODE=1 /workspace/work/m2b-1/venv/bin/python -m unittest discover -s tests -p test_patna_processing.py -v`
+  — **7 passed**, no failures/errors/skips, **0.387 s** after the bundle was
+  generated. Earlier pre-generation run had one explicit temporary skip; the
+  committed-bundle test passes in final evidence.
+- Final full suite:
+  `PYTHONDONTWRITEBYTECODE=1 /workspace/work/m2b-1/venv/bin/python -m unittest discover -s tests -v`
+  — **92 passed**, no failures/errors/skips, **4.269 s** (85 regressions + 7 new).
+- Original lightweight runtime: same command with `/workspace/.floodcat-venv/bin/python`
+  — 92 discovered, **56 passed / 36 optional tests skipped**, **0.078 s**.
+- `PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 /workspace/.floodcat-venv/bin/python /workspace/work/m2a-2/smoke_app.py`
+  — exit 0: all six synthetic sections, preserved WRI pilot 0/1 m metrics
+  (1,206.56 / 430.13 km²), three downloads and missing-asset fallback passed.
+- `UV_CACHE_DIR=/workspace/.floodcat-cache uv pip check --python /workspace/work/m2b-1/venv/bin/python`
+  — all **42 installed packages compatible**; no packages changed. Existing
+  Rasterio/affine pending-deprecation warnings were recorded, without failures.
+- Explicit `git diff --exit-code origin/main -- app.py requirements.txt requirements-acquisition.txt requirements-science.txt src/floodcat/wri.py src/floodcat/wri_view.py src/floodcat/aggregation.py src/floodcat/remapping.py src/floodcat/exposure.py data/demo_real`
+  — exit 0. Raw sources, working app, requirements and existing engines unchanged.
+
+Checked raw/derived licenses and sizes before staging: the small derivative
+retains WorldPop CC BY 4.0, JRC source-acknowledgement and WRI attribution/terms
+with exact source IDs; no GAUL polygon is redistributed. `aligned_common.npz`
+is **323,391 bytes**, SHA-256
+`f807ca277167e027435845f00e02b239fb76d18c1020d2df58259e2db8548167`.
+Validation/audit JSON and attribution notes keep the directory under 0.4 MiB.
+This is a coarse-grid derivative, not additional large native copies. `git diff
+--check` and staged whitespace checks passed.
+
+Remaining limitations: user-attested export recipe without task IDs/acquisition
+times or independent new source query; upstream GHSL NaN cause not established;
+common-cell selection can bias regional interpretation; district boundary not
+bundled; within-source-pixel exposure uniformity and whole-WRI-cell modeled
+hazard assumptions remain. Smallest next step is a checksum-verified NumPy loader
+and opt-in common-footprint REAL exposure panel with explicit coverage/exclusions.
+See [PATNA_VALIDATION.md](PATNA_VALIDATION.md) for full findings and instructions.
+
+During final validation remote main advanced to `7fe68c8` with an AGENTS-only
+context/efficiency update. Read the new instructions and fast-forwarded the
+uncommitted feature-branch base to that commit. Source rasters, engines and app
+were unchanged, so the completed real processing/tests remain applicable.
+
+Supplemental readback: inline Python loaded all three uploaded bands separately
+with Pillow 13.0.0 and Rasterio 1.4.4. `np.array_equal(..., equal_nan=True)` was
+**True for every sample in every file**, corroborating the recorded GHSL NaNs
+and values through a second reader. This is a decoder cross-check, not independent
+validation of dataset provenance or the physical projection model.

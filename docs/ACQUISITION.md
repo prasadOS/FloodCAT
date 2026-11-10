@@ -1,5 +1,9 @@
 # M2B-1 real exposure acquisition: verified catalog, blocked raster access
 
+Historical acquisition record. **M2C-1 now validates user-uploaded native rasters**
+and prepares a real common-cell bundle; see [PATNA_VALIDATION.md](PATNA_VALIDATION.md).
+This does not establish a successful provider download from the cloud.
+
 **No WorldPop/GHSL exposure rasters or derived exposure products were acquired.**
 The cloud's enforced HTTP policy denied direct official documentation/data hosts
 with proxy CONNECT `403 Forbidden`. No personal Earth Engine credentials or

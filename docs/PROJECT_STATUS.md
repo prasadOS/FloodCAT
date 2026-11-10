@@ -1,6 +1,39 @@
 # FloodCAT project status
 
-## Current milestone · M2B-2 — manual Actions access diagnostic (2026-11-10)
+## Current milestone · M2C-1 — validated real common-footprint bundle (2026-11-10)
+
+Started from remote main `2ee214a`; fast-forwarded the feature-branch base to
+`7fe68c8` after an AGENTS-only update arrived during validation.
+All three uploads are genuine readable BigTIFFs, not LFS pointers. The new WRI
+65×168 grid matches all 2,030 pilot-overlap values exactly. User-supplied native
+Earth Engine export operations identify exact bands/assets and bind source hashes;
+WorldPop units are people/cell and GHSL total built surface is m²/cell.
+
+Population has 115,214 masked pixels and no valid zeros; GHSL has 141,151 NaNs
+although its stored mask is all-valid. Missingness is retained, never zero-filled.
+Bounded strips reuse M2A-3 on actual Mollweide WKT; M2A-2 handles population and
+M2A-1 computes strict-threshold exposure. All existing engines/app are unchanged.
+
+The complete common domain is 6,113 WRI cells / 4,730.679 km², or 55.98% of the
+uploaded grid. At >0 m it contains 2,840,320.502 estimated people and
+32,216,343.944 m² built-up exposure. It excludes 3,101 of the upload's 5,217
+flooded cells. These are bounding-rectangle common-cell metrics, not district
+or whole-upload totals. The supplied recipe exports a buffered rectangle; the
+GAUL district polygon is not bundled.
+
+Known-source conservation balances: population exact at printed precision,
+built-up relative error 7.83e-14. Processing uses at most 33,250 source cells per
+strip, 33 strips / 269.74 s mapping time, 310.67 MiB peak RSS. Sampled real-data
+refinement and independent threshold/readback audits pass. The compact NPZ is
+323,391 bytes with source/derived SHA-256 and coverage/budget/provenance records.
+See [full findings](PATNA_VALIDATION.md) and [test evidence](TEST_RESULTS.md).
+
+Smallest next step: checksum-verified NumPy bundle loading and an opt-in REAL
+common-footprint exposure panel with explicit coverage/exclusions. District-only
+metrics require the exact polygon. Task IDs/times and the upstream NaN cause
+remain unverified; no damage/financial model or new dependencies were added.
+
+## Previous milestone · M2B-2 — manual Actions access diagnostic (2026-11-10)
 
 Branch `m2b-2-actions-data-access-check` starts from freshly fetched remote `main`
 `5e9687e`, containing merged PR #4. Added a Python 3.11, Ubuntu GitHub-hosted
@@ -19,7 +52,7 @@ requirements, scientific/acquisition engines and assets are unchanged.
 **GitHub-hosted provider access remains unverified.** GitHub requires a
 `workflow_dispatch` file on the default branch; no workflow existed on main at
 the start, and this task leaves the new workflow in an unmerged PR. No hosted
-run has completed. Next single task: after owner merge, use Actions → FloodCAT
+run has completed. PR #5 was merged (`93114a9`); no hosted-provider access result is inferred from that merge. Manual handoff was Actions → FloodCAT
 provider access check → Run workflow and review its artifact; successful website
 access alone cannot establish raster availability. See [manual instructions and
 limits](ACTIONS_ACCESS_CHECK.md) and [exact validation evidence](TEST_RESULTS.md).

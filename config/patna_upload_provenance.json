@@ -1,0 +1,39 @@
+{
+  "evidence": "User-supplied Earth Engine export recipe accompanying uploads; source selection checked in recipe, WRI overlap independently compared to pilot",
+  "recipe_path": "scripts/gee/export_patna_native.js",
+  "recipe_sha256": "1c112b550e086d5667d89de3ef9a06d34822f54a946d943801c3dbf86c61d760",
+  "source_commit": "2ee214a",
+  "task_ids": null,
+  "acquired_utc": null,
+  "region": "FAO/GAUL/2025/level2 IND/Bihar/Patna, buffer(500 m).bounds(1); bounding rectangle, not district clip",
+  "export": "image.toFloat().unmask(-9999,false); native crs and crsTransform; COG; no explicit resampling",
+  "sources": {
+    "hazard": {
+      "filename": "FloodCAT_Patna_WRI_Historical_T100.tif",
+      "sha256": "9983264d5f3ef2c4bebde726c9e6ab10715c2906996002e03ebe89f478f8da8c",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_historical_000000000WATCH_1980_rp00100",
+      "band": "inundation_depth",
+      "units": "m"
+    },
+    "population": {
+      "filename": "FloodCAT_Patna_WorldPop_2020.tif",
+      "sha256": "1125b05a9fe37c741a7762ac5ec0d6977f73781f98d01cce7301fdb543d57fb9",
+      "asset_id": "WorldPop/GP/100m/pop/IND_2020",
+      "band": "population",
+      "units": "people/cell"
+    },
+    "built_surface": {
+      "filename": "FloodCAT_Patna_GHSL_BuiltSurface_2020.tif",
+      "sha256": "c4c5f4d188c58fae04d056caaedc0a9328d4d79d9d44c8b621a8b9f252432393",
+      "asset_id": "JRC/GHSL/P2023A/GHS_BUILT_S/2020",
+      "band": "built_surface",
+      "units": "m2/cell"
+    }
+  },
+  "attribution": {
+    "hazard": "World Resources Institute, Aqueduct Floods Hazard Maps Version 2, via Earth Engine",
+    "population": "WorldPop, University of Southampton, India 2020 legacy population, CC BY 4.0",
+    "built_surface": "European Commission Joint Research Centre; Pesaresi and Politis (2023), GHS-BUILT-S R2023A, DOI 10.2905/9F06F36F-4B11-47EC-ABB0-4F8B7B1D72EA; reuse with source acknowledgement"
+  },
+  "terms_evidence": "config/exposure_access_status.json official catalog source at e69b2b9006b4313120b32d8a68b051732a88fbec; WorldPop CC BY 4.0; GHSL open/free reuse with source acknowledgement; WRI existing deployment terms apply"
+}
