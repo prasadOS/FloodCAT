@@ -1,5 +1,17 @@
 # FloodCAT project status
 
+## M2D attempt — input identity blocker (2026-11-10)
+
+On `data/patna-multiscenario` at `7d40099`, 15 rasters pass native geometry/numeric
+checks, but 14 have no matching export recipe/source-selection provenance.
+Only Historical T100 is identified by the committed M2C-1 recipe. Filename/model
+claims do not establish source identity. Offline validation is reproducible and
+fail-closed; no unverified scenarios are activated and no new scenario exposure
+is published. Candidate fixed common footprint is unchanged at 6,113 cells.
+See [blocker and actual metadata](M2D_INPUT_VALIDATION.md). Stop before M2D
+integration/merge pending exact export/source evidence; existing M2C-4 remains
+operational. No raw data, audited bundle or hosted dependencies changed.
+
 ## Current milestone · M2C-4 — depth-weighted exposure screening (2026-11-10)
 
 Started from freshly fetched remote main `0e28a4f`. User authorized tested commits

@@ -809,3 +809,14 @@ UI tests enforce the non-vulnerability heading, person-metres/m²·m labels, UND
 references, formulas and empty-threshold behavior. See
 [formulas, limitations and screenshots](DEPTH_WEIGHTED_SCREENING.md).
 Hosted deployment and successful ordinary OSM basemap access are not claimed.
+
+## M2D blocked input gate (2026-11-10)
+
+Branch `data/patna-multiscenario`, starting `7d40099`.
+
+- `PYTHONDONTWRITEBYTECODE=1 /workspace/work/m2b-1/venv/bin/python -m scripts.validate_multiscenario_inputs --output config/patna_multiscenario_validation.json`: expected exit **2**, 15 inputs, 14 source-identity blockers. Exact grids match; candidate common footprint 6,113.
+- Same interpreter, `-m unittest discover -s tests -p test_multiscenario_inputs.py -v`: **3 passed, 0.045 s**. Actual reproducibility/blocking, renamed-identical-file identity rejection and shifted/different-CRS geometry rejection.
+- Same interpreter, `-m unittest discover -s tests -v`: **111 passed, no skips, 6.787 s**. Prior audits, arithmetic, masks, conservation and AppTest regressions pass.
+- No multi-scenario browser acceptance or deployment test: app is deliberately unchanged and new scenarios are not activated. No claim of completed M2D integration.
+
+Source-selection ambiguity requires stopping under AGENTS.md. Only Historical T100 has a matching committed export recipe; matching geometry/order cannot authenticate the other filenames. See M2D_INPUT_VALIDATION.md.

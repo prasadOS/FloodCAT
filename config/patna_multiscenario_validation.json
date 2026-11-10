@@ -1,0 +1,1257 @@
+{
+  "schema_version": 1,
+  "status": "blocked",
+  "ready_for_dashboard": false,
+  "entries": [
+    {
+      "id": "Historical_T25",
+      "filename": "FloodCAT_Patna_WRI_Historical_T25.tif",
+      "metadata": {
+        "filename": "FloodCAT_Patna_WRI_Historical_T25.tif",
+        "bytes": 10925,
+        "sha256": "7904bd20e858bcc71cc58d60e133389bb04735dc67700bf3952131436c5bd04e",
+        "format": "BigTIFF",
+        "shape": [
+          65,
+          168
+        ],
+        "bands": 1,
+        "crs": "EPSG:4326",
+        "crs_wkt": "GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AXIS[\"Latitude\",NORTH],AXIS[\"Longitude\",EAST],AUTHORITY[\"EPSG\",\"4326\"]]",
+        "transform": [
+          0.008333333333333333,
+          0.0,
+          84.67500000000001,
+          0.0,
+          -0.008333333333333333,
+          25.741666666666674
+        ],
+        "bounds": [
+          84.67500000000001,
+          25.200000000000006,
+          86.07500000000002,
+          25.741666666666674
+        ],
+        "dtype": "float32",
+        "nodata": -9999.0,
+        "mask_flags": [
+          "nodata"
+        ],
+        "tags": {
+          "AREA_OR_POINT": "Area"
+        },
+        "band_tags": {},
+        "band_description": "inundation_depth",
+        "stored_unit": null,
+        "scales": [
+          1.0
+        ],
+        "offsets": [
+          0.0
+        ],
+        "pixels": 10920,
+        "declared_mask_invalid": 0,
+        "nan_pixels": 0,
+        "infinite_pixels": 0,
+        "available_pixels": 10920,
+        "unavailable_pixels": 0,
+        "valid_zero": 6228,
+        "valid_positive": 4692,
+        "minimum": 0.0,
+        "maximum": 5.689462661743164,
+        "known_numeric_sum": 4643.290260171518,
+        "native_array_bytes": 54600
+      },
+      "filename_claim": {
+        "flood_type": "riverine",
+        "climate": "Historical",
+        "return_period_years": 25,
+        "gcm": "WATCH",
+        "year": 1980,
+        "depth_units": "metres (expected, not independently stored in TIFF)"
+      },
+      "source_identity": {
+        "verified_against_existing_recipe": false,
+        "asset_id": null,
+        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "task_level_independently_verified": false
+      },
+      "exact_reference_grid": true,
+      "nonnegative_depth": true,
+      "ready_for_dashboard": false
+    },
+    {
+      "id": "Historical_T50",
+      "filename": "FloodCAT_Patna_WRI_Historical_T50.tif",
+      "metadata": {
+        "filename": "FloodCAT_Patna_WRI_Historical_T50.tif",
+        "bytes": 12194,
+        "sha256": "853087f27520b164764622c4a207fe6526596e26f685d7ace5b3ca21637b9c41",
+        "format": "BigTIFF",
+        "shape": [
+          65,
+          168
+        ],
+        "bands": 1,
+        "crs": "EPSG:4326",
+        "crs_wkt": "GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AXIS[\"Latitude\",NORTH],AXIS[\"Longitude\",EAST],AUTHORITY[\"EPSG\",\"4326\"]]",
+        "transform": [
+          0.008333333333333333,
+          0.0,
+          84.67500000000001,
+          0.0,
+          -0.008333333333333333,
+          25.741666666666674
+        ],
+        "bounds": [
+          84.67500000000001,
+          25.200000000000006,
+          86.07500000000002,
+          25.741666666666674
+        ],
+        "dtype": "float32",
+        "nodata": -9999.0,
+        "mask_flags": [
+          "nodata"
+        ],
+        "tags": {
+          "AREA_OR_POINT": "Area"
+        },
+        "band_tags": {},
+        "band_description": "inundation_depth",
+        "stored_unit": null,
+        "scales": [
+          1.0
+        ],
+        "offsets": [
+          0.0
+        ],
+        "pixels": 10920,
+        "declared_mask_invalid": 0,
+        "nan_pixels": 0,
+        "infinite_pixels": 0,
+        "available_pixels": 10920,
+        "unavailable_pixels": 0,
+        "valid_zero": 5948,
+        "valid_positive": 4972,
+        "minimum": 0.0,
+        "maximum": 6.405810356140137,
+        "known_numeric_sum": 5783.190263492987,
+        "native_array_bytes": 54600
+      },
+      "filename_claim": {
+        "flood_type": "riverine",
+        "climate": "Historical",
+        "return_period_years": 50,
+        "gcm": "WATCH",
+        "year": 1980,
+        "depth_units": "metres (expected, not independently stored in TIFF)"
+      },
+      "source_identity": {
+        "verified_against_existing_recipe": false,
+        "asset_id": null,
+        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "task_level_independently_verified": false
+      },
+      "exact_reference_grid": true,
+      "nonnegative_depth": true,
+      "ready_for_dashboard": false
+    },
+    {
+      "id": "Historical_T100",
+      "filename": "FloodCAT_Patna_WRI_Historical_T100.tif",
+      "metadata": {
+        "filename": "FloodCAT_Patna_WRI_Historical_T100.tif",
+        "bytes": 13086,
+        "sha256": "9983264d5f3ef2c4bebde726c9e6ab10715c2906996002e03ebe89f478f8da8c",
+        "format": "BigTIFF",
+        "shape": [
+          65,
+          168
+        ],
+        "bands": 1,
+        "crs": "EPSG:4326",
+        "crs_wkt": "GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AXIS[\"Latitude\",NORTH],AXIS[\"Longitude\",EAST],AUTHORITY[\"EPSG\",\"4326\"]]",
+        "transform": [
+          0.008333333333333333,
+          0.0,
+          84.67500000000001,
+          0.0,
+          -0.008333333333333333,
+          25.741666666666674
+        ],
+        "bounds": [
+          84.67500000000001,
+          25.200000000000006,
+          86.07500000000002,
+          25.741666666666674
+        ],
+        "dtype": "float32",
+        "nodata": -9999.0,
+        "mask_flags": [
+          "nodata"
+        ],
+        "tags": {
+          "AREA_OR_POINT": "Area"
+        },
+        "band_tags": {},
+        "band_description": "inundation_depth",
+        "stored_unit": null,
+        "scales": [
+          1.0
+        ],
+        "offsets": [
+          0.0
+        ],
+        "pixels": 10920,
+        "declared_mask_invalid": 0,
+        "nan_pixels": 0,
+        "infinite_pixels": 0,
+        "available_pixels": 10920,
+        "unavailable_pixels": 0,
+        "valid_zero": 5703,
+        "valid_positive": 5217,
+        "minimum": 0.0,
+        "maximum": 7.031288146972656,
+        "known_numeric_sum": 6895.449017731473,
+        "native_array_bytes": 54600
+      },
+      "filename_claim": {
+        "flood_type": "riverine",
+        "climate": "Historical",
+        "return_period_years": 100,
+        "gcm": "WATCH",
+        "year": 1980,
+        "depth_units": "metres (expected, not independently stored in TIFF)"
+      },
+      "source_identity": {
+        "verified_against_existing_recipe": true,
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_historical_000000000WATCH_1980_rp00100",
+        "basis": "Existing M2C-1 user-attested recipe, checksums and independent pilot overlap",
+        "task_level_independently_verified": false
+      },
+      "exact_reference_grid": true,
+      "nonnegative_depth": true,
+      "ready_for_dashboard": true
+    },
+    {
+      "id": "Historical_T250",
+      "filename": "FloodCAT_Patna_WRI_Historical_T250.tif",
+      "metadata": {
+        "filename": "FloodCAT_Patna_WRI_Historical_T250.tif",
+        "bytes": 14448,
+        "sha256": "4407aea245a4cc7cc08fa22d7fd4c59646c5b5db622d95cd908696d6a790f181",
+        "format": "BigTIFF",
+        "shape": [
+          65,
+          168
+        ],
+        "bands": 1,
+        "crs": "EPSG:4326",
+        "crs_wkt": "GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AXIS[\"Latitude\",NORTH],AXIS[\"Longitude\",EAST],AUTHORITY[\"EPSG\",\"4326\"]]",
+        "transform": [
+          0.008333333333333333,
+          0.0,
+          84.67500000000001,
+          0.0,
+          -0.008333333333333333,
+          25.741666666666674
+        ],
+        "bounds": [
+          84.67500000000001,
+          25.200000000000006,
+          86.07500000000002,
+          25.741666666666674
+        ],
+        "dtype": "float32",
+        "nodata": -9999.0,
+        "mask_flags": [
+          "nodata"
+        ],
+        "tags": {
+          "AREA_OR_POINT": "Area"
+        },
+        "band_tags": {},
+        "band_description": "inundation_depth",
+        "stored_unit": null,
+        "scales": [
+          1.0
+        ],
+        "offsets": [
+          0.0
+        ],
+        "pixels": 10920,
+        "declared_mask_invalid": 0,
+        "nan_pixels": 0,
+        "infinite_pixels": 0,
+        "available_pixels": 10920,
+        "unavailable_pixels": 0,
+        "valid_zero": 5409,
+        "valid_positive": 5511,
+        "minimum": 0.0,
+        "maximum": 7.730871200561523,
+        "known_numeric_sum": 8312.015163367614,
+        "native_array_bytes": 54600
+      },
+      "filename_claim": {
+        "flood_type": "riverine",
+        "climate": "Historical",
+        "return_period_years": 250,
+        "gcm": "WATCH",
+        "year": 1980,
+        "depth_units": "metres (expected, not independently stored in TIFF)"
+      },
+      "source_identity": {
+        "verified_against_existing_recipe": false,
+        "asset_id": null,
+        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "task_level_independently_verified": false
+      },
+      "exact_reference_grid": true,
+      "nonnegative_depth": true,
+      "ready_for_dashboard": false
+    },
+    {
+      "id": "Historical_T500",
+      "filename": "FloodCAT_Patna_WRI_Historical_T500.tif",
+      "metadata": {
+        "filename": "FloodCAT_Patna_WRI_Historical_T500.tif",
+        "bytes": 15357,
+        "sha256": "8a376a3831eef9893719f8b4bc7b2c158ff86cbb4658da6bc84e94730c7e243d",
+        "format": "BigTIFF",
+        "shape": [
+          65,
+          168
+        ],
+        "bands": 1,
+        "crs": "EPSG:4326",
+        "crs_wkt": "GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AXIS[\"Latitude\",NORTH],AXIS[\"Longitude\",EAST],AUTHORITY[\"EPSG\",\"4326\"]]",
+        "transform": [
+          0.008333333333333333,
+          0.0,
+          84.67500000000001,
+          0.0,
+          -0.008333333333333333,
+          25.741666666666674
+        ],
+        "bounds": [
+          84.67500000000001,
+          25.200000000000006,
+          86.07500000000002,
+          25.741666666666674
+        ],
+        "dtype": "float32",
+        "nodata": -9999.0,
+        "mask_flags": [
+          "nodata"
+        ],
+        "tags": {
+          "AREA_OR_POINT": "Area"
+        },
+        "band_tags": {},
+        "band_description": "inundation_depth",
+        "stored_unit": null,
+        "scales": [
+          1.0
+        ],
+        "offsets": [
+          0.0
+        ],
+        "pixels": 10920,
+        "declared_mask_invalid": 0,
+        "nan_pixels": 0,
+        "infinite_pixels": 0,
+        "available_pixels": 10920,
+        "unavailable_pixels": 0,
+        "valid_zero": 5195,
+        "valid_positive": 5725,
+        "minimum": 0.0,
+        "maximum": 8.182788848876953,
+        "known_numeric_sum": 9357.788262335584,
+        "native_array_bytes": 54600
+      },
+      "filename_claim": {
+        "flood_type": "riverine",
+        "climate": "Historical",
+        "return_period_years": 500,
+        "gcm": "WATCH",
+        "year": 1980,
+        "depth_units": "metres (expected, not independently stored in TIFF)"
+      },
+      "source_identity": {
+        "verified_against_existing_recipe": false,
+        "asset_id": null,
+        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "task_level_independently_verified": false
+      },
+      "exact_reference_grid": true,
+      "nonnegative_depth": true,
+      "ready_for_dashboard": false
+    },
+    {
+      "id": "RCP45_2050_T25",
+      "filename": "FloodCAT_Patna_WRI_RCP45_2050_T25.tif",
+      "metadata": {
+        "filename": "FloodCAT_Patna_WRI_RCP45_2050_T25.tif",
+        "bytes": 13505,
+        "sha256": "cda3d4deb9ec3bfe4385470d71deafb0e9b0e636f602763816cac8107feb09d5",
+        "format": "BigTIFF",
+        "shape": [
+          65,
+          168
+        ],
+        "bands": 1,
+        "crs": "EPSG:4326",
+        "crs_wkt": "GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AXIS[\"Latitude\",NORTH],AXIS[\"Longitude\",EAST],AUTHORITY[\"EPSG\",\"4326\"]]",
+        "transform": [
+          0.008333333333333333,
+          0.0,
+          84.67500000000001,
+          0.0,
+          -0.008333333333333333,
+          25.741666666666674
+        ],
+        "bounds": [
+          84.67500000000001,
+          25.200000000000006,
+          86.07500000000002,
+          25.741666666666674
+        ],
+        "dtype": "float32",
+        "nodata": -9999.0,
+        "mask_flags": [
+          "nodata"
+        ],
+        "tags": {
+          "AREA_OR_POINT": "Area"
+        },
+        "band_tags": {},
+        "band_description": "inundation_depth",
+        "stored_unit": null,
+        "scales": [
+          1.0
+        ],
+        "offsets": [
+          0.0
+        ],
+        "pixels": 10920,
+        "declared_mask_invalid": 0,
+        "nan_pixels": 0,
+        "infinite_pixels": 0,
+        "available_pixels": 10920,
+        "unavailable_pixels": 0,
+        "valid_zero": 5564,
+        "valid_positive": 5356,
+        "minimum": 0.0,
+        "maximum": 7.628022193908691,
+        "known_numeric_sum": 7564.665429856628,
+        "native_array_bytes": 54600
+      },
+      "filename_claim": {
+        "flood_type": "riverine",
+        "climate": "RCP45_2050",
+        "return_period_years": 25,
+        "gcm": "HadGEM2-ES (requested, not verified)",
+        "year": 2050,
+        "depth_units": "metres (expected, not independently stored in TIFF)"
+      },
+      "source_identity": {
+        "verified_against_existing_recipe": false,
+        "asset_id": null,
+        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "task_level_independently_verified": false
+      },
+      "exact_reference_grid": true,
+      "nonnegative_depth": true,
+      "ready_for_dashboard": false
+    },
+    {
+      "id": "RCP45_2050_T50",
+      "filename": "FloodCAT_Patna_WRI_RCP45_2050_T50.tif",
+      "metadata": {
+        "filename": "FloodCAT_Patna_WRI_RCP45_2050_T50.tif",
+        "bytes": 14514,
+        "sha256": "121396a653519e67a80dfd1b217066bc70777c860a02f1cae74763f3056f467d",
+        "format": "BigTIFF",
+        "shape": [
+          65,
+          168
+        ],
+        "bands": 1,
+        "crs": "EPSG:4326",
+        "crs_wkt": "GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AXIS[\"Latitude\",NORTH],AXIS[\"Longitude\",EAST],AUTHORITY[\"EPSG\",\"4326\"]]",
+        "transform": [
+          0.008333333333333333,
+          0.0,
+          84.67500000000001,
+          0.0,
+          -0.008333333333333333,
+          25.741666666666674
+        ],
+        "bounds": [
+          84.67500000000001,
+          25.200000000000006,
+          86.07500000000002,
+          25.741666666666674
+        ],
+        "dtype": "float32",
+        "nodata": -9999.0,
+        "mask_flags": [
+          "nodata"
+        ],
+        "tags": {
+          "AREA_OR_POINT": "Area"
+        },
+        "band_tags": {},
+        "band_description": "inundation_depth",
+        "stored_unit": null,
+        "scales": [
+          1.0
+        ],
+        "offsets": [
+          0.0
+        ],
+        "pixels": 10920,
+        "declared_mask_invalid": 0,
+        "nan_pixels": 0,
+        "infinite_pixels": 0,
+        "available_pixels": 10920,
+        "unavailable_pixels": 0,
+        "valid_zero": 5353,
+        "valid_positive": 5567,
+        "minimum": 0.0,
+        "maximum": 8.042304992675781,
+        "known_numeric_sum": 8614.94273199141,
+        "native_array_bytes": 54600
+      },
+      "filename_claim": {
+        "flood_type": "riverine",
+        "climate": "RCP45_2050",
+        "return_period_years": 50,
+        "gcm": "HadGEM2-ES (requested, not verified)",
+        "year": 2050,
+        "depth_units": "metres (expected, not independently stored in TIFF)"
+      },
+      "source_identity": {
+        "verified_against_existing_recipe": false,
+        "asset_id": null,
+        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "task_level_independently_verified": false
+      },
+      "exact_reference_grid": true,
+      "nonnegative_depth": true,
+      "ready_for_dashboard": false
+    },
+    {
+      "id": "RCP45_2050_T100",
+      "filename": "FloodCAT_Patna_WRI_RCP45_2050_T100.tif",
+      "metadata": {
+        "filename": "FloodCAT_Patna_WRI_RCP45_2050_T100.tif",
+        "bytes": 15226,
+        "sha256": "255eb8a18dd05a6527f59f474eafb83a2335073f9c8a8b943a0907e6271f3022",
+        "format": "BigTIFF",
+        "shape": [
+          65,
+          168
+        ],
+        "bands": 1,
+        "crs": "EPSG:4326",
+        "crs_wkt": "GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AXIS[\"Latitude\",NORTH],AXIS[\"Longitude\",EAST],AUTHORITY[\"EPSG\",\"4326\"]]",
+        "transform": [
+          0.008333333333333333,
+          0.0,
+          84.67500000000001,
+          0.0,
+          -0.008333333333333333,
+          25.741666666666674
+        ],
+        "bounds": [
+          84.67500000000001,
+          25.200000000000006,
+          86.07500000000002,
+          25.741666666666674
+        ],
+        "dtype": "float32",
+        "nodata": -9999.0,
+        "mask_flags": [
+          "nodata"
+        ],
+        "tags": {
+          "AREA_OR_POINT": "Area"
+        },
+        "band_tags": {},
+        "band_description": "inundation_depth",
+        "stored_unit": null,
+        "scales": [
+          1.0
+        ],
+        "offsets": [
+          0.0
+        ],
+        "pixels": 10920,
+        "declared_mask_invalid": 0,
+        "nan_pixels": 0,
+        "infinite_pixels": 0,
+        "available_pixels": 10920,
+        "unavailable_pixels": 0,
+        "valid_zero": 5152,
+        "valid_positive": 5768,
+        "minimum": 0.0,
+        "maximum": 8.410629272460938,
+        "known_numeric_sum": 9640.82645522058,
+        "native_array_bytes": 54600
+      },
+      "filename_claim": {
+        "flood_type": "riverine",
+        "climate": "RCP45_2050",
+        "return_period_years": 100,
+        "gcm": "HadGEM2-ES (requested, not verified)",
+        "year": 2050,
+        "depth_units": "metres (expected, not independently stored in TIFF)"
+      },
+      "source_identity": {
+        "verified_against_existing_recipe": false,
+        "asset_id": null,
+        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "task_level_independently_verified": false
+      },
+      "exact_reference_grid": true,
+      "nonnegative_depth": true,
+      "ready_for_dashboard": false
+    },
+    {
+      "id": "RCP45_2050_T250",
+      "filename": "FloodCAT_Patna_WRI_RCP45_2050_T250.tif",
+      "metadata": {
+        "filename": "FloodCAT_Patna_WRI_RCP45_2050_T250.tif",
+        "bytes": 16206,
+        "sha256": "790a732f248628d278b5fdaa3ccc8a0a19c31991e270d3f8b5080b90b84b9de6",
+        "format": "BigTIFF",
+        "shape": [
+          65,
+          168
+        ],
+        "bands": 1,
+        "crs": "EPSG:4326",
+        "crs_wkt": "GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AXIS[\"Latitude\",NORTH],AXIS[\"Longitude\",EAST],AUTHORITY[\"EPSG\",\"4326\"]]",
+        "transform": [
+          0.008333333333333333,
+          0.0,
+          84.67500000000001,
+          0.0,
+          -0.008333333333333333,
+          25.741666666666674
+        ],
+        "bounds": [
+          84.67500000000001,
+          25.200000000000006,
+          86.07500000000002,
+          25.741666666666674
+        ],
+        "dtype": "float32",
+        "nodata": -9999.0,
+        "mask_flags": [
+          "nodata"
+        ],
+        "tags": {
+          "AREA_OR_POINT": "Area"
+        },
+        "band_tags": {},
+        "band_description": "inundation_depth",
+        "stored_unit": null,
+        "scales": [
+          1.0
+        ],
+        "offsets": [
+          0.0
+        ],
+        "pixels": 10920,
+        "declared_mask_invalid": 0,
+        "nan_pixels": 0,
+        "infinite_pixels": 0,
+        "available_pixels": 10920,
+        "unavailable_pixels": 0,
+        "valid_zero": 4921,
+        "valid_positive": 5999,
+        "minimum": 0.0,
+        "maximum": 8.84787368774414,
+        "known_numeric_sum": 10970.28002216667,
+        "native_array_bytes": 54600
+      },
+      "filename_claim": {
+        "flood_type": "riverine",
+        "climate": "RCP45_2050",
+        "return_period_years": 250,
+        "gcm": "HadGEM2-ES (requested, not verified)",
+        "year": 2050,
+        "depth_units": "metres (expected, not independently stored in TIFF)"
+      },
+      "source_identity": {
+        "verified_against_existing_recipe": false,
+        "asset_id": null,
+        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "task_level_independently_verified": false
+      },
+      "exact_reference_grid": true,
+      "nonnegative_depth": true,
+      "ready_for_dashboard": false
+    },
+    {
+      "id": "RCP45_2050_T500",
+      "filename": "FloodCAT_Patna_WRI_RCP45_2050_T500.tif",
+      "metadata": {
+        "filename": "FloodCAT_Patna_WRI_RCP45_2050_T500.tif",
+        "bytes": 16935,
+        "sha256": "70762a9135774fcddb1ac7c7b23e16fa3e1d1c081597275ce6c3f6b54292c867",
+        "format": "BigTIFF",
+        "shape": [
+          65,
+          168
+        ],
+        "bands": 1,
+        "crs": "EPSG:4326",
+        "crs_wkt": "GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AXIS[\"Latitude\",NORTH],AXIS[\"Longitude\",EAST],AUTHORITY[\"EPSG\",\"4326\"]]",
+        "transform": [
+          0.008333333333333333,
+          0.0,
+          84.67500000000001,
+          0.0,
+          -0.008333333333333333,
+          25.741666666666674
+        ],
+        "bounds": [
+          84.67500000000001,
+          25.200000000000006,
+          86.07500000000002,
+          25.741666666666674
+        ],
+        "dtype": "float32",
+        "nodata": -9999.0,
+        "mask_flags": [
+          "nodata"
+        ],
+        "tags": {
+          "AREA_OR_POINT": "Area"
+        },
+        "band_tags": {},
+        "band_description": "inundation_depth",
+        "stored_unit": null,
+        "scales": [
+          1.0
+        ],
+        "offsets": [
+          0.0
+        ],
+        "pixels": 10920,
+        "declared_mask_invalid": 0,
+        "nan_pixels": 0,
+        "infinite_pixels": 0,
+        "available_pixels": 10920,
+        "unavailable_pixels": 0,
+        "valid_zero": 4750,
+        "valid_positive": 6170,
+        "minimum": 0.0,
+        "maximum": 9.153129577636719,
+        "known_numeric_sum": 11961.712537117302,
+        "native_array_bytes": 54600
+      },
+      "filename_claim": {
+        "flood_type": "riverine",
+        "climate": "RCP45_2050",
+        "return_period_years": 500,
+        "gcm": "HadGEM2-ES (requested, not verified)",
+        "year": 2050,
+        "depth_units": "metres (expected, not independently stored in TIFF)"
+      },
+      "source_identity": {
+        "verified_against_existing_recipe": false,
+        "asset_id": null,
+        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "task_level_independently_verified": false
+      },
+      "exact_reference_grid": true,
+      "nonnegative_depth": true,
+      "ready_for_dashboard": false
+    },
+    {
+      "id": "RCP85_2050_T25",
+      "filename": "FloodCAT_Patna_WRI_RCP85_2050_T25.tif",
+      "metadata": {
+        "filename": "FloodCAT_Patna_WRI_RCP85_2050_T25.tif",
+        "bytes": 18249,
+        "sha256": "830d75324fd90a06e14368c57b4d7739255ffb3568cbd593f4ec320fff20d3cd",
+        "format": "BigTIFF",
+        "shape": [
+          65,
+          168
+        ],
+        "bands": 1,
+        "crs": "EPSG:4326",
+        "crs_wkt": "GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AXIS[\"Latitude\",NORTH],AXIS[\"Longitude\",EAST],AUTHORITY[\"EPSG\",\"4326\"]]",
+        "transform": [
+          0.008333333333333333,
+          0.0,
+          84.67500000000001,
+          0.0,
+          -0.008333333333333333,
+          25.741666666666674
+        ],
+        "bounds": [
+          84.67500000000001,
+          25.200000000000006,
+          86.07500000000002,
+          25.741666666666674
+        ],
+        "dtype": "float32",
+        "nodata": -9999.0,
+        "mask_flags": [
+          "nodata"
+        ],
+        "tags": {
+          "AREA_OR_POINT": "Area"
+        },
+        "band_tags": {},
+        "band_description": "inundation_depth",
+        "stored_unit": null,
+        "scales": [
+          1.0
+        ],
+        "offsets": [
+          0.0
+        ],
+        "pixels": 10920,
+        "declared_mask_invalid": 0,
+        "nan_pixels": 0,
+        "infinite_pixels": 0,
+        "available_pixels": 10920,
+        "unavailable_pixels": 0,
+        "valid_zero": 4469,
+        "valid_positive": 6451,
+        "minimum": 0.0,
+        "maximum": 11.686285018920898,
+        "known_numeric_sum": 13562.321013994515,
+        "native_array_bytes": 54600
+      },
+      "filename_claim": {
+        "flood_type": "riverine",
+        "climate": "RCP85_2050",
+        "return_period_years": 25,
+        "gcm": "HadGEM2-ES (requested, not verified)",
+        "year": 2050,
+        "depth_units": "metres (expected, not independently stored in TIFF)"
+      },
+      "source_identity": {
+        "verified_against_existing_recipe": false,
+        "asset_id": null,
+        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "task_level_independently_verified": false
+      },
+      "exact_reference_grid": true,
+      "nonnegative_depth": true,
+      "ready_for_dashboard": false
+    },
+    {
+      "id": "RCP85_2050_T50",
+      "filename": "FloodCAT_Patna_WRI_RCP85_2050_T50.tif",
+      "metadata": {
+        "filename": "FloodCAT_Patna_WRI_RCP85_2050_T50.tif",
+        "bytes": 19662,
+        "sha256": "d2d3ff63a7dd78c5b9e77ac502bab413a0203521852fdb500e4c871bb9e0c450",
+        "format": "BigTIFF",
+        "shape": [
+          65,
+          168
+        ],
+        "bands": 1,
+        "crs": "EPSG:4326",
+        "crs_wkt": "GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AXIS[\"Latitude\",NORTH],AXIS[\"Longitude\",EAST],AUTHORITY[\"EPSG\",\"4326\"]]",
+        "transform": [
+          0.008333333333333333,
+          0.0,
+          84.67500000000001,
+          0.0,
+          -0.008333333333333333,
+          25.741666666666674
+        ],
+        "bounds": [
+          84.67500000000001,
+          25.200000000000006,
+          86.07500000000002,
+          25.741666666666674
+        ],
+        "dtype": "float32",
+        "nodata": -9999.0,
+        "mask_flags": [
+          "nodata"
+        ],
+        "tags": {
+          "AREA_OR_POINT": "Area"
+        },
+        "band_tags": {},
+        "band_description": "inundation_depth",
+        "stored_unit": null,
+        "scales": [
+          1.0
+        ],
+        "offsets": [
+          0.0
+        ],
+        "pixels": 10920,
+        "declared_mask_invalid": 0,
+        "nan_pixels": 0,
+        "infinite_pixels": 0,
+        "available_pixels": 10920,
+        "unavailable_pixels": 0,
+        "valid_zero": 4132,
+        "valid_positive": 6788,
+        "minimum": 0.0,
+        "maximum": 12.38322639465332,
+        "known_numeric_sum": 15682.003959834576,
+        "native_array_bytes": 54600
+      },
+      "filename_claim": {
+        "flood_type": "riverine",
+        "climate": "RCP85_2050",
+        "return_period_years": 50,
+        "gcm": "HadGEM2-ES (requested, not verified)",
+        "year": 2050,
+        "depth_units": "metres (expected, not independently stored in TIFF)"
+      },
+      "source_identity": {
+        "verified_against_existing_recipe": false,
+        "asset_id": null,
+        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "task_level_independently_verified": false
+      },
+      "exact_reference_grid": true,
+      "nonnegative_depth": true,
+      "ready_for_dashboard": false
+    },
+    {
+      "id": "RCP85_2050_T100",
+      "filename": "FloodCAT_Patna_WRI_RCP85_2050_T100.tif",
+      "metadata": {
+        "filename": "FloodCAT_Patna_WRI_RCP85_2050_T100.tif",
+        "bytes": 20952,
+        "sha256": "81f3d53eb50682e93b455f82c887982760228d73027d16ff9b12421678070a38",
+        "format": "BigTIFF",
+        "shape": [
+          65,
+          168
+        ],
+        "bands": 1,
+        "crs": "EPSG:4326",
+        "crs_wkt": "GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AXIS[\"Latitude\",NORTH],AXIS[\"Longitude\",EAST],AUTHORITY[\"EPSG\",\"4326\"]]",
+        "transform": [
+          0.008333333333333333,
+          0.0,
+          84.67500000000001,
+          0.0,
+          -0.008333333333333333,
+          25.741666666666674
+        ],
+        "bounds": [
+          84.67500000000001,
+          25.200000000000006,
+          86.07500000000002,
+          25.741666666666674
+        ],
+        "dtype": "float32",
+        "nodata": -9999.0,
+        "mask_flags": [
+          "nodata"
+        ],
+        "tags": {
+          "AREA_OR_POINT": "Area"
+        },
+        "band_tags": {},
+        "band_description": "inundation_depth",
+        "stored_unit": null,
+        "scales": [
+          1.0
+        ],
+        "offsets": [
+          0.0
+        ],
+        "pixels": 10920,
+        "declared_mask_invalid": 0,
+        "nan_pixels": 0,
+        "infinite_pixels": 0,
+        "available_pixels": 10920,
+        "unavailable_pixels": 0,
+        "valid_zero": 3851,
+        "valid_positive": 7069,
+        "minimum": 0.0,
+        "maximum": 13.009347915649414,
+        "known_numeric_sum": 17757.901611164212,
+        "native_array_bytes": 54600
+      },
+      "filename_claim": {
+        "flood_type": "riverine",
+        "climate": "RCP85_2050",
+        "return_period_years": 100,
+        "gcm": "HadGEM2-ES (requested, not verified)",
+        "year": 2050,
+        "depth_units": "metres (expected, not independently stored in TIFF)"
+      },
+      "source_identity": {
+        "verified_against_existing_recipe": false,
+        "asset_id": null,
+        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "task_level_independently_verified": false
+      },
+      "exact_reference_grid": true,
+      "nonnegative_depth": true,
+      "ready_for_dashboard": false
+    },
+    {
+      "id": "RCP85_2050_T250",
+      "filename": "FloodCAT_Patna_WRI_RCP85_2050_T250.tif",
+      "metadata": {
+        "filename": "FloodCAT_Patna_WRI_RCP85_2050_T250.tif",
+        "bytes": 22336,
+        "sha256": "1cb7cfadd71798f83c305b09ab4c3e77ed7f4e2e102b221771ac8d0264698666",
+        "format": "BigTIFF",
+        "shape": [
+          65,
+          168
+        ],
+        "bands": 1,
+        "crs": "EPSG:4326",
+        "crs_wkt": "GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AXIS[\"Latitude\",NORTH],AXIS[\"Longitude\",EAST],AUTHORITY[\"EPSG\",\"4326\"]]",
+        "transform": [
+          0.008333333333333333,
+          0.0,
+          84.67500000000001,
+          0.0,
+          -0.008333333333333333,
+          25.741666666666674
+        ],
+        "bounds": [
+          84.67500000000001,
+          25.200000000000006,
+          86.07500000000002,
+          25.741666666666674
+        ],
+        "dtype": "float32",
+        "nodata": -9999.0,
+        "mask_flags": [
+          "nodata"
+        ],
+        "tags": {
+          "AREA_OR_POINT": "Area"
+        },
+        "band_tags": {},
+        "band_description": "inundation_depth",
+        "stored_unit": null,
+        "scales": [
+          1.0
+        ],
+        "offsets": [
+          0.0
+        ],
+        "pixels": 10920,
+        "declared_mask_invalid": 0,
+        "nan_pixels": 0,
+        "infinite_pixels": 0,
+        "available_pixels": 10920,
+        "unavailable_pixels": 0,
+        "valid_zero": 3493,
+        "valid_positive": 7427,
+        "minimum": 0.0,
+        "maximum": 13.767717361450195,
+        "known_numeric_sum": 20460.83270445466,
+        "native_array_bytes": 54600
+      },
+      "filename_claim": {
+        "flood_type": "riverine",
+        "climate": "RCP85_2050",
+        "return_period_years": 250,
+        "gcm": "HadGEM2-ES (requested, not verified)",
+        "year": 2050,
+        "depth_units": "metres (expected, not independently stored in TIFF)"
+      },
+      "source_identity": {
+        "verified_against_existing_recipe": false,
+        "asset_id": null,
+        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "task_level_independently_verified": false
+      },
+      "exact_reference_grid": true,
+      "nonnegative_depth": true,
+      "ready_for_dashboard": false
+    },
+    {
+      "id": "RCP85_2050_T500",
+      "filename": "FloodCAT_Patna_WRI_RCP85_2050_T500.tif",
+      "metadata": {
+        "filename": "FloodCAT_Patna_WRI_RCP85_2050_T500.tif",
+        "bytes": 23296,
+        "sha256": "608bfca61675aa5e36d0f23e584e2089a68617563ff30c10b84b2f83b0731fa1",
+        "format": "BigTIFF",
+        "shape": [
+          65,
+          168
+        ],
+        "bands": 1,
+        "crs": "EPSG:4326",
+        "crs_wkt": "GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AXIS[\"Latitude\",NORTH],AXIS[\"Longitude\",EAST],AUTHORITY[\"EPSG\",\"4326\"]]",
+        "transform": [
+          0.008333333333333333,
+          0.0,
+          84.67500000000001,
+          0.0,
+          -0.008333333333333333,
+          25.741666666666674
+        ],
+        "bounds": [
+          84.67500000000001,
+          25.200000000000006,
+          86.07500000000002,
+          25.741666666666674
+        ],
+        "dtype": "float32",
+        "nodata": -9999.0,
+        "mask_flags": [
+          "nodata"
+        ],
+        "tags": {
+          "AREA_OR_POINT": "Area"
+        },
+        "band_tags": {},
+        "band_description": "inundation_depth",
+        "stored_unit": null,
+        "scales": [
+          1.0
+        ],
+        "offsets": [
+          0.0
+        ],
+        "pixels": 10920,
+        "declared_mask_invalid": 0,
+        "nan_pixels": 0,
+        "infinite_pixels": 0,
+        "available_pixels": 10920,
+        "unavailable_pixels": 0,
+        "valid_zero": 3258,
+        "valid_positive": 7662,
+        "minimum": 0.0,
+        "maximum": 14.294441223144531,
+        "known_numeric_sum": 22477.56584520638,
+        "native_array_bytes": 54600
+      },
+      "filename_claim": {
+        "flood_type": "riverine",
+        "climate": "RCP85_2050",
+        "return_period_years": 500,
+        "gcm": "HadGEM2-ES (requested, not verified)",
+        "year": 2050,
+        "depth_units": "metres (expected, not independently stored in TIFF)"
+      },
+      "source_identity": {
+        "verified_against_existing_recipe": false,
+        "asset_id": null,
+        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "task_level_independently_verified": false
+      },
+      "exact_reference_grid": true,
+      "nonnegative_depth": true,
+      "ready_for_dashboard": false
+    }
+  ],
+  "blockers": [
+    "Historical_T25: source selection/units unverified",
+    "Historical_T50: source selection/units unverified",
+    "Historical_T250: source selection/units unverified",
+    "Historical_T500: source selection/units unverified",
+    "RCP45_2050_T25: source selection/units unverified",
+    "RCP45_2050_T50: source selection/units unverified",
+    "RCP45_2050_T100: source selection/units unverified",
+    "RCP45_2050_T250: source selection/units unverified",
+    "RCP45_2050_T500: source selection/units unverified",
+    "RCP85_2050_T25: source selection/units unverified",
+    "RCP85_2050_T50: source selection/units unverified",
+    "RCP85_2050_T100: source selection/units unverified",
+    "RCP85_2050_T250: source selection/units unverified",
+    "RCP85_2050_T500: source selection/units unverified"
+  ],
+  "ordering_diagnostic_only": [
+    {
+      "lower": "Historical_T25",
+      "higher": "Historical_T50",
+      "valid_pair_cells": 10920,
+      "higher_depth_less_than_lower_cells": 0
+    },
+    {
+      "lower": "Historical_T50",
+      "higher": "Historical_T100",
+      "valid_pair_cells": 10920,
+      "higher_depth_less_than_lower_cells": 0
+    },
+    {
+      "lower": "Historical_T100",
+      "higher": "Historical_T250",
+      "valid_pair_cells": 10920,
+      "higher_depth_less_than_lower_cells": 0
+    },
+    {
+      "lower": "Historical_T250",
+      "higher": "Historical_T500",
+      "valid_pair_cells": 10920,
+      "higher_depth_less_than_lower_cells": 0
+    },
+    {
+      "lower": "RCP45_2050_T25",
+      "higher": "RCP45_2050_T50",
+      "valid_pair_cells": 10920,
+      "higher_depth_less_than_lower_cells": 0
+    },
+    {
+      "lower": "RCP45_2050_T50",
+      "higher": "RCP45_2050_T100",
+      "valid_pair_cells": 10920,
+      "higher_depth_less_than_lower_cells": 0
+    },
+    {
+      "lower": "RCP45_2050_T100",
+      "higher": "RCP45_2050_T250",
+      "valid_pair_cells": 10920,
+      "higher_depth_less_than_lower_cells": 0
+    },
+    {
+      "lower": "RCP45_2050_T250",
+      "higher": "RCP45_2050_T500",
+      "valid_pair_cells": 10920,
+      "higher_depth_less_than_lower_cells": 0
+    },
+    {
+      "lower": "RCP85_2050_T25",
+      "higher": "RCP85_2050_T50",
+      "valid_pair_cells": 10920,
+      "higher_depth_less_than_lower_cells": 0
+    },
+    {
+      "lower": "RCP85_2050_T50",
+      "higher": "RCP85_2050_T100",
+      "valid_pair_cells": 10920,
+      "higher_depth_less_than_lower_cells": 0
+    },
+    {
+      "lower": "RCP85_2050_T100",
+      "higher": "RCP85_2050_T250",
+      "valid_pair_cells": 10920,
+      "higher_depth_less_than_lower_cells": 0
+    },
+    {
+      "lower": "RCP85_2050_T250",
+      "higher": "RCP85_2050_T500",
+      "valid_pair_cells": 10920,
+      "higher_depth_less_than_lower_cells": 0
+    }
+  ],
+  "exposure_reuse_geometry_eligible": true,
+  "candidate_common_cells": 6113,
+  "original_common_cells": 6113,
+  "processing_performed": false,
+  "note": "No scenario exposure published until source identities are evidenced; CMIP5/RCP is not CMIP6/SSP. Missing GEE task provenance is disclosed separately from absent source-selection evidence."
+}
