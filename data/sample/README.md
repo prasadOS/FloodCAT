@@ -1,0 +1,1 @@
+This folder is reserved for public-safe, documented small demonstration files. The current app builds synthetic arrays in memory and needs no data downloads. Do not copy Earth Engine credentials, proprietary rasters or confidential employer data here.

@@ -1,0 +1,8 @@
+{
+  "mode": "synthetic_demo",
+  "scenario_names": [
+    "Historical | T25", "Historical | T100", "Historical | T500",
+    "Future RCP4.5 2050 | T100", "Future RCP8.5 2050 | T100"
+  ],
+  "warning": "Names are illustrative only, not actual WRI scenario rasters or modelled RCP results."
+}
