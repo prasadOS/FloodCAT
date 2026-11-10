@@ -10,9 +10,15 @@ from src.floodcat.exports import table_csv, metadata_json
 
 st.set_page_config(page_title="FloodCAT | Physical Flood Exposure", page_icon="🌊", layout="wide")
 
-mode = st.sidebar.radio("Data mode", ["Synthetic demo", "REAL — WRI"])
+mode = st.sidebar.radio("Data mode", ["Synthetic demo", "REAL — WRI", "REAL — Patna common-footprint exposure"])
 if mode == "REAL — WRI":
     from src.floodcat.wri_view import render
+
+    render()
+    st.stop()
+
+if mode == "REAL — Patna common-footprint exposure":
+    from src.floodcat.patna_view import render
 
     render()
     st.stop()

@@ -1,17 +1,19 @@
 # FloodCAT
 
-FloodCAT is a Streamlit application for regional flood-hazard and physical exposure screening. **M1B** is the preserved application baseline. **M2A-1** adds an independent aligned-grid exposure engine. **M2A-2** adds conservative area-overlap aggregation of population counts and built-up m², with explicit partial coverage and missing data; see [the APIs and scientific assumptions](docs/EXPOSURE.md). **M2A-3** adds optional [conservative cross-CRS remapping](docs/REMAPPING.md), validated with World Mollweide → WGS84 fixtures. All exposure APIs remain separate from the dashboard. Scientific dependencies are isolated in `requirements-science.txt`; hosted requirements are unchanged.
+FloodCAT is a Streamlit application for regional flood-hazard and physical exposure screening. **M1B** is the preserved application baseline. **M2A-1** adds an independent aligned-grid exposure engine. **M2A-2** adds conservative area-overlap aggregation of population counts and built-up m², with explicit partial coverage and missing data; see [the APIs and scientific assumptions](docs/EXPOSURE.md). **M2A-3** adds optional [conservative cross-CRS remapping](docs/REMAPPING.md), validated with World Mollweide → WGS84 fixtures. M2C-2 adds an opt-in real common-footprint dashboard using the audited M2C-1 outputs. Scientific dependencies are isolated in `requirements-science.txt`; hosted requirements are unchanged.
 
 - **Synthetic demo** opens by default. It provides six sections with five illustrative depth scenarios, hypothetical population and built-up exposure, and CSV and JSON exports.
 - **REAL — WRI** shows modeled riverine flood depth for one historical WATCH 100-year return-period tile near Patna. It reports thresholded flooded area and cell counts and provides GeoTIFF, source manifest, and summary CSV downloads. The view reads the bundled files locally without Earth Engine credentials. If either file is missing, it shows a warning and Synthetic demo remains selectable.
 
-WRI depths support regional screening. Real exposure remains outside the preserved M1B dashboard; M2C-1 now validates uploaded native rasters and prepares a separate common-footprint bundle. Future scenarios and local hydraulic validation remain unimplemented.
+WRI depths support regional screening. Real exposure is available in a separate opt-in common-footprint view; both preserved M1B modes remain available. Future scenarios and local hydraulic validation remain unimplemented.
 
 **M2B-1:** official source-catalog facts and a tested bounded acquisition/validation route are documented in [ACQUISITION.md](docs/ACQUISITION.md). Direct producer acquisition was blocked in that milestone. M2C-1 subsequently validates user-uploaded exports below; this is distinct from a successful provider download. Optional tools use `requirements-acquisition.txt`.
 
 **M2B-2:** a [manual GitHub Actions provider-access diagnostic](docs/ACTIONS_ACCESS_CHECK.md) is available for review. It runs only via `workflow_dispatch`, saves bounded HTTP metadata, and does not acquire rasters. GitHub-hosted access remains unverified until a real manual run is reviewed.
 
-**M2C-1:** [uploaded real Patna rasters are validated](docs/PATNA_VALIDATION.md), with a compact audited common-cell exposure bundle. Metrics apply to complete cells in the export bounding rectangle, **not the district polygon or whole upload**. The working dashboard is unchanged.
+**M2C-1:** [uploaded real Patna rasters are validated](docs/PATNA_VALIDATION.md), with a compact audited common-cell exposure bundle. Metrics apply to complete cells in the export bounding rectangle, **not the district polygon or whole upload**. The verified bundle now powers the opt-in M2C-2 view.
+
+- **REAL — Patna common-footprint exposure** loads checksum-pinned `aligned_common.npz`, `validation.json` and passing `audit.json` using NumPy with `allow_pickle=False`. It shows historical T100 depth and joint-coverage maps, a strict depth threshold, estimated population and built-up exposure, common flooded area/cells, excluded flooded cells and current/comparison CSV downloads. Metrics cover complete common WRI cells in the uploaded buffered bounding rectangle, **not all of Patna district**. Missing/changed/malformed artifacts disable this view with a warning. No raw-raster reads or heavy geospatial dependencies run in Streamlit.
 
 ## Run locally
 

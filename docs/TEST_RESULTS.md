@@ -630,3 +630,42 @@ with Pillow 13.0.0 and Rasterio 1.4.4. `np.array_equal(..., equal_nan=True)` was
 **True for every sample in every file**, corroborating the recorded GHSL NaNs
 and values through a second reader. This is a decoder cross-check, not independent
 validation of dataset provenance or the physical projection model.
+
+## M2C-2 · REAL common-footprint dashboard (2026-11-10)
+
+Started from remote main `0040e09`. No data, scientific engines or dependencies
+changed. New runtime files are `src/floodcat/patna.py`, `patna_view.py` and
+`config/patna_dashboard_checksums.json`; routing changes are confined to `app.py`.
+Documentation changes: README, PROJECT_STATUS, DEPLOYMENT and this test record.
+
+Commands executed from repository root:
+
+- Baseline `/workspace/work/m2b-1/venv/bin/python -m unittest discover -s tests -q`:
+  **92 passed, 4.337 s**, no skips.
+- Focused `PYTHONDONTWRITEBYTECODE=1 /workspace/.floodcat-venv/bin/python -m unittest discover -s tests -p test_patna_dashboard.py -v`:
+  **5 passed, 1.202 s**. Includes checksum rejection for each artifact, missing
+  files, failed audit, malformed JSON/object arrays/shape/masks/negative depth,
+  independent hand-computed strict-threshold fixture with valid zero and missing
+  exposure, real M2C-1 thresholds and Streamlit AppTest coverage/exclusion warnings.
+- Full `PYTHONDONTWRITEBYTECODE=1 /workspace/work/m2b-1/venv/bin/python -m unittest discover -s tests -v`:
+  **97 passed, 6.665 s**, no failures/errors/skips.
+- Lightweight runtime, same full command with `/workspace/.floodcat-venv/bin/python`:
+  **97 discovered: 61 passed, 36 optional science tests skipped, 1.092 s**.
+- `PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 /workspace/.floodcat-venv/bin/python /workspace/work/m2a-2/smoke_app.py`:
+  **exit 0**, six Synthetic sections, WRI 0/1 m metrics, three downloads,
+  missing-pilot warning and return to Synthetic preserved.
+- `/workspace/.floodcat-venv/bin/python -m streamlit run app.py --server.headless true --server.port 8501`:
+  server starts; `curl -s http://localhost:8501/_stcore/health` returns **ok**.
+  Playwright with installed `/usr/bin/chromium` loads the live app, switches to
+  REAL Patna, and confirms calculated population, both Plotly charts and CSV
+  controls render. Screenshot inspected. Initial bare Chromium `--dump-dom`
+  could not create its default profile directory; Playwright's temporary profile
+  works without package installation.
+
+At >0 m the new loader/summary reproduces 2,840,320.5021073623 estimated people,
+32,216,343.94410771 m² built surface, 1,637.3100663957925 km² / 2,116 common flooded
+cells, with 3,101 excluded flooded cells. These are recalculated from arrays, not
+copied from validation summaries. Coverage is 6,113/10,920 (55.98% by cell count).
+No new conservation/remapping is performed; unchanged M2C-1 budgets and scientific
+limitations remain applicable. The view verifies all three artifact hashes on
+each render; no cache can hide replacement/corruption between renders.

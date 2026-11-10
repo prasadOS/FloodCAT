@@ -28,3 +28,13 @@ FloodCAT code licensing is a separate owner decision. No source-code license fil
 Choose the approved GitHub repository and branch, set the entry point to `app.py`, and select Python 3.11 in Advanced settings. The root `requirements.txt` pins Streamlit, NumPy, pandas, Plotly, and Pillow to the tested local versions. No secrets or OS packages are required by the app. Include the two WRI files together to enable real mode. When either is absent, real mode shows a missing-data warning and the synthetic demo remains selectable. [Community Cloud deployment](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy) · [Dependency setup](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/app-dependencies)
 
 After approval, confirm the first hosted build and inspect the real map, attribution and downloads. The current smoke evidence is from Windows.
+
+## M2C-2 real common-footprint mode
+
+Include `config/patna_dashboard_checksums.json` and all three unchanged files in
+`data/processed_real/patna_common/` alongside application source. No raw uploaded
+rasters or science dependencies are required by the new view. The loader verifies
+SHA-256 on every render (under 0.4 MiB), then parses and validates the bundle.
+Do not regenerate checksum pins merely to silence a failure: revalidate any new
+scientific artifact and review its passing audit before updating the pins. Pins
+protect against accidental corruption, not malicious repository changes.
