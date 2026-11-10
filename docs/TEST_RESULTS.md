@@ -736,3 +736,76 @@ and all requirements compare unchanged to `a071692`. `.gitattributes` preserves
 vendored upstream bytes (including CRLF/SRI) and recognizes their line endings;
 staged `git diff --check` passes. Remote main was re-fetched and still matched the
 base before the normal direct-main commit/push. No history rewriting.
+
+## M2C-4 · depth-weighted exposure screening (2026-11-10)
+
+Base: latest fetched remote main `0e28a4f`. Direct-main implementation/commit/push
+is explicitly authorized. Raw/processed data, checksum pins, conservative engines,
+M2A-1 exposure calculations, Synthetic implementation and all requirements remain
+unchanged. No package installed or added. New calculations are diagnostics on
+verified common cells, not vulnerability/impact estimation.
+
+Commands run from repository root with Python 3.11.17:
+
+- Baseline `PYTHONDONTWRITEBYTECODE=1 /workspace/work/m2b-1/venv/bin/python -m unittest discover -s tests -q`:
+  **102 passed, no skips, 6.955 s**.
+- Focused `PYTHONDONTWRITEBYTECODE=1 /workspace/.floodcat-venv/bin/python -m unittest discover -s tests -p 'test_patna_*.py' -v`:
+  **23 discovered: 16 passed / 7 optional native-science skips, 1.577 s**.
+- Final screening-focused `PYTHONDONTWRITEBYTECODE=1 /workspace/.floodcat-venv/bin/python -m unittest discover -s tests -p 'test_patna_screening.py' -v`:
+  **6 passed, no skips, 1.078 s**.
+- Final full `PYTHONDONTWRITEBYTECODE=1 /workspace/work/m2b-1/venv/bin/python -m unittest discover -s tests -v`:
+  **108 passed, no failures/errors/skips, 7.501 s**.
+- Lightweight runtime, same full command with `/workspace/.floodcat-venv/bin/python`:
+  **108 discovered: 72 passed / 36 optional science skips, 2.712 s**.
+- `UV_CACHE_DIR=/workspace/.floodcat-cache uv pip check --python /workspace/.floodcat-venv/bin/python`:
+  **35 installed packages compatible**, no dependency changes.
+- Live server: scratch launcher invokes Streamlit CLI on port 8505, disables usage
+  statistics and stubs only its telemetry UUID getter because the cloud home is
+  read-only. No product/package patch. Browser tests deliberately abort OSM tiles,
+  reusing the already-established tile-failure limitation rather than retrying
+  blocked provider access.
+- `FLOODCAT_URL=http://localhost:8505 FLOODCAT_SCREENSHOTS=/workspace/work/m2c-4 node tests/browser/patna_map.cjs`:
+  **exit 0**, preserved native bounds/values, +/−, wheel, pan, fit, three layer
+  selectors, native cell popup, failed-tiles fallback, CSV controls and mobile
+  dimensions. Added assertions for the weighted layer/legend and actual top-cell
+  product; incomplete native cells expose null population/products.
+- `FLOODCAT_URL=http://localhost:8505 FLOODCAT_SCREENSHOTS=/workspace/work/m2c-4 node tests/browser/patna_screening.cjs`:
+  **exit 0**, weighted default layer, native population/product popup, actual
+  indicator and priority CSV contents including units/domain/threshold/context,
+  empty >8 m selection, no incomplete rankings, mobile layout and no JS errors.
+  Weighted draw 26.6 ms desktop / 4.1 ms mobile in this fresh-server run (small
+  single-grid observations, not performance guarantees). Map 358 px at a 390 px
+  mobile viewport, no horizontal overflow. Screenshot inspection and an explicit
+  geometry assertion confirm Fit/layer-selector controls do not overlap.
+
+Browser debugging: closed the sidebar before resizing to avoid an automatic-
+collapse race in the old smoke harness; waited for the iframe before inspecting
+it to avoid a streamed-render race. A long layer selector initially overlapped
+Fit on mobile: labels now wrap inside a constrained panel. A fresh-server final
+run avoids stale imported view code from an earlier live-development session;
+CSV contents are checked from actual downloads, not button labels alone.
+
+Independent hand fixture: depths [[0,1,2],[5,6,3]], common population
+[[100,10,20],[0,missing,20]], built surface [[10,4,0],[8,missing,2]]. At >0,
+expected products are **110 person-metres** and **50 m²·m**. At thresholds
+1 / 2 / 3 / 5 / 8, products are **100/46, 60/46, 0/40, 0/0, 0/0**. Exact
+threshold equality, flooded valid-zero population/built-up, missing and NaN depth,
+overflow rejection, stable ranking ties and cell-centre coordinates pass.
+Independent Python iteration over actual source arrays checks sums at >0/1/2/5/8
+(absolute comparison 1e-8 person-metres / 1e-7 m²·m); native-cell map products are
+validated against exact per-cell multiplication with float64 arithmetic.
+
+Actual >0 m diagnostics: **2,923,557.7298654984 person-metres** and
+**35,969,112.45142127 m²·m**, explicitly not flood volume or damage. Highest cell
+row 12 / col 88: 5.435956001281738 m × 5,126.351453354646 people =
+27,866.62094754255 person-metres at 85.4125°E / 25.6375°N. Fixed >1/2/5 m population
+values reproduce M2C-1. Existing zero-threshold metrics, coverage/exclusions,
+all six Synthetic modules, REAL Hazard/pilot/downloads/Compare, failed bundle
+checks and prior conservation/remapping regressions pass unchanged.
+
+REAL navigation tests require exactly the six requested modules, exclude Depth
+severity, and verify its depth-band CSV/charts under Exposure with optional table.
+UI tests enforce the non-vulnerability heading, person-metres/m²·m labels, UNDRR
+references, formulas and empty-threshold behavior. See
+[formulas, limitations and screenshots](DEPTH_WEIGHTED_SCREENING.md).
+Hosted deployment and successful ordinary OSM basemap access are not claimed.

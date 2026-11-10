@@ -1,6 +1,36 @@
 # FloodCAT project status
 
-## Current milestone · M2C-3 — two-mode UI and geographic maps (2026-11-10)
+## Current milestone · M2C-4 — depth-weighted exposure screening (2026-11-10)
+
+Started from freshly fetched remote main `0e28a4f`. User authorized tested commits
+and normal pushes directly to main. REAL navigation is exactly Overview, Hazard,
+Exposure, Vulnerability, Compare, Data & methods. Synthetic remains unchanged.
+Depth-band charts/CSV live under Exposure; detailed numerical tables are optional.
+
+Vulnerability is explicitly **depth-weighted exposure screening, not a validated
+vulnerability model**. It shows fixed >1/2/5 m population totals and selected-depth
+products in person-metres and m²·m (not flood volume/building damage). A selectable
+sequential orange/red native-cell layer and Top 10 complete flooded raster-cell
+ranking expose the same products. Coordinates are cell centres, not community
+rankings. No coefficients, damage ratios, casualty estimates or annualized impacts
+are inferred. Formulas and UNDRR/impact-methodology references are documented.
+
+At >0 m, Σ(population × depth) = 2,923,557.7298654984 person-metres and
+Σ(built_surface_m² × depth) = 35,969,112.45142127 m²·m. Existing 0 m exposure,
+55.98% coverage and 3,101 excluded flooded cells are unchanged. Missing cells stay
+unavailable. Source rasters, processed bundle/checksums, remapping/conservation
+engines and hosted requirements are unchanged. No packages added.
+
+See [screening definitions/evidence](DEPTH_WEIGHTED_SCREENING.md) and
+[test results](TEST_RESULTS.md). No new scientific blocker for this qualified
+screening; actual vulnerability, neighborhood-level risk and genuine impacts
+remain unmodeled. OSM access was previously blocked in this cloud; deterministic
+browser tests deliberately abort tiles and verify the independent overlays.
+Hosted deployment and successful basemap access are not claimed. Next single
+task: verify the updated six REAL modules and ordinary OSM tiles in the hosted
+app, retaining the common-footprint and non-vulnerability qualifications.
+
+## Previous milestone · M2C-3 — two-mode UI and geographic maps (2026-11-10)
 
 Started from latest remote main `a071692`; user authorized tested commits directly
 to main without force-push. Exactly two modes: Synthetic Demo (default), REAL —

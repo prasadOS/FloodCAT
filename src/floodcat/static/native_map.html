@@ -5,7 +5,7 @@ html,body,#map{height:100%;width:100%;margin:0;font:12px/1.4 system-ui,sans-seri
 .map-card{background:rgba(255,255,255,.96);color:#20374b;border:1px solid #d9e2e9;border-radius:7px;padding:7px 10px;box-shadow:0 1px 5px #0002;max-width:240px}
 .legend i{display:inline-block;width:13px;height:10px;margin-right:4px}.legend{font-size:11px}.coordinates{min-width:180px;font-size:11px}
 .leaflet-control-layers{font-size:12px}.fit{background:white;border:0;padding:8px;cursor:pointer;font:600 12px system-ui;color:#20374b}.native-grid{pointer-events:none}
-@media(max-width:500px){.map-card{max-width:185px;font-size:10px}.legend{max-width:125px;padding:5px;font-size:9px}.coordinates{display:none}#tile-status{max-width:150px;padding:5px;font-size:9px}}
+@media(max-width:500px){.leaflet-control-layers{max-width:175px}.leaflet-control-layers label{font-size:11px;line-height:1.35}.map-card{max-width:185px;font-size:10px}.legend{max-width:125px;padding:5px;font-size:9px}.coordinates{display:none}#tile-status{max-width:150px;padding:5px;font-size:9px}}
 </style></head><body><div id="map" aria-label="Geographic flood-depth and exposure-coverage map"></div>
 <script>/* LEAFLET_JS */</script><script>
 'use strict';
@@ -17,6 +17,7 @@ const tiles=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
 const tileStatus=L.control({position:'bottomleft'});tileStatus.onAdd=()=>{const d=L.DomUtil.create('div','map-card');d.id='tile-status';d.textContent='OSM basemap · native-cell overlay';return d};tileStatus.addTo(map);
 tiles.on('tileerror',()=>{document.getElementById('tile-status').textContent='OSM tiles unavailable · scientific layers remain visible'});
 function depthColor(v){return v===null?'#b574b8':v===0?'#f1f5f9':v<=1?'#bdddf0':v<=2?'#6baed6':v<=5?'#2879b9':'#08306b'}
+function weightedColor(v){return v===null?'#a6aeb8':v===0?'#f1f5f9':v<=1000?'#fee8c8':v<=5000?'#fdbb84':v<=10000?'#fc8d59':v<=20000?'#e34a33':'#7f0000'}
 const NativeLayer=L.Layer.extend({
  initialize:function(kind){this.kind=kind},
  onAdd:function(m){this._map=m;this.canvas=L.DomUtil.create('canvas','native-grid');this.canvas.style.position='absolute';m.getPanes().overlayPane.appendChild(this.canvas);m.on('moveend zoomend resize',this.draw,this);this.draw()},
@@ -31,26 +32,35 @@ const NativeLayer=L.Layer.extend({
    for(let col=0;col<grid.cols;col++){const x=xs[col],y=ys[r],w=xs[col+1]-x,h=ys[r+1]-y;if(x+w<0||x>s.x)continue;
     const i=r*grid.cols+col,v=grid.depth[i],ok=grid.common[i]===1;
     ctx.globalAlpha=this.kind==='depth'?(v===0?.40:.83):.72;
-    ctx.fillStyle=this.kind==='depth'?depthColor(v):(ok?'#168078':'#a6aeb8');ctx.fillRect(x,y,w,h);
+    ctx.fillStyle=this.kind==='depth'?depthColor(v):this.kind==='weighted'?weightedColor(grid.weightedPopulation[i]):(ok?'#168078':'#a6aeb8');ctx.fillRect(x,y,w,h);
     if(!ok){ctx.globalAlpha=.65;ctx.strokeStyle='#535a63';ctx.lineWidth=.6;ctx.beginPath();ctx.moveTo(x,y+h);ctx.lineTo(x+w,y);ctx.stroke()}
     if(w>18){ctx.globalAlpha=.22;ctx.strokeStyle='#334155';ctx.lineWidth=.5;ctx.strokeRect(x,y,w,h)}
    }}
   this.lastDrawMs=performance.now()-start;
  }
 });
-const depthLayer=new NativeLayer('depth').addTo(map),coverageLayer=new NativeLayer('coverage');
-L.control.layers({'WRI depth (m)':depthLayer,'Joint exposure coverage':coverageLayer},{'OSM basemap':tiles},{collapsed:false,position:'topright'}).addTo(map);
+const depthLayer=new NativeLayer('depth'),coverageLayer=new NativeLayer('coverage'),weightedLayer=grid.weightedPopulation?new NativeLayer('weighted'):null;
+const layers={'Flood Depth (m)':depthLayer,'Joint exposure coverage':coverageLayer};
+if(weightedLayer)layers['Depth-weighted population exposure']=weightedLayer;
+(grid.initialLayer==='weighted'?weightedLayer:depthLayer).addTo(map);
+L.control.layers(layers,{'OSM basemap':tiles},{collapsed:false,position:'topright'}).addTo(map);
 const fit=L.control({position:'topleft'});fit.onAdd=()=>{const b=L.DomUtil.create('button','fit leaflet-bar');b.textContent='Fit study area';b.title='Reset to uploaded raster extent';L.DomEvent.disableClickPropagation(b);b.onclick=()=>map.fitBounds(bounds,{padding:[18,18]});return b};fit.addTo(map);
 const legend=L.control({position:'bottomright'});legend.onAdd=()=>{const d=L.DomUtil.create('div','map-card legend');d.id='legend';return d};legend.addTo(map);
-function updateLegend(){const isDepth=map.hasLayer(depthLayer);document.getElementById('legend').innerHTML=isDepth?'<b>WRI depth · m</b><br>'+[[0,'0 (valid dry)'],[.5,'>0–1'],[1.5,'>1–2'],[3,'>2–5'],[6,'>5'],[null,'Missing hazard']].map(([v,t])=>'<i style="background:'+depthColor(v)+'"></i>'+t).join('<br>')+'<br>Diagonal: incomplete exposure':'<b>Joint exposure</b><br><i style="background:#168078"></i>Complete common cell<br><i style="background:#a6aeb8"></i>Incomplete / excluded<br>Diagonal: unavailable exposure'}
+function updateLegend(){
+ const isDepth=map.hasLayer(depthLayer),isWeighted=weightedLayer&&map.hasLayer(weightedLayer);
+ document.getElementById('legend').innerHTML=isWeighted?'<b>Population × depth</b><br>person-metres · depth > '+grid.threshold+' m<br>'+[[0,'0 / below threshold'],[500,'>0–1,000'],[3000,'>1,000–5,000'],[7500,'>5,000–10,000'],[15000,'>10,000–20,000'],[25000,'>20,000'],[null,'Incomplete / excluded']].map(([v,t])=>'<i style="background:'+weightedColor(v)+'"></i>'+t).join('<br>')+'<br>Raster-cell screening; not risk':isDepth?'<b>Flood Depth · m</b><br>'+[[0,'0 (valid dry)'],[.5,'>0–1'],[1.5,'>1–2'],[3,'>2–5'],[6,'>5'],[null,'Missing hazard']].map(([v,t])=>'<i style="background:'+depthColor(v)+'"></i>'+t).join('<br>')+'<br>Diagonal: incomplete exposure':'<b>Joint exposure</b><br><i style="background:#168078"></i>Complete common cell<br><i style="background:#a6aeb8"></i>Incomplete / excluded<br>Diagonal: unavailable exposure';
+}
 map.on('baselayerchange',updateLegend);updateLegend();
 const coord=L.control({position:'bottomleft'});coord.onAdd=()=>{const d=L.DomUtil.create('div','map-card coordinates');d.id='coordinates';d.textContent='Hover or click for native cell values';return d};coord.addTo(map);
 function cellInfo(lat,lng){const [dx,,west,,dy,north]=grid.transform,r=Math.floor((lat-north)/dy),c=Math.floor((lng-west)/dx);
- if(r<0||r>=grid.rows||c<0||c>=grid.cols)return null;const i=r*grid.cols+c;return{row:r,col:c,depth:grid.depth[i],common:grid.common[i]===1}}
-function description(ll){const info=cellInfo(ll.lat,ll.lng);return ll.lat.toFixed(5)+'° N, '+ll.lng.toFixed(5)+'° E'+(info?'<br>Cell '+info.row+', '+info.col+' · '+(info.depth===null?'Missing depth':info.depth.toFixed(3)+' m')+'<br>'+(info.common?'Complete common cell':'Incomplete exposure · excluded'):'<br>Outside uploaded raster')}
+ if(r<0||r>=grid.rows||c<0||c>=grid.cols)return null;const i=r*grid.cols+c;return{row:r,col:c,depth:grid.depth[i],common:grid.common[i]===1,population:grid.population?grid.population[i]:null,weightedPopulation:grid.weightedPopulation?grid.weightedPopulation[i]:null}}
+function description(ll){
+ const info=cellInfo(ll.lat,ll.lng);
+ return ll.lat.toFixed(5)+'° N, '+ll.lng.toFixed(5)+'° E'+(info?'<br>Cell '+info.row+', '+info.col+' · '+(info.depth===null?'Missing depth':info.depth.toFixed(3)+' m modeled depth')+'<br>'+(info.common?'Complete common cell':'Incomplete exposure · excluded')+(grid.population?'<br>Population (common cells): '+(info.population===null?'unavailable':info.population.toLocaleString(undefined,{maximumFractionDigits:2})+' people')+'<br>Population × depth (> '+grid.threshold+' m): '+(info.weightedPopulation===null?'unavailable':info.weightedPopulation.toLocaleString(undefined,{maximumFractionDigits:2})+' person-metres'):''):'<br>Outside uploaded raster');
+}
 map.on('mousemove',e=>{document.getElementById('coordinates').innerHTML=description(e.latlng)});
 map.on('click',e=>L.popup().setLatLng(e.latlng).setContent(description(e.latlng)).openOn(map));
 L.control.scale({imperial:false,position:'bottomright'}).addTo(map);
 // Inspectable map API supports deterministic alignment/interaction smoke tests.
-window.floodcatMap={map,grid,depthLayer,coverageLayer,tiles,cellInfo};
+window.floodcatMap={map,grid,depthLayer,coverageLayer,weightedLayer,tiles,cellInfo};
 </script></body></html>

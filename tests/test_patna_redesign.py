@@ -67,8 +67,9 @@ class TestPatnaRedesign(unittest.TestCase):
         self.assertEqual(app.sidebar.radio[0].options,['Synthetic Demo','REAL — Patna'])
         for mode in app.sidebar.radio[0].options:
             app.sidebar.radio[0].set_value(mode).run()
-            self.assertEqual(tuple(app.sidebar.radio[1].options),MODULES)
-            for module in MODULES:
+            expected = MODULES if mode == 'REAL — Patna' else ('Overview','Hazard','Exposure','Depth severity','Compare','Data & methods')
+            self.assertEqual(tuple(app.sidebar.radio[1].options),expected)
+            for module in expected:
                 app.sidebar.radio[1].set_value(module).run()
                 self.assertFalse(app.exception,(mode,module))
                 if mode=='REAL — Patna':

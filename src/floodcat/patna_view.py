@@ -9,7 +9,8 @@ import streamlit as st
 from . import patna, wri
 from .exports import table_csv
 from .geographic_map import render_map
-from .patna_analysis import MODULES, depth_bands
+from .patna_analysis import (MODULES, depth_bands, weighted_cells, screening_summary, priority_cells,
+                             SCREENING_LABEL, POP_WEIGHT_LABEL, BUILT_WEIGHT_LABEL)
 
 
 def pilot_reference(threshold):
@@ -40,12 +41,63 @@ def kpis(s):
 
 def band_charts(rows):
     frame = pd.DataFrame(rows)
-    a, b = st.columns(2)
-    with a:
-        st.plotly_chart(px.bar(frame, x='Depth band', y='Estimated people', color_discrete_sequence=['#168078']), width='stretch')
-    with b:
-        built = frame.assign(**{'Built-up surface (km²)': frame['Built-up surface (m²)']/1e6})
-        st.plotly_chart(px.bar(built, x='Depth band', y='Built-up surface (km²)', color_discrete_sequence=['#2879b9']), width='stretch')
+    frame['Built-up surface (km²)'] = frame['Built-up surface (m²)']/1e6
+    for column, (value, title, unit, color) in zip(st.columns(3), (
+            ('Estimated people', 'Estimated population', 'People', '#168078'),
+            ('Built-up surface (km²)', 'Built-up surface', 'km²', '#2879b9'),
+            ('Area (km²)', 'Flooded area', 'km²', '#6366a3'))):
+        figure = px.bar(frame, x='Depth band', y=value, title=title,
+                        color_discrete_sequence=[color], labels={value: unit})
+        figure.update_traces(hovertemplate='%{x}<br>%{y:,.2f} '+unit+'<extra></extra>')
+        figure.update_layout(height=310, margin=dict(l=20,r=10,t=55,b=30), xaxis_title=None)
+        with column:
+            st.plotly_chart(figure, width='stretch')
+
+
+def vulnerability_screening(bundle, threshold):
+    st.subheader(SCREENING_LABEL)
+    indicators = screening_summary(bundle, threshold)
+    st.caption('Deeper-water population exposure below uses fixed strict depth thresholds, independent of the sidebar selection.')
+    for column, t in zip(st.columns(3), (1., 2., 5.)):
+        column.metric(f'Population >{t:g} m (people)', f"{indicators[f'Population at depth >{t:g} m (people)']:,.0f}")
+    st.caption(f'Weighted indicators below use common cells with modeled depth > {threshold:g} m.')
+    first, second = st.columns(2)
+    first.metric(POP_WEIGHT_LABEL, f"{indicators[POP_WEIGHT_LABEL]:,.0f}")
+    second.metric(BUILT_WEIGHT_LABEL, f"{indicators[BUILT_WEIGHT_LABEL]:,.0f}")
+    st.caption('Built-up weighting is m²·m (dimensionally m³), not flood volume or physical building damage.')
+    st.markdown('Highlights cells combining greater modeled flood depth and more exposed population; '
+                'not a prediction of casualties or damage.')
+    a, report, _, _ = bundle
+    _, pop_weights, _ = weighted_cells(bundle, threshold)
+    render_map(a['depth_m'], a['valid_depth'], a['common_valid'], report['target_grid']['transform'],
+               population=a['population_count'], weighted_population=pop_weights,
+               threshold_m=threshold, initial_layer='weighted', height=510)
+    st.caption('Native raster-cell screening only; coarse WRI cells are not neighborhood-level risk estimates.')
+    rows = priority_cells(bundle, threshold)
+    st.markdown('**Top 10 complete-cell screening priorities**')
+    st.caption('Ranked by person-metres within the selected flooded common cells; not administrative or community rankings. '
+               'Coordinates are native cell centres. Ties use row then column.')
+    if rows:
+        st.dataframe(pd.DataFrame(rows), hide_index=True, width='stretch', column_config={
+            'Longitude (°E)': st.column_config.NumberColumn(format='%.5f'),
+            'Latitude (°N)': st.column_config.NumberColumn(format='%.5f'),
+            'Modeled flood depth (m)': st.column_config.NumberColumn(format='%.3f'),
+            'Estimated population (people/cell)': st.column_config.NumberColumn(format='%.0f'),
+            POP_WEIGHT_LABEL: st.column_config.NumberColumn(format='%.1f')})
+        st.download_button('Download raster-cell priorities CSV',
+                           table_csv([{'Screening definition': SCREENING_LABEL, 'Depth strictly greater than (m)': threshold,
+                                       'Domain': 'Common-data footprint; not all of Patna district.', **row} for row in rows]),
+                           'patna_cell_priorities.csv', 'text/csv')
+    else:
+        st.caption('No complete flooded cells above the selected threshold; no cell priorities are ranked.')
+    st.download_button('Download screening indicators CSV', table_csv([indicators]), 'patna_depth_weighted_screening.csv', 'text/csv')
+    with st.expander('What would a validated vulnerability model need?'):
+        st.markdown('UNDRR defines vulnerability as susceptibility to harm, distinct from hazard and exposure. '
+                    'These inputs lack validated social vulnerability, building types/fragility, floor elevations, '
+                    'occupancy, warning/evacuation capacity and locally validated depth-impact functions. '
+                    'Genuine impact estimation needs those data, outcome-specific calibration/validation and '
+                    'uncertainty analysis. No susceptibility coefficient, casualty, displacement, damage ratio '
+                    'or monetary loss is inferred here. T100 is not an annualized expected impact.')
 
 
 def methods(bundle):
@@ -57,7 +109,7 @@ def methods(bundle):
                 'unknown joint exposure; their quantities are not redistributed. Coverage selection may '
                 'bias regional interpretation. Valid zero is retained; partial, missing, NaN and '
                 'geometrically uncertain cells never become zero exposure.\n\n'
-                '**Hazard.** WRI Aqueduct Floods Hazard Maps V2, historical WATCH T100 '
+                '**Hazard.** WRI Aqueduct V2 — WATCH T100 (Aqueduct Floods Hazard Maps V2), '
                 '(100-year return period), inundation depth in metres. This is modeled screening, '
                 'not an observed event. Flood protection is not represented and backwater effects are omitted.\n\n'
                 '**Exposure.** WorldPop / University of Southampton, legacy India 2020 population '
@@ -83,6 +135,32 @@ def methods(bundle):
                 'source identity; export task IDs/times and upstream GHSL NaN cause remain unverified. '
                 'Sampled geometric convergence is not a global accuracy bound. Exposure is not damage '
                 'or monetary loss. T50/T500 and future RCP rasters are not available in this bundle.')
+    with st.expander('Hazard, exposure, vulnerability and risk · definitions & formulas'):
+        st.markdown('**Hazard** is the potentially damaging flood process; here, a modeled depth scenario. '
+                    '**Exposure** is people/assets located in hazard-prone cells. **Vulnerability**, per '
+                    '[UNDRR](https://www.undrr.org/terminology/vulnerability), is susceptibility to harm '
+                    'from physical, social, economic and environmental conditions. **Risk** concerns potential '
+                    'losses arising from hazard, exposure, vulnerability and capacity; these products alone '
+                    'do not estimate comprehensive or probabilistic risk.\n\n'
+                    'For S = complete common cells with depthᵢ > selected threshold: '
+                    '**population weighting = Σᵢ∈S populationᵢ × depthᵢ**, in **person-metres**; '
+                    '**built-up weighting = Σᵢ∈S built_surface_m²ᵢ × depthᵢ**, in **m²·m** '
+                    '(dimensionally m³). This is exposure weighting, not flood volume, building damage, '
+                    'affected population, mortality or displacement. The map and rankings use the same '
+                    'native-cell population products; no high-resolution hotspots are interpolated. '
+                    'Common cells below the selected threshold have a zero indicator by definition; '
+                    'incomplete cells remain unavailable, never zero-filled. Fixed >1, >2 and >5 m '
+                    'population indicators are separate strict-threshold sums. No annualized expected '
+                    'impacts are calculated from the T100 scenario.\n\n'
+                    'Methodological context: [UNDRR exposure](https://www.undrr.org/terminology/exposure) · '
+                    '[UNDRR disaster risk](https://www.undrr.org/terminology/disaster-risk); '
+                    'Huizinga, de Moel & Szewczyk (2017), *Global flood depth-damage functions: '
+                    'Methodology and the database with guidelines*, JRC, '
+                    '[doi:10.2760/16510](https://doi.org/10.2760/16510); Merz et al. (2010), '
+                    '*Assessment of economic flood damage*, '
+                    '[doi:10.5194/nhess-10-1697-2010](https://doi.org/10.5194/nhess-10-1697-2010). '
+                    'These references explain additional impact-model requirements; **no cited damage '
+                    'function is implemented or borrowed as a local vulnerability model**.')
     st.markdown('[WRI catalog and terms](https://developers.google.com/earth-engine/datasets/catalog/WRI_Aqueduct_Flood_Hazard_Maps_V2) · '
                 '[WorldPop catalog](https://developers.google.com/earth-engine/datasets/catalog/WorldPop_GP_100m_pop) · '
                 '[GHSL catalog](https://developers.google.com/earth-engine/datasets/catalog/JRC_GHSL_P2023A_GHS_BUILT_S)')
@@ -98,9 +176,10 @@ def render(sidebar=st.sidebar):
     section = sidebar.radio('Module', MODULES)
     threshold = sidebar.slider('Flood-depth threshold (m)', 0.0, 8.0, 0.0, 0.25,
                                help='Strict depth > threshold. Exposure and area use complete common cells only.')
-    sidebar.caption('Historical WATCH T100 · WorldPop 2020 · GHSL 2020')
+    sidebar.caption('Historical 100-year riverine flood scenario · WorldPop 2020 · GHSL 2020')
     st.title('Patna | Flood exposure')
-    st.caption('Historical T100 · Common-data footprint · Modeled screening')
+    st.caption('Historical 100-year riverine flood scenario · WRI Aqueduct V2 — WATCH T100 · Modeled screening')
+    st.caption('Common-data footprint; not all of Patna district.')
     try:
         bundle = patna.load_bundle()
     except patna.BundleError as error:
@@ -116,20 +195,25 @@ def render(sidebar=st.sidebar):
     st.markdown(f"⚠ **{s['Excluded flooded cells (incomplete joint coverage)']:,} excluded flooded cells** "
                 f"of {s['Uploaded hazard flooded cells']:,} above {threshold:g} m · incomplete joint coverage; exposure unknown.")
     if section in ('Overview', 'Hazard'):
-        st.subheader('Historical riverine hazard' if section == 'Hazard' else 'Study-area snapshot')
+        st.subheader('Flood Depth (m)')
+        _, pop_weights, _ = weighted_cells(bundle, threshold)
         render_map(a['depth_m'], a['valid_depth'], a['common_valid'], report['target_grid']['transform'],
+                   population=a['population_count'], weighted_population=pop_weights, threshold_m=threshold,
                    height=540 if section == 'Hazard' else 430)
         st.caption('Native modeled depths, including excluded exposure cells. Threshold affects summaries, not map values. '
-                   'Switch layers to inspect joint coverage; diagonals mark incomplete exposure.')
+                   'Switch layers for coverage or depth-weighted population exposure; diagonals mark incomplete exposure.')
         if section == 'Hazard':
             pilot_reference(threshold)
-    elif section in ('Exposure', 'Depth severity'):
-        st.subheader('Exposure by depth' if section == 'Exposure' else 'Depth severity')
+    elif section == 'Exposure':
+        st.subheader('Exposure by depth')
         rows = depth_bands(bundle, threshold)
         st.caption(f'Non-overlapping bands, clipped to depth > {threshold:g} m. Values sum to the KPIs above.')
         band_charts(rows)
-        st.dataframe(pd.DataFrame(rows), hide_index=True, width='stretch')
+        with st.expander('Detailed depth-band values'):
+            st.dataframe(pd.DataFrame(rows), hide_index=True, width='stretch')
         st.download_button('Download depth-band CSV', table_csv(rows), 'patna_common_depth_bands.csv', 'text/csv')
+    elif section == 'Vulnerability':
+        vulnerability_screening(bundle, threshold)
     elif section == 'Compare':
         st.subheader('T100 threshold comparison')
         st.caption('One verified historical hazard raster; thresholds are screening choices, not separate events or climate scenarios.')

@@ -1,8 +1,8 @@
-# M2C-3 interface and maps
+# FloodCAT interface and maps
 
-Exactly two modes: **Synthetic Demo** (default) and **REAL — Patna**. Both have
-Overview, Hazard, Exposure, Depth severity, Compare, Data & methods. Synthetic
-values/scenarios remain hypothetical. The separate REAL — WRI selector is removed;
+Exactly two modes: **Synthetic Demo** (default) and **REAL — Patna**. REAL has
+Overview, Hazard, Exposure, Vulnerability, Compare, Data & methods (M2C-4);
+Synthetic retains Depth severity and its hypothetical values/scenarios. The separate REAL — WRI selector is removed;
 its verified small pilot remains inside REAL Hazard/Data & methods with hazard
 summaries at the selected threshold, attribution, GeoTIFF, manifest and CSV.
 
@@ -102,3 +102,15 @@ The read-only cloud home prevented Streamlit from writing its telemetry UUID.
 Final live smoke used a scratch-only launcher stubbing that UUID getter and
 turning statistics off. No application/package was patched for this adaptation.
 Hosted deployment and ordinary browser OSM success still require verification.
+
+## M2C-4 depth-weighted layer
+
+[Screening definitions, screenshots and evidence](DEPTH_WEIGHTED_SCREENING.md)
+cover the third selectable layer, native-cell tooltips and rankings. The layer
+uses person-metres, with fixed presentation-only breaks at 1,000 / 5,000 / 10,000 /
+20,000; these are legend classes, not vulnerability coefficients or thresholds
+for harm. Incomplete joint cells are gray/diagonal with null population/products;
+valid common cells below the selected threshold have a defined zero indicator.
+Vulnerability starts on this layer; Overview/Hazard start on Flood Depth (m).
+All layers preserve the same native coordinates, controls and basemap fallback.
+The mobile layer selector wraps long names without covering the Fit button.

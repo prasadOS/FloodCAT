@@ -1,9 +1,11 @@
 # FloodCAT
 
-FloodCAT is a Streamlit application for regional flood-hazard and physical exposure screening. The interface has exactly two modes, each with **Overview, Hazard, Exposure, Depth severity, Compare, Data & methods**.
+FloodCAT is a Streamlit application for regional flood-hazard and physical exposure screening. The interface has exactly two modes. REAL — Patna has **Overview, Hazard, Exposure, Vulnerability, Compare, Data & methods**. Synthetic Demo retains its six original modules, including Depth severity.
 
 - **Synthetic Demo** is the default: deterministic, hypothetical hazard and exposure with illustrative scenarios, charts and CSV exports.
-- **REAL — Patna** uses the unchanged audited M2C-1/M2C-2 common-footprint bundle. A strict depth threshold recalculates estimated people, built-up surface, flooded area/cells and excluded flooded cells. The Leaflet map overlays native WRI cells on OpenStreetMap, with selectable depth/coverage layers, zoom, pan, fit and native-cell hover/click. Missing tile access leaves the scientific layers usable. The verified small WRI pilot remains in Hazard and Data & methods as a reference with its original GeoTIFF, manifest and summary downloads.
+- **REAL — Patna** uses the unchanged audited M2C-1/M2C-2 common-footprint bundle. A strict depth threshold recalculates estimated people, built-up surface, flooded area/cells and excluded flooded cells. The Leaflet map overlays native WRI cells on OpenStreetMap, with selectable Flood Depth, joint coverage and depth-weighted population layers, zoom, pan, fit and native-cell hover/click. Missing tile access leaves the scientific layers usable. The verified small WRI pilot remains in Hazard and Data & methods as a reference with its original GeoTIFF, manifest and summary downloads.
+
+**M2C-4 screening:** the Vulnerability module prominently states **“Depth-weighted exposure screening — not a validated vulnerability model.”** It shows population above 1/2/5 m, Σ(population × depth) in person-metres, Σ(built-up m² × depth) in m²·m, and Top 10 complete-cell screening priorities with native coordinates. These are not susceptibility coefficients, flood volume, affected-population estimates, damage or annualized impacts. Exposure contains the consolidated population/built-up/area depth-band charts, optional numerical table and CSV. [Definitions, formulas, evidence and screenshots](docs/DEPTH_WEIGHTED_SCREENING.md).
 
 **REAL metrics cover complete common WRI cells in the uploaded buffered bounding rectangle, not all of Patna district.** Coverage and exclusions remain visible on every real results page. These are modeled screening estimates, not observed impacts, measured damage or monetary loss. Depth-band totals reconcile to the selected strict threshold; Compare uses actual T100 thresholds, not invented climate scenarios.
 
@@ -16,8 +18,6 @@ Optional scientific processing remains isolated in `requirements-science.txt` an
 **M2B-2:** a [manual GitHub Actions provider-access diagnostic](docs/ACTIONS_ACCESS_CHECK.md) is available for review. It runs only via `workflow_dispatch`, saves bounded HTTP metadata, and does not acquire rasters. GitHub-hosted access remains unverified until a real manual run is reviewed.
 
 **M2C-1:** [uploaded real Patna rasters are validated](docs/PATNA_VALIDATION.md), with a compact audited common-cell exposure bundle. Metrics apply to complete cells in the export bounding rectangle, **not the district polygon or whole upload**. The verified bundle powers REAL — Patna.
-
-- **REAL — Patna common-footprint exposure** loads checksum-pinned `aligned_common.npz`, `validation.json` and passing `audit.json` using NumPy with `allow_pickle=False`. It shows historical T100 depth and joint-coverage maps, a strict depth threshold, estimated population and built-up exposure, common flooded area/cells, excluded flooded cells and current/comparison CSV downloads. Metrics cover complete common WRI cells in the uploaded buffered bounding rectangle, **not all of Patna district**. Missing/changed/malformed artifacts disable this view with a warning. No raw-raster reads or heavy geospatial dependencies run in Streamlit.
 
 ## Run locally
 
