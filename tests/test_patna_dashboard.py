@@ -83,6 +83,8 @@ class TestPatnaDashboard(unittest.TestCase):
         app.sidebar.radio[0].set_value(patna.MODE).run()
         self.assertFalse(app.exception)
         self.assertEqual(app.metric[0].value,'2,840,321')
+        self.assertEqual(len(app.sidebar.slider),1)
+        self.assertEqual(len(app.sidebar.radio),1)
         self.assertEqual(len(app.get('download_button')),2)
         self.assertTrue(any('3,101' in w.value and 'Excluded flooded cells' in w.value for w in app.warning))
         self.assertTrue(any('55.98%' in m.value for m in app.markdown))

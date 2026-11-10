@@ -669,3 +669,19 @@ copied from validation summaries. Coverage is 6,113/10,920 (55.98% by cell count
 No new conservation/remapping is performed; unchanged M2C-1 budgets and scientific
 limitations remain applicable. The view verifies all three artifact hashes on
 each render; no cache can hide replacement/corruption between renders.
+
+Final browser follow-up caught stale Synthetic sidebar controls after mode switch.
+A shared sidebar placeholder now replaces the Synthetic controls in the real
+exposure view. AppTest additionally requires exactly one sidebar slider/radio.
+Final rerun: **97 passed, no skips, 6.578 s** with the full science command above;
+preserved-mode smoke script again exits 0. Playwright explicitly waits for one
+slider after switching and confirms the stable real view (both maps/downloads).
+
+A fresh native server session also exposed an environment-only read-only
+`/home/agent/.streamlit` telemetry identity write. For the final live check a
+scratch-only launcher stubs Streamlit's telemetry UUID getter and disables usage
+statistics on port 8502; no application or installed package is patched and no
+home directory or credentials are written. This limitation does not affect
+AppTest or the scientific arrays. Bare Chromium's profile failure is likewise
+avoided by Playwright's temporary profile. These are cloud smoke-harness
+adaptations, not deployment changes.

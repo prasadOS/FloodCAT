@@ -7,7 +7,7 @@ from . import patna
 from .exports import table_csv
 
 
-def render():
+def render(sidebar=st.sidebar):
     st.title('FloodCAT | REAL — Patna exposure')
     st.caption('Historical WRI Aqueduct V2 · WATCH T100 · WorldPop 2020 · GHSL 2020')
     st.info(patna.DOMAIN)
@@ -18,7 +18,7 @@ def render():
                    'Synthetic demo and REAL — WRI remain available from Data mode.')
         return
     arrays, report, audit, area = bundle
-    threshold = st.sidebar.slider('Flood-depth threshold (m)', 0.0, 8.0, 0.0, 0.25,
+    threshold = sidebar.slider('Flood-depth threshold (m)', 0.0, 8.0, 0.0, 0.25,
                                   help='Only common-valid cells with modeled depth strictly greater than this value contribute to exposure.')
     summary = patna.summarize(bundle, threshold)
     st.warning('Modeled physical exposure screening only. These estimates are not observed flood impacts, '
