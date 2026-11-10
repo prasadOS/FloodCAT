@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "status": "blocked",
-  "ready_for_dashboard": false,
+  "status": "passed",
+  "ready_for_dashboard": true,
   "entries": [
     {
       "id": "Historical_T25",
@@ -68,17 +68,17 @@
         "return_period_years": 25,
         "gcm": "WATCH",
         "year": 1980,
-        "depth_units": "metres (expected, not independently stored in TIFF)"
+        "depth_units": "metres (recipe/catalog; not stored in TIFF)"
       },
       "source_identity": {
-        "verified_against_existing_recipe": false,
-        "asset_id": null,
-        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "verified_against_existing_recipe": true,
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_historical_000000000WATCH_1980_rp00025",
+        "basis": "User-attested recipe and hash binding, official catalog schema compatible; not independently verified task identity",
         "task_level_independently_verified": false
       },
       "exact_reference_grid": true,
       "nonnegative_depth": true,
-      "ready_for_dashboard": false
+      "ready_for_dashboard": true
     },
     {
       "id": "Historical_T50",
@@ -145,17 +145,17 @@
         "return_period_years": 50,
         "gcm": "WATCH",
         "year": 1980,
-        "depth_units": "metres (expected, not independently stored in TIFF)"
+        "depth_units": "metres (recipe/catalog; not stored in TIFF)"
       },
       "source_identity": {
-        "verified_against_existing_recipe": false,
-        "asset_id": null,
-        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "verified_against_existing_recipe": true,
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_historical_000000000WATCH_1980_rp00050",
+        "basis": "User-attested recipe and hash binding, official catalog schema compatible; not independently verified task identity",
         "task_level_independently_verified": false
       },
       "exact_reference_grid": true,
       "nonnegative_depth": true,
-      "ready_for_dashboard": false
+      "ready_for_dashboard": true
     },
     {
       "id": "Historical_T100",
@@ -222,12 +222,12 @@
         "return_period_years": 100,
         "gcm": "WATCH",
         "year": 1980,
-        "depth_units": "metres (expected, not independently stored in TIFF)"
+        "depth_units": "metres (recipe/catalog; not stored in TIFF)"
       },
       "source_identity": {
         "verified_against_existing_recipe": true,
         "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_historical_000000000WATCH_1980_rp00100",
-        "basis": "Existing M2C-1 user-attested recipe, checksums and independent pilot overlap",
+        "basis": "User-attested recipe and hash binding, official catalog schema compatible; not independently verified task identity",
         "task_level_independently_verified": false
       },
       "exact_reference_grid": true,
@@ -299,17 +299,17 @@
         "return_period_years": 250,
         "gcm": "WATCH",
         "year": 1980,
-        "depth_units": "metres (expected, not independently stored in TIFF)"
+        "depth_units": "metres (recipe/catalog; not stored in TIFF)"
       },
       "source_identity": {
-        "verified_against_existing_recipe": false,
-        "asset_id": null,
-        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "verified_against_existing_recipe": true,
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_historical_000000000WATCH_1980_rp00250",
+        "basis": "User-attested recipe and hash binding, official catalog schema compatible; not independently verified task identity",
         "task_level_independently_verified": false
       },
       "exact_reference_grid": true,
       "nonnegative_depth": true,
-      "ready_for_dashboard": false
+      "ready_for_dashboard": true
     },
     {
       "id": "Historical_T500",
@@ -376,17 +376,17 @@
         "return_period_years": 500,
         "gcm": "WATCH",
         "year": 1980,
-        "depth_units": "metres (expected, not independently stored in TIFF)"
+        "depth_units": "metres (recipe/catalog; not stored in TIFF)"
       },
       "source_identity": {
-        "verified_against_existing_recipe": false,
-        "asset_id": null,
-        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "verified_against_existing_recipe": true,
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_historical_000000000WATCH_1980_rp00500",
+        "basis": "User-attested recipe and hash binding, official catalog schema compatible; not independently verified task identity",
         "task_level_independently_verified": false
       },
       "exact_reference_grid": true,
       "nonnegative_depth": true,
-      "ready_for_dashboard": false
+      "ready_for_dashboard": true
     },
     {
       "id": "RCP45_2050_T25",
@@ -451,19 +451,19 @@
         "flood_type": "riverine",
         "climate": "RCP45_2050",
         "return_period_years": 25,
-        "gcm": "HadGEM2-ES (requested, not verified)",
+        "gcm": "HadGEM2-ES (user-attested)",
         "year": 2050,
-        "depth_units": "metres (expected, not independently stored in TIFF)"
+        "depth_units": "metres (recipe/catalog; not stored in TIFF)"
       },
       "source_identity": {
-        "verified_against_existing_recipe": false,
-        "asset_id": null,
-        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "verified_against_existing_recipe": true,
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp4p5_0000HadGEM2-ES_2050_rp00025",
+        "basis": "User-attested recipe and hash binding, official catalog schema compatible; not independently verified task identity",
         "task_level_independently_verified": false
       },
       "exact_reference_grid": true,
       "nonnegative_depth": true,
-      "ready_for_dashboard": false
+      "ready_for_dashboard": true
     },
     {
       "id": "RCP45_2050_T50",
@@ -528,19 +528,19 @@
         "flood_type": "riverine",
         "climate": "RCP45_2050",
         "return_period_years": 50,
-        "gcm": "HadGEM2-ES (requested, not verified)",
+        "gcm": "HadGEM2-ES (user-attested)",
         "year": 2050,
-        "depth_units": "metres (expected, not independently stored in TIFF)"
+        "depth_units": "metres (recipe/catalog; not stored in TIFF)"
       },
       "source_identity": {
-        "verified_against_existing_recipe": false,
-        "asset_id": null,
-        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "verified_against_existing_recipe": true,
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp4p5_0000HadGEM2-ES_2050_rp00050",
+        "basis": "User-attested recipe and hash binding, official catalog schema compatible; not independently verified task identity",
         "task_level_independently_verified": false
       },
       "exact_reference_grid": true,
       "nonnegative_depth": true,
-      "ready_for_dashboard": false
+      "ready_for_dashboard": true
     },
     {
       "id": "RCP45_2050_T100",
@@ -605,19 +605,19 @@
         "flood_type": "riverine",
         "climate": "RCP45_2050",
         "return_period_years": 100,
-        "gcm": "HadGEM2-ES (requested, not verified)",
+        "gcm": "HadGEM2-ES (user-attested)",
         "year": 2050,
-        "depth_units": "metres (expected, not independently stored in TIFF)"
+        "depth_units": "metres (recipe/catalog; not stored in TIFF)"
       },
       "source_identity": {
-        "verified_against_existing_recipe": false,
-        "asset_id": null,
-        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "verified_against_existing_recipe": true,
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp4p5_0000HadGEM2-ES_2050_rp00100",
+        "basis": "User-attested recipe and hash binding, official catalog schema compatible; not independently verified task identity",
         "task_level_independently_verified": false
       },
       "exact_reference_grid": true,
       "nonnegative_depth": true,
-      "ready_for_dashboard": false
+      "ready_for_dashboard": true
     },
     {
       "id": "RCP45_2050_T250",
@@ -682,19 +682,19 @@
         "flood_type": "riverine",
         "climate": "RCP45_2050",
         "return_period_years": 250,
-        "gcm": "HadGEM2-ES (requested, not verified)",
+        "gcm": "HadGEM2-ES (user-attested)",
         "year": 2050,
-        "depth_units": "metres (expected, not independently stored in TIFF)"
+        "depth_units": "metres (recipe/catalog; not stored in TIFF)"
       },
       "source_identity": {
-        "verified_against_existing_recipe": false,
-        "asset_id": null,
-        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "verified_against_existing_recipe": true,
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp4p5_0000HadGEM2-ES_2050_rp00250",
+        "basis": "User-attested recipe and hash binding, official catalog schema compatible; not independently verified task identity",
         "task_level_independently_verified": false
       },
       "exact_reference_grid": true,
       "nonnegative_depth": true,
-      "ready_for_dashboard": false
+      "ready_for_dashboard": true
     },
     {
       "id": "RCP45_2050_T500",
@@ -759,19 +759,19 @@
         "flood_type": "riverine",
         "climate": "RCP45_2050",
         "return_period_years": 500,
-        "gcm": "HadGEM2-ES (requested, not verified)",
+        "gcm": "HadGEM2-ES (user-attested)",
         "year": 2050,
-        "depth_units": "metres (expected, not independently stored in TIFF)"
+        "depth_units": "metres (recipe/catalog; not stored in TIFF)"
       },
       "source_identity": {
-        "verified_against_existing_recipe": false,
-        "asset_id": null,
-        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "verified_against_existing_recipe": true,
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp4p5_0000HadGEM2-ES_2050_rp00500",
+        "basis": "User-attested recipe and hash binding, official catalog schema compatible; not independently verified task identity",
         "task_level_independently_verified": false
       },
       "exact_reference_grid": true,
       "nonnegative_depth": true,
-      "ready_for_dashboard": false
+      "ready_for_dashboard": true
     },
     {
       "id": "RCP85_2050_T25",
@@ -836,19 +836,19 @@
         "flood_type": "riverine",
         "climate": "RCP85_2050",
         "return_period_years": 25,
-        "gcm": "HadGEM2-ES (requested, not verified)",
+        "gcm": "HadGEM2-ES (user-attested)",
         "year": 2050,
-        "depth_units": "metres (expected, not independently stored in TIFF)"
+        "depth_units": "metres (recipe/catalog; not stored in TIFF)"
       },
       "source_identity": {
-        "verified_against_existing_recipe": false,
-        "asset_id": null,
-        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "verified_against_existing_recipe": true,
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp8p5_0000HadGEM2-ES_2050_rp00025",
+        "basis": "User-attested recipe and hash binding, official catalog schema compatible; not independently verified task identity",
         "task_level_independently_verified": false
       },
       "exact_reference_grid": true,
       "nonnegative_depth": true,
-      "ready_for_dashboard": false
+      "ready_for_dashboard": true
     },
     {
       "id": "RCP85_2050_T50",
@@ -913,19 +913,19 @@
         "flood_type": "riverine",
         "climate": "RCP85_2050",
         "return_period_years": 50,
-        "gcm": "HadGEM2-ES (requested, not verified)",
+        "gcm": "HadGEM2-ES (user-attested)",
         "year": 2050,
-        "depth_units": "metres (expected, not independently stored in TIFF)"
+        "depth_units": "metres (recipe/catalog; not stored in TIFF)"
       },
       "source_identity": {
-        "verified_against_existing_recipe": false,
-        "asset_id": null,
-        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "verified_against_existing_recipe": true,
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp8p5_0000HadGEM2-ES_2050_rp00050",
+        "basis": "User-attested recipe and hash binding, official catalog schema compatible; not independently verified task identity",
         "task_level_independently_verified": false
       },
       "exact_reference_grid": true,
       "nonnegative_depth": true,
-      "ready_for_dashboard": false
+      "ready_for_dashboard": true
     },
     {
       "id": "RCP85_2050_T100",
@@ -990,19 +990,19 @@
         "flood_type": "riverine",
         "climate": "RCP85_2050",
         "return_period_years": 100,
-        "gcm": "HadGEM2-ES (requested, not verified)",
+        "gcm": "HadGEM2-ES (user-attested)",
         "year": 2050,
-        "depth_units": "metres (expected, not independently stored in TIFF)"
+        "depth_units": "metres (recipe/catalog; not stored in TIFF)"
       },
       "source_identity": {
-        "verified_against_existing_recipe": false,
-        "asset_id": null,
-        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "verified_against_existing_recipe": true,
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp8p5_0000HadGEM2-ES_2050_rp00100",
+        "basis": "User-attested recipe and hash binding, official catalog schema compatible; not independently verified task identity",
         "task_level_independently_verified": false
       },
       "exact_reference_grid": true,
       "nonnegative_depth": true,
-      "ready_for_dashboard": false
+      "ready_for_dashboard": true
     },
     {
       "id": "RCP85_2050_T250",
@@ -1067,19 +1067,19 @@
         "flood_type": "riverine",
         "climate": "RCP85_2050",
         "return_period_years": 250,
-        "gcm": "HadGEM2-ES (requested, not verified)",
+        "gcm": "HadGEM2-ES (user-attested)",
         "year": 2050,
-        "depth_units": "metres (expected, not independently stored in TIFF)"
+        "depth_units": "metres (recipe/catalog; not stored in TIFF)"
       },
       "source_identity": {
-        "verified_against_existing_recipe": false,
-        "asset_id": null,
-        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "verified_against_existing_recipe": true,
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp8p5_0000HadGEM2-ES_2050_rp00250",
+        "basis": "User-attested recipe and hash binding, official catalog schema compatible; not independently verified task identity",
         "task_level_independently_verified": false
       },
       "exact_reference_grid": true,
       "nonnegative_depth": true,
-      "ready_for_dashboard": false
+      "ready_for_dashboard": true
     },
     {
       "id": "RCP85_2050_T500",
@@ -1144,37 +1144,22 @@
         "flood_type": "riverine",
         "climate": "RCP85_2050",
         "return_period_years": 500,
-        "gcm": "HadGEM2-ES (requested, not verified)",
+        "gcm": "HadGEM2-ES (user-attested)",
         "year": 2050,
-        "depth_units": "metres (expected, not independently stored in TIFF)"
+        "depth_units": "metres (recipe/catalog; not stored in TIFF)"
       },
       "source_identity": {
-        "verified_against_existing_recipe": false,
-        "asset_id": null,
-        "basis": "Filename label only; no matching export recipe or task/source metadata supplied",
+        "verified_against_existing_recipe": true,
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp8p5_0000HadGEM2-ES_2050_rp00500",
+        "basis": "User-attested recipe and hash binding, official catalog schema compatible; not independently verified task identity",
         "task_level_independently_verified": false
       },
       "exact_reference_grid": true,
       "nonnegative_depth": true,
-      "ready_for_dashboard": false
+      "ready_for_dashboard": true
     }
   ],
-  "blockers": [
-    "Historical_T25: source selection/units unverified",
-    "Historical_T50: source selection/units unverified",
-    "Historical_T250: source selection/units unverified",
-    "Historical_T500: source selection/units unverified",
-    "RCP45_2050_T25: source selection/units unverified",
-    "RCP45_2050_T50: source selection/units unverified",
-    "RCP45_2050_T100: source selection/units unverified",
-    "RCP45_2050_T250: source selection/units unverified",
-    "RCP45_2050_T500: source selection/units unverified",
-    "RCP85_2050_T25: source selection/units unverified",
-    "RCP85_2050_T50: source selection/units unverified",
-    "RCP85_2050_T100: source selection/units unverified",
-    "RCP85_2050_T250: source selection/units unverified",
-    "RCP85_2050_T500: source selection/units unverified"
-  ],
+  "blockers": [],
   "ordering_diagnostic_only": [
     {
       "lower": "Historical_T25",
@@ -1253,5 +1238,5 @@
   "candidate_common_cells": 6113,
   "original_common_cells": 6113,
   "processing_performed": false,
-  "note": "No scenario exposure published until source identities are evidenced; CMIP5/RCP is not CMIP6/SSP. Missing GEE task provenance is disclosed separately from absent source-selection evidence."
+  "note": "Source selections are user-attested and catalog-compatible; completed tasks not independently verified. CMIP5/RCP is not CMIP6/SSP. Missing GEE task provenance is disclosed separately from absent source-selection evidence."
 }

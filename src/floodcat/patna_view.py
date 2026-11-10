@@ -7,6 +7,7 @@ import plotly.express as px
 import streamlit as st
 
 from . import patna, wri
+from . import scenarios
 from .exports import table_csv
 from .geographic_map import render_map
 from .patna_analysis import (MODULES, depth_bands, weighted_cells, screening_summary, priority_cells,
@@ -56,7 +57,7 @@ def band_charts(rows):
 
 def vulnerability_screening(bundle, threshold):
     st.subheader(SCREENING_LABEL)
-    indicators = screening_summary(bundle, threshold)
+    indicators = {'Scenario ID':bundle[1].get('scenario_id','Historical_T100'),'Source asset':bundle[1].get('asset_id',wri.IMAGE),**screening_summary(bundle, threshold)}
     st.caption('Deeper-water population exposure below uses fixed strict depth thresholds, independent of the sidebar selection.')
     for column, t in zip(st.columns(3), (1., 2., 5.)):
         column.metric(f'Population >{t:g} m (people)', f"{indicators[f'Population at depth >{t:g} m (people)']:,.0f}")
@@ -85,7 +86,7 @@ def vulnerability_screening(bundle, threshold):
             'Estimated population (people/cell)': st.column_config.NumberColumn(format='%.0f'),
             POP_WEIGHT_LABEL: st.column_config.NumberColumn(format='%.1f')})
         st.download_button('Download raster-cell priorities CSV',
-                           table_csv([{'Screening definition': SCREENING_LABEL, 'Depth strictly greater than (m)': threshold,
+                           table_csv([{'Scenario ID':bundle[1].get('scenario_id','Historical_T100'),'Screening definition': SCREENING_LABEL, 'Depth strictly greater than (m)': threshold,
                                        'Domain': 'Common-data footprint; not all of Patna district.', **row} for row in rows]),
                            'patna_cell_priorities.csv', 'text/csv')
     else:
@@ -103,13 +104,14 @@ def vulnerability_screening(bundle, threshold):
 def methods(bundle):
     _, report, audit, _ = bundle
     st.subheader('Data & methods')
+    st.caption('Selected asset: '+report.get('asset_id',wri.COLLECTION+'/'+wri.IMAGE))
     st.markdown('**Analysis domain.** Complete common WRI cells in the uploaded buffered bounding rectangle, '
                 '**not all of Patna district**. No district polygon is bundled. Joint coverage is by '
                 'valid uploaded hazard-cell count, not area or population. Excluded flooded cells have '
                 'unknown joint exposure; their quantities are not redistributed. Coverage selection may '
                 'bias regional interpretation. Valid zero is retained; partial, missing, NaN and '
                 'geometrically uncertain cells never become zero exposure.\n\n'
-                '**Hazard.** WRI Aqueduct V2 — WATCH T100 (Aqueduct Floods Hazard Maps V2), '
+                '**Hazard.** WRI Aqueduct Floods Hazard Maps V2; climate, model and return period are identified by the selected source asset. '
                 '(100-year return period), inundation depth in metres. This is modeled screening, '
                 'not an observed event. Flood protection is not represented and backwater effects are omitted.\n\n'
                 '**Exposure.** WorldPop / University of Southampton, legacy India 2020 population '
@@ -134,7 +136,7 @@ def methods(bundle):
                 '**Uncertainty.** User-supplied export recipe and bitwise pilot overlap checks support '
                 'source identity; export task IDs/times and upstream GHSL NaN cause remain unverified. '
                 'Sampled geometric convergence is not a global accuracy bound. Exposure is not damage '
-                'or monetary loss. T50/T500 and future RCP rasters are not available in this bundle.')
+                'or monetary loss. Scenario selections are user-attested; completed-task identities remain independently unverified.')
     with st.expander('Hazard, exposure, vulnerability and risk · definitions & formulas'):
         st.markdown('**Hazard** is the potentially damaging flood process; here, a modeled depth scenario. '
                     '**Exposure** is people/assets located in hazard-prone cells. **Vulnerability**, per '
@@ -173,15 +175,19 @@ def methods(bundle):
 
 
 def render(sidebar=st.sidebar):
+    climate = sidebar.selectbox('Climate scenario', tuple(scenarios.CLIMATES), key='real_climate')
+    period = sidebar.selectbox('Return period (years)', scenarios.PERIODS, index=2, key='real_period')
     section = sidebar.radio('Module', MODULES)
-    threshold = sidebar.slider('Flood-depth threshold (m)', 0.0, 8.0, 0.0, 0.25,
+    threshold = sidebar.slider('Flood-depth threshold (m)', 0.0, 15.0, 0.0, 0.25,
                                help='Strict depth > threshold. Exposure and area use complete common cells only.')
-    sidebar.caption('Historical 100-year riverine flood scenario · WorldPop 2020 · GHSL 2020')
+    sidebar.caption('Fixed WorldPop/GHSL 2020 · RCP is CMIP5-era, not CMIP6/SSP')
     st.title('Patna | Flood exposure')
-    st.caption('Historical 100-year riverine flood scenario · WRI Aqueduct V2 — WATCH T100 · Modeled screening')
+    st.caption(f'{climate} · T{period} · WRI Aqueduct V2 riverine flood scenario · depth > {threshold:g} m · Modeled screening')
     st.caption('Common-data footprint; not all of Patna district.')
     try:
-        bundle = patna.load_bundle()
+        catalog, scenario_report = scenarios.load_scenarios()
+        scenario_id = f'{scenarios.CLIMATES[climate]}_T{period}'
+        bundle = catalog[scenario_id]
     except patna.BundleError as error:
         st.warning(f'{error}. Restore the verified processed bundle and checksum manifest; no exposure results are shown.')
         pilot_reference(threshold)
@@ -211,27 +217,60 @@ def render(sidebar=st.sidebar):
         band_charts(rows)
         with st.expander('Detailed depth-band values'):
             st.dataframe(pd.DataFrame(rows), hide_index=True, width='stretch')
-        st.download_button('Download depth-band CSV', table_csv(rows), 'patna_common_depth_bands.csv', 'text/csv')
+        st.download_button('Download depth-band CSV', table_csv([{'Scenario ID':scenario_id,'Exposure year':2020,**row} for row in rows]), 'patna_common_depth_bands.csv', 'text/csv')
     elif section == 'Vulnerability':
         vulnerability_screening(bundle, threshold)
     elif section == 'Compare':
-        st.subheader('T100 threshold comparison')
-        st.caption('One verified historical hazard raster; thresholds are screening choices, not separate events or climate scenarios.')
-        comparisons = [patna.summarize(bundle, t) for t in sorted({0., 1., 2., 5., threshold})]
-        frame = pd.DataFrame(comparisons)
-        st.dataframe(frame[['Depth strictly greater than (m)', 'Estimated exposed population (people)',
-                            'Exposed built-up surface (m²)', 'Common flooded area (km²)', 'Common flooded cells',
-                            'Excluded flooded cells (incomplete joint coverage)']], hide_index=True, width='stretch')
-        st.plotly_chart(px.bar(frame, x='Depth strictly greater than (m)', y='Estimated exposed population (people)',
-                               color_discrete_sequence=['#168078']), width='stretch')
-        st.caption('Future genuine T50/T500/RCP4.5/RCP8.5 comparisons require separately verified compatible inputs.')
+        st.subheader('Scenario comparison · fixed 2020 exposure')
+        choice=st.radio('Comparison', ['Return periods', 'T100 climates', 'Two scenarios', 'Threshold sensitivity'],horizontal=True)
+        if choice=='Return periods':
+            ids=[f'{scenarios.CLIMATES[climate]}_T{p}' for p in scenarios.PERIODS]
+        elif choice=='T100 climates':
+            ids=[f'{c}_T100' for c in scenarios.CLIMATES.values()]
+        elif choice=='Two scenarios':
+            left,right=st.columns(2)
+            first=left.selectbox('Reference scenario',tuple(catalog),index=2)
+            second=right.selectbox('Comparison scenario',tuple(catalog),index=7)
+            ids=[first,second]
+        else:
+            ids=[scenario_id]
+        rows=([scenarios.comparison_row(catalog[i],threshold) for i in ids] if choice!='Threshold sensitivity' else
+              [scenarios.comparison_row(bundle,t) for t in sorted({0.,1.,2.,5.,threshold})])
+        frame=pd.DataFrame(rows)
+        columns=['Scenario ID','Depth strictly greater than (m)','Estimated exposed population (people)',
+                 'Exposed built-up surface (m²)','Common flooded area (km²)','Common flooded cells',
+                 'Excluded flooded cells (incomplete joint coverage)',POP_WEIGHT_LABEL,BUILT_WEIGHT_LABEL]
+        st.dataframe(frame[columns],hide_index=True,width='stretch')
+        st.plotly_chart(px.bar(frame,x='Depth strictly greater than (m)' if choice=='Threshold sensitivity' else 'Scenario ID',
+                              y='Estimated exposed population (people)',color_discrete_sequence=['#168078']),width='stretch')
+        if len(rows)>=2:
+            changes=scenarios.differences(rows[0],rows[-1],['Estimated exposed population (people)',
+                       'Exposed built-up surface (m²)','Common flooded area (km²)',POP_WEIGHT_LABEL,BUILT_WEIGHT_LABEL])
+            with st.expander('Differences · last compared against first'):
+                st.dataframe(pd.DataFrame(changes),hide_index=True,width='stretch')
+                st.caption('Percentage differences are unavailable when the reference is zero.')
+                st.download_button('Download differences CSV',table_csv(changes),'patna_differences.csv','text/csv')
+        st.download_button('Download scenario comparison CSV',table_csv(rows),'patna_scenario_comparison.csv','text/csv')
+        st.caption(f'Identical comparison footprint: {scenario_report["common_cells"]:,} cells / '
+                   f'{scenario_report["common_area_km2"]:,.2f} km². Excluded flooded cells are reported separately for each scenario. '
+                   'WorldPop and GHSL remain at 2020. Differences are not solely attributable to climate change; '
+                   'Historical WATCH and future HadGEM2-ES have different model/reference assumptions. No annualization.')
+        if choice=='Two scenarios' and st.checkbox('Show comparable Flood Depth maps'):
+            for column,i in zip(st.columns(2),ids):
+                with column:
+                    st.caption(i)
+                    x,r,_,_=catalog[i]
+                    render_map(x['depth_m'],x['valid_depth'],x['common_valid'],r['target_grid']['transform'],height=350)
     else:
         methods(bundle)
+        st.markdown('**Multi-scenario evidence:** source selections are user-attested and compatible with the official catalog schema; completed GEE tasks and live per-asset properties are not independently verified. All 15 native grids match exactly. The fixed all-scenario common footprint reuses the unchanged audited extensive exposure arrays, with no runtime resampling. RCP4.5/8.5 are CMIP5-era; exposure stays fixed at 2020.')
+        with st.expander('Scenario provenance and preprocessing record'):
+            st.json(scenario_report)
         pilot_reference(threshold)
     with st.expander('Export summaries', expanded=section == 'Data & methods'):
-        st.download_button('Download current exposure CSV', table_csv([s]), 'patna_common_exposure.csv', 'text/csv')
+        st.download_button('Download current exposure CSV', table_csv([scenarios.comparison_row(bundle,threshold)]), 'patna_common_exposure.csv', 'text/csv')
         st.download_button('Download threshold comparison CSV',
-                           table_csv([patna.summarize(bundle, t) for t in (0., 1., 2., 5.)]),
+                           table_csv([scenarios.comparison_row(bundle, t) for t in (0., 1., 2., 5.)]),
                            'patna_common_thresholds.csv', 'text/csv')
     st.caption('Estimated physical exposure · not observed impacts, measured damage or financial loss. '
                'Display values are rounded; CSVs retain numerical precision.')

@@ -11,17 +11,17 @@ if AVAILABLE:
 
 @unittest.skipUnless(AVAILABLE,'Optional native scientific dependencies required')
 class TestMultiscenarioInputs(unittest.TestCase):
-    def test_actual_report_is_reproducible_and_blocked(self):
+    def test_actual_report_is_reproducible_and_source_supported(self):
         expected=json.loads(Path('config/patna_multiscenario_validation.json').read_text())
         actual=validate()
         self.assertEqual(actual,expected)
         self.assertEqual(len(actual['entries']),15)
-        self.assertEqual(len(actual['blockers']),14)
-        self.assertFalse(actual['ready_for_dashboard'])
+        self.assertEqual(len(actual['blockers']),0)
+        self.assertTrue(actual['ready_for_dashboard'])
         self.assertEqual(actual['candidate_common_cells'],6113)
         self.assertTrue(actual['exposure_reuse_geometry_eligible'])
         self.assertFalse(actual['processing_performed'])
-        self.assertEqual(sum(e['source_identity']['verified_against_existing_recipe'] for e in actual['entries']),1)
+        self.assertEqual(sum(e['source_identity']['verified_against_existing_recipe'] for e in actual['entries']),15)
 
     def test_renamed_identical_bytes_do_not_prove_new_source(self):
         provenance=json.loads(Path('config/patna_upload_provenance.json').read_text())

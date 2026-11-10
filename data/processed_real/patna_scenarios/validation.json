@@ -1,0 +1,1174 @@
+{
+  "schema_version": 1,
+  "scenarios": [
+    {
+      "id": "Historical_T25",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_historical_000000000WATCH_1980_rp00025",
+      "climate": "Historical",
+      "return_period": 25,
+      "summary_at_0m": {
+        "Analysis domain": "Complete common WRI cells in the uploaded buffered bounding rectangle; NOT all of Patna district",
+        "Depth strictly greater than (m)": 0.0,
+        "Estimated exposed population (people)": 2520125.329522544,
+        "Exposed built-up surface (m\u00b2)": 27550154.316971727,
+        "Common flooded area (km\u00b2)": 1446.2091071832403,
+        "Common flooded cells": 1869,
+        "Uploaded hazard flooded cells": 4692,
+        "Excluded flooded cells (incomplete joint coverage)": 2823,
+        "Common cells": 6113,
+        "Valid uploaded hazard cells": 10920,
+        "Joint coverage (% of valid hazard cells)": 55.97985347985348,
+        "Common domain area (km\u00b2)": 4730.679260130684,
+        "Interpretation": "Modeled screening exposure; not observed impacts, damage or monetary loss"
+      },
+      "bands_at_0m": [
+        {
+          "Depth band": ">0\u20131 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 1679,
+          "Area (km\u00b2)": 1299.292138334045,
+          "Estimated people": 2180785.67356981,
+          "Built-up surface (m\u00b2)": 22697170.150945347
+        },
+        {
+          "Depth band": ">1\u20132 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 45,
+          "Area (km\u00b2)": 34.795292436107324,
+          "Estimated people": 52286.42520359507,
+          "Built-up surface (m\u00b2)": 915016.2520505926
+        },
+        {
+          "Depth band": ">2\u20135 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 145,
+          "Area (km\u00b2)": 112.12167641308814,
+          "Estimated people": 287053.2307491388,
+          "Built-up surface (m\u00b2)": 3937967.9139757864
+        },
+        {
+          "Depth band": ">5 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 0,
+          "Area (km\u00b2)": 0.0,
+          "Estimated people": 0.0,
+          "Built-up surface (m\u00b2)": 0.0
+        }
+      ],
+      "screening_at_0m": {
+        "Screening definition": "Depth-weighted exposure screening \u2014 not a validated vulnerability model.",
+        "Depth strictly greater than (m)": 0.0,
+        "Depth-weighted population (person-metres)": 1966772.7137516462,
+        "Depth-weighted built-up surface (m\u00b2\u00b7m)": 24145326.107346747,
+        "Population at depth >1 m (people)": 339339.6559527339,
+        "Population at depth >2 m (people)": 287053.2307491388,
+        "Population at depth >5 m (people)": 0.0,
+        "Domain": "Common-data footprint; not all of Patna district.",
+        "Built-up indicator interpretation": "m\u00b2\u00b7m (dimensionally m\u00b3); not flood volume or building damage",
+        "Not estimated": "Vulnerability, casualties, displacement, damage, monetary loss or annualized impacts"
+      }
+    },
+    {
+      "id": "Historical_T50",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_historical_000000000WATCH_1980_rp00050",
+      "climate": "Historical",
+      "return_period": 50,
+      "summary_at_0m": {
+        "Analysis domain": "Complete common WRI cells in the uploaded buffered bounding rectangle; NOT all of Patna district",
+        "Depth strictly greater than (m)": 0.0,
+        "Estimated exposed population (people)": 2674730.5060012946,
+        "Exposed built-up surface (m\u00b2)": 29956045.724021558,
+        "Common flooded area (km\u00b2)": 1547.5656085595208,
+        "Common flooded cells": 2000,
+        "Uploaded hazard flooded cells": 4972,
+        "Excluded flooded cells (incomplete joint coverage)": 2972,
+        "Common cells": 6113,
+        "Valid uploaded hazard cells": 10920,
+        "Joint coverage (% of valid hazard cells)": 55.97985347985348,
+        "Common domain area (km\u00b2)": 4730.679260130684,
+        "Interpretation": "Modeled screening exposure; not observed impacts, damage or monetary loss"
+      },
+      "bands_at_0m": [
+        {
+          "Depth band": ">0\u20131 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 1765,
+          "Area (km\u00b2)": 1365.8484814986211,
+          "Estimated people": 2273864.80705381,
+          "Built-up surface (m\u00b2)": 24364251.377573043
+        },
+        {
+          "Depth band": ">1\u20132 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 73,
+          "Area (km\u00b2)": 56.447168034102866,
+          "Estimated people": 95581.47183942626,
+          "Built-up surface (m\u00b2)": 1413269.1095739393
+        },
+        {
+          "Depth band": ">2\u20135 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 162,
+          "Area (km\u00b2)": 125.26995902679693,
+          "Estimated people": 305284.2271080585,
+          "Built-up surface (m\u00b2)": 4178525.236874574
+        },
+        {
+          "Depth band": ">5 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 0,
+          "Area (km\u00b2)": 0.0,
+          "Estimated people": 0.0,
+          "Built-up surface (m\u00b2)": 0.0
+        }
+      ],
+      "screening_at_0m": {
+        "Screening definition": "Depth-weighted exposure screening \u2014 not a validated vulnerability model.",
+        "Depth strictly greater than (m)": 0.0,
+        "Depth-weighted population (person-metres)": 2444463.1622558194,
+        "Depth-weighted built-up surface (m\u00b2\u00b7m)": 30092014.922857568,
+        "Population at depth >1 m (people)": 400865.6989474848,
+        "Population at depth >2 m (people)": 305284.2271080585,
+        "Population at depth >5 m (people)": 0.0,
+        "Domain": "Common-data footprint; not all of Patna district.",
+        "Built-up indicator interpretation": "m\u00b2\u00b7m (dimensionally m\u00b3); not flood volume or building damage",
+        "Not estimated": "Vulnerability, casualties, displacement, damage, monetary loss or annualized impacts"
+      }
+    },
+    {
+      "id": "Historical_T100",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_historical_000000000WATCH_1980_rp00100",
+      "climate": "Historical",
+      "return_period": 100,
+      "summary_at_0m": {
+        "Analysis domain": "Complete common WRI cells in the uploaded buffered bounding rectangle; NOT all of Patna district",
+        "Depth strictly greater than (m)": 0.0,
+        "Estimated exposed population (people)": 2840320.5021073623,
+        "Exposed built-up surface (m\u00b2)": 32216343.94410771,
+        "Common flooded area (km\u00b2)": 1637.3100663957925,
+        "Common flooded cells": 2116,
+        "Uploaded hazard flooded cells": 5217,
+        "Excluded flooded cells (incomplete joint coverage)": 3101,
+        "Common cells": 6113,
+        "Valid uploaded hazard cells": 10920,
+        "Joint coverage (% of valid hazard cells)": 55.97985347985348,
+        "Common domain area (km\u00b2)": 4730.679260130684,
+        "Interpretation": "Modeled screening exposure; not observed impacts, damage or monetary loss"
+      },
+      "bands_at_0m": [
+        {
+          "Depth band": ">0\u20131 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 1852,
+          "Area (km\u00b2)": 1433.1695882036518,
+          "Estimated people": 2401729.498317784,
+          "Built-up surface (m\u00b2)": 26049867.356222797
+        },
+        {
+          "Depth band": ">1\u20132 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 81,
+          "Area (km\u00b2)": 62.635852409444894,
+          "Estimated people": 107185.24159170418,
+          "Built-up surface (m\u00b2)": 1506934.1499399769
+        },
+        {
+          "Depth band": ">2\u20135 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 128,
+          "Area (km\u00b2)": 99.02357797163596,
+          "Estimated people": 185576.1167623904,
+          "Built-up surface (m\u00b2)": 2490401.480433043
+        },
+        {
+          "Depth band": ">5 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 55,
+          "Area (km\u00b2)": 42.48104781106,
+          "Estimated people": 145829.6454354833,
+          "Built-up surface (m\u00b2)": 2169140.9575118953
+        }
+      ],
+      "screening_at_0m": {
+        "Screening definition": "Depth-weighted exposure screening \u2014 not a validated vulnerability model.",
+        "Depth strictly greater than (m)": 0.0,
+        "Depth-weighted population (person-metres)": 2923557.7298654984,
+        "Depth-weighted built-up surface (m\u00b2\u00b7m)": 35969112.45142127,
+        "Population at depth >1 m (people)": 438591.0037895779,
+        "Population at depth >2 m (people)": 331405.76219787373,
+        "Population at depth >5 m (people)": 145829.6454354833,
+        "Domain": "Common-data footprint; not all of Patna district.",
+        "Built-up indicator interpretation": "m\u00b2\u00b7m (dimensionally m\u00b3); not flood volume or building damage",
+        "Not estimated": "Vulnerability, casualties, displacement, damage, monetary loss or annualized impacts"
+      }
+    },
+    {
+      "id": "Historical_T250",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_historical_000000000WATCH_1980_rp00250",
+      "climate": "Historical",
+      "return_period": 250,
+      "summary_at_0m": {
+        "Analysis domain": "Complete common WRI cells in the uploaded buffered bounding rectangle; NOT all of Patna district",
+        "Depth strictly greater than (m)": 0.0,
+        "Estimated exposed population (people)": 3028208.780519053,
+        "Exposed built-up surface (m\u00b2)": 34802167.00839313,
+        "Common flooded area (km\u00b2)": 1743.3073364362137,
+        "Common flooded cells": 2253,
+        "Uploaded hazard flooded cells": 5511,
+        "Excluded flooded cells (incomplete joint coverage)": 3258,
+        "Common cells": 6113,
+        "Valid uploaded hazard cells": 10920,
+        "Joint coverage (% of valid hazard cells)": 55.97985347985348,
+        "Common domain area (km\u00b2)": 4730.679260130684,
+        "Interpretation": "Modeled screening exposure; not observed impacts, damage or monetary loss"
+      },
+      "bands_at_0m": [
+        {
+          "Depth band": ">0\u20131 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 1571,
+          "Area (km\u00b2)": 1215.7863080723037,
+          "Estimated people": 1968275.3734587817,
+          "Built-up surface (m\u00b2)": 22710036.353175443
+        },
+        {
+          "Depth band": ">1\u20132 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 458,
+          "Area (km\u00b2)": 354.30895975758085,
+          "Estimated people": 680968.9345829157,
+          "Built-up surface (m\u00b2)": 6881837.90782622
+        },
+        {
+          "Depth band": ">2\u20135 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 150,
+          "Area (km\u00b2)": 116.03886443940135,
+          "Estimated people": 182994.77259362643,
+          "Built-up surface (m\u00b2)": 2055461.6765633244
+        },
+        {
+          "Depth band": ">5 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 74,
+          "Area (km\u00b2)": 57.17320416692801,
+          "Estimated people": 195969.69988372893,
+          "Built-up surface (m\u00b2)": 3154831.070828143
+        }
+      ],
+      "screening_at_0m": {
+        "Screening definition": "Depth-weighted exposure screening \u2014 not a validated vulnerability model.",
+        "Depth strictly greater than (m)": 0.0,
+        "Depth-weighted population (person-metres)": 3560769.0542763723,
+        "Depth-weighted built-up surface (m\u00b2\u00b7m)": 43675660.49748015,
+        "Population at depth >1 m (people)": 1059933.4070602711,
+        "Population at depth >2 m (people)": 378964.47247735533,
+        "Population at depth >5 m (people)": 195969.69988372893,
+        "Domain": "Common-data footprint; not all of Patna district.",
+        "Built-up indicator interpretation": "m\u00b2\u00b7m (dimensionally m\u00b3); not flood volume or building damage",
+        "Not estimated": "Vulnerability, casualties, displacement, damage, monetary loss or annualized impacts"
+      }
+    },
+    {
+      "id": "Historical_T500",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_historical_000000000WATCH_1980_rp00500",
+      "climate": "Historical",
+      "return_period": 500,
+      "summary_at_0m": {
+        "Analysis domain": "Complete common WRI cells in the uploaded buffered bounding rectangle; NOT all of Patna district",
+        "Depth strictly greater than (m)": 0.0,
+        "Estimated exposed population (people)": 3196879.9530624086,
+        "Exposed built-up surface (m\u00b2)": 37180472.36349975,
+        "Common flooded area (km\u00b2)": 1824.538231231672,
+        "Common flooded cells": 2358,
+        "Uploaded hazard flooded cells": 5725,
+        "Excluded flooded cells (incomplete joint coverage)": 3367,
+        "Common cells": 6113,
+        "Valid uploaded hazard cells": 10920,
+        "Joint coverage (% of valid hazard cells)": 55.97985347985348,
+        "Common domain area (km\u00b2)": 4730.679260130684,
+        "Interpretation": "Modeled screening exposure; not observed impacts, damage or monetary loss"
+      },
+      "bands_at_0m": [
+        {
+          "Depth band": ">0\u20131 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 1599,
+          "Area (km\u00b2)": 1237.4542398495526,
+          "Estimated people": 2023978.3915143986,
+          "Built-up surface (m\u00b2)": 23982578.754195713
+        },
+        {
+          "Depth band": ">1\u20132 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 514,
+          "Area (km\u00b2)": 397.6352558670062,
+          "Estimated people": 768237.892152533,
+          "Built-up surface (m\u00b2)": 7624897.947192097
+        },
+        {
+          "Depth band": ">2\u20135 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 169,
+          "Area (km\u00b2)": 130.73006459702586,
+          "Estimated people": 204041.4909348212,
+          "Built-up surface (m\u00b2)": 2364671.303454936
+        },
+        {
+          "Depth band": ">5 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 76,
+          "Area (km\u00b2)": 58.718670918087405,
+          "Estimated people": 200622.17846065568,
+          "Built-up surface (m\u00b2)": 3208324.3586570094
+        }
+      ],
+      "screening_at_0m": {
+        "Screening definition": "Depth-weighted exposure screening \u2014 not a validated vulnerability model.",
+        "Depth strictly greater than (m)": 0.0,
+        "Depth-weighted population (person-metres)": 4047916.5310952975,
+        "Depth-weighted built-up surface (m\u00b2\u00b7m)": 49616384.72772964,
+        "Population at depth >1 m (people)": 1172901.56154801,
+        "Population at depth >2 m (people)": 404663.66939547687,
+        "Population at depth >5 m (people)": 200622.17846065568,
+        "Domain": "Common-data footprint; not all of Patna district.",
+        "Built-up indicator interpretation": "m\u00b2\u00b7m (dimensionally m\u00b3); not flood volume or building damage",
+        "Not estimated": "Vulnerability, casualties, displacement, damage, monetary loss or annualized impacts"
+      }
+    },
+    {
+      "id": "RCP45_2050_T25",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp4p5_0000HadGEM2-ES_2050_rp00025",
+      "climate": "RCP45_2050",
+      "return_period": 25,
+      "summary_at_0m": {
+        "Analysis domain": "Complete common WRI cells in the uploaded buffered bounding rectangle; NOT all of Patna district",
+        "Depth strictly greater than (m)": 0.0,
+        "Estimated exposed population (people)": 2976482.4229718815,
+        "Exposed built-up surface (m\u00b2)": 34117578.16873524,
+        "Common flooded area (km\u00b2)": 1741.9055704510292,
+        "Common flooded cells": 2251,
+        "Uploaded hazard flooded cells": 5356,
+        "Excluded flooded cells (incomplete joint coverage)": 3105,
+        "Common cells": 6113,
+        "Valid uploaded hazard cells": 10920,
+        "Joint coverage (% of valid hazard cells)": 55.97985347985348,
+        "Common domain area (km\u00b2)": 4730.679260130684,
+        "Interpretation": "Modeled screening exposure; not observed impacts, damage or monetary loss"
+      },
+      "bands_at_0m": [
+        {
+          "Depth band": ">0\u20131 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 1354,
+          "Area (km\u00b2)": 1047.6405991399483,
+          "Estimated people": 1785989.7943537005,
+          "Built-up surface (m\u00b2)": 21278369.24056171
+        },
+        {
+          "Depth band": ">1\u20132 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 689,
+          "Area (km\u00b2)": 533.4190646120074,
+          "Estimated people": 831875.3616806149,
+          "Built-up surface (m\u00b2)": 7777804.7764898455
+        },
+        {
+          "Depth band": ">2\u20135 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 152,
+          "Area (km\u00b2)": 117.5928633637903,
+          "Estimated people": 212364.80455386895,
+          "Built-up surface (m\u00b2)": 2892263.194171796
+        },
+        {
+          "Depth band": ">5 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 56,
+          "Area (km\u00b2)": 43.253043335283195,
+          "Estimated people": 146252.46238369733,
+          "Built-up surface (m\u00b2)": 2169140.9575118953
+        }
+      ],
+      "screening_at_0m": {
+        "Screening definition": "Depth-weighted exposure screening \u2014 not a validated vulnerability model.",
+        "Depth strictly greater than (m)": 0.0,
+        "Depth-weighted population (person-metres)": 3511130.3333167043,
+        "Depth-weighted built-up surface (m\u00b2\u00b7m)": 41267181.36440204,
+        "Population at depth >1 m (people)": 1190492.6286181812,
+        "Population at depth >2 m (people)": 358617.2669375663,
+        "Population at depth >5 m (people)": 146252.46238369733,
+        "Domain": "Common-data footprint; not all of Patna district.",
+        "Built-up indicator interpretation": "m\u00b2\u00b7m (dimensionally m\u00b3); not flood volume or building damage",
+        "Not estimated": "Vulnerability, casualties, displacement, damage, monetary loss or annualized impacts"
+      }
+    },
+    {
+      "id": "RCP45_2050_T50",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp4p5_0000HadGEM2-ES_2050_rp00050",
+      "climate": "RCP45_2050",
+      "return_period": 50,
+      "summary_at_0m": {
+        "Analysis domain": "Complete common WRI cells in the uploaded buffered bounding rectangle; NOT all of Patna district",
+        "Depth strictly greater than (m)": 0.0,
+        "Estimated exposed population (people)": 3143950.772400161,
+        "Exposed built-up surface (m\u00b2)": 36398014.94261915,
+        "Common flooded area (km\u00b2)": 1834.750782609182,
+        "Common flooded cells": 2371,
+        "Uploaded hazard flooded cells": 5567,
+        "Excluded flooded cells (incomplete joint coverage)": 3196,
+        "Common cells": 6113,
+        "Valid uploaded hazard cells": 10920,
+        "Joint coverage (% of valid hazard cells)": 55.97985347985348,
+        "Common domain area (km\u00b2)": 4730.679260130684,
+        "Interpretation": "Modeled screening exposure; not observed impacts, damage or monetary loss"
+      },
+      "bands_at_0m": [
+        {
+          "Depth band": ">0\u20131 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 930,
+          "Area (km\u00b2)": 719.3604112743989,
+          "Estimated people": 1334150.2691813207,
+          "Built-up surface (m\u00b2)": 18558639.430586092
+        },
+        {
+          "Depth band": ">1\u20132 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 1215,
+          "Area (km\u00b2)": 940.6225388354843,
+          "Estimated people": 1431056.8959473958,
+          "Built-up surface (m\u00b2)": 12654879.128732057
+        },
+        {
+          "Depth band": ">2\u20135 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 154,
+          "Area (km\u00b2)": 119.13972913642719,
+          "Estimated people": 186951.62436215518,
+          "Built-up surface (m\u00b2)": 2145920.386241018
+        },
+        {
+          "Depth band": ">5 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 72,
+          "Area (km\u00b2)": 55.62810336287151,
+          "Estimated people": 191791.98290928933,
+          "Built-up surface (m\u00b2)": 3038575.997059987
+        }
+      ],
+      "screening_at_0m": {
+        "Screening definition": "Depth-weighted exposure screening \u2014 not a validated vulnerability model.",
+        "Depth strictly greater than (m)": 0.0,
+        "Depth-weighted population (person-metres)": 4061859.222984977,
+        "Depth-weighted built-up surface (m\u00b2\u00b7m)": 47698146.67184266,
+        "Population at depth >1 m (people)": 1809800.5032188403,
+        "Population at depth >2 m (people)": 378743.6072714445,
+        "Population at depth >5 m (people)": 191791.98290928933,
+        "Domain": "Common-data footprint; not all of Patna district.",
+        "Built-up indicator interpretation": "m\u00b2\u00b7m (dimensionally m\u00b3); not flood volume or building damage",
+        "Not estimated": "Vulnerability, casualties, displacement, damage, monetary loss or annualized impacts"
+      }
+    },
+    {
+      "id": "RCP45_2050_T100",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp4p5_0000HadGEM2-ES_2050_rp00100",
+      "climate": "RCP45_2050",
+      "return_period": 100,
+      "summary_at_0m": {
+        "Analysis domain": "Complete common WRI cells in the uploaded buffered bounding rectangle; NOT all of Patna district",
+        "Depth strictly greater than (m)": 0.0,
+        "Estimated exposed population (people)": 3272081.3949121945,
+        "Exposed built-up surface (m\u00b2)": 38074783.383726396,
+        "Common flooded area (km\u00b2)": 1910.5930641003022,
+        "Common flooded cells": 2469,
+        "Uploaded hazard flooded cells": 5768,
+        "Excluded flooded cells (incomplete joint coverage)": 3299,
+        "Common cells": 6113,
+        "Valid uploaded hazard cells": 10920,
+        "Joint coverage (% of valid hazard cells)": 55.97985347985348,
+        "Common domain area (km\u00b2)": 4730.679260130684,
+        "Interpretation": "Modeled screening exposure; not observed impacts, damage or monetary loss"
+      },
+      "bands_at_0m": [
+        {
+          "Depth band": ">0\u20131 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 854,
+          "Area (km\u00b2)": 660.5923802348065,
+          "Estimated people": 1243380.3600567398,
+          "Built-up surface (m\u00b2)": 17442175.588856973
+        },
+        {
+          "Depth band": ">1\u20132 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 1373,
+          "Area (km\u00b2)": 1062.859608096749,
+          "Estimated people": 1628628.6018294052,
+          "Built-up surface (m\u00b2)": 15199667.426035454
+        },
+        {
+          "Depth band": ">2\u20135 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 167,
+          "Area (km\u00b2)": 129.19440037488232,
+          "Estimated people": 200883.27672878045,
+          "Built-up surface (m\u00b2)": 2224616.0101769594
+        },
+        {
+          "Depth band": ">5 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 75,
+          "Area (km\u00b2)": 57.94667539386421,
+          "Estimated people": 199189.1562972691,
+          "Built-up surface (m\u00b2)": 3208324.3586570094
+        }
+      ],
+      "screening_at_0m": {
+        "Screening definition": "Depth-weighted exposure screening \u2014 not a validated vulnerability model.",
+        "Depth strictly greater than (m)": 0.0,
+        "Depth-weighted population (person-metres)": 4608517.425488167,
+        "Depth-weighted built-up surface (m\u00b2\u00b7m)": 54093487.27663964,
+        "Population at depth >1 m (people)": 2028701.0348554547,
+        "Population at depth >2 m (people)": 400072.4330260495,
+        "Population at depth >5 m (people)": 199189.1562972691,
+        "Domain": "Common-data footprint; not all of Patna district.",
+        "Built-up indicator interpretation": "m\u00b2\u00b7m (dimensionally m\u00b3); not flood volume or building damage",
+        "Not estimated": "Vulnerability, casualties, displacement, damage, monetary loss or annualized impacts"
+      }
+    },
+    {
+      "id": "RCP45_2050_T250",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp4p5_0000HadGEM2-ES_2050_rp00250",
+      "climate": "RCP45_2050",
+      "return_period": 250,
+      "summary_at_0m": {
+        "Analysis domain": "Complete common WRI cells in the uploaded buffered bounding rectangle; NOT all of Patna district",
+        "Depth strictly greater than (m)": 0.0,
+        "Estimated exposed population (people)": 3455069.399347563,
+        "Exposed built-up surface (m\u00b2)": 41199848.981077164,
+        "Common flooded area (km\u00b2)": 2009.6465418216922,
+        "Common flooded cells": 2597,
+        "Uploaded hazard flooded cells": 5999,
+        "Excluded flooded cells (incomplete joint coverage)": 3402,
+        "Common cells": 6113,
+        "Valid uploaded hazard cells": 10920,
+        "Joint coverage (% of valid hazard cells)": 55.97985347985348,
+        "Common domain area (km\u00b2)": 4730.679260130684,
+        "Interpretation": "Modeled screening exposure; not observed impacts, damage or monetary loss"
+      },
+      "bands_at_0m": [
+        {
+          "Depth band": ">0\u20131 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 832,
+          "Area (km\u00b2)": 643.5512117325152,
+          "Estimated people": 1231298.2965450226,
+          "Built-up surface (m\u00b2)": 18002740.06687422
+        },
+        {
+          "Depth band": ">1\u20132 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 1231,
+          "Area (km\u00b2)": 952.7751364818616,
+          "Estimated people": 1561538.656455507,
+          "Built-up surface (m\u00b2)": 14981683.780333847
+        },
+        {
+          "Depth band": ">2\u20135 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 458,
+          "Area (km\u00b2)": 354.60115257057487,
+          "Estimated people": 462005.42166039796,
+          "Built-up surface (m\u00b2)": 4957137.176295868
+        },
+        {
+          "Depth band": ">5 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 76,
+          "Area (km\u00b2)": 58.7190410367404,
+          "Estimated people": 200227.0246866351,
+          "Built-up surface (m\u00b2)": 3258287.9575732267
+        }
+      ],
+      "screening_at_0m": {
+        "Screening definition": "Depth-weighted exposure screening \u2014 not a validated vulnerability model.",
+        "Depth strictly greater than (m)": 0.0,
+        "Depth-weighted population (person-metres)": 5333328.251570623,
+        "Depth-weighted built-up surface (m\u00b2\u00b7m)": 62628418.63135549,
+        "Population at depth >1 m (people)": 2223771.10280254,
+        "Population at depth >2 m (people)": 662232.446347033,
+        "Population at depth >5 m (people)": 200227.0246866351,
+        "Domain": "Common-data footprint; not all of Patna district.",
+        "Built-up indicator interpretation": "m\u00b2\u00b7m (dimensionally m\u00b3); not flood volume or building damage",
+        "Not estimated": "Vulnerability, casualties, displacement, damage, monetary loss or annualized impacts"
+      }
+    },
+    {
+      "id": "RCP45_2050_T500",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp4p5_0000HadGEM2-ES_2050_rp00500",
+      "climate": "RCP45_2050",
+      "return_period": 500,
+      "summary_at_0m": {
+        "Analysis domain": "Complete common WRI cells in the uploaded buffered bounding rectangle; NOT all of Patna district",
+        "Depth strictly greater than (m)": 0.0,
+        "Estimated exposed population (people)": 3608051.194379627,
+        "Exposed built-up surface (m\u00b2)": 43263130.68574615,
+        "Common flooded area (km\u00b2)": 2086.2420307130915,
+        "Common flooded cells": 2696,
+        "Uploaded hazard flooded cells": 6170,
+        "Excluded flooded cells (incomplete joint coverage)": 3474,
+        "Common cells": 6113,
+        "Valid uploaded hazard cells": 10920,
+        "Joint coverage (% of valid hazard cells)": 55.97985347985348,
+        "Common domain area (km\u00b2)": 4730.679260130684,
+        "Interpretation": "Modeled screening exposure; not observed impacts, damage or monetary loss"
+      },
+      "bands_at_0m": [
+        {
+          "Depth band": ">0\u20131 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 829,
+          "Area (km\u00b2)": 641.2066707253122,
+          "Estimated people": 1265813.9591879246,
+          "Built-up surface (m\u00b2)": 18453885.931708455
+        },
+        {
+          "Depth band": ">1\u20132 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 1261,
+          "Area (km\u00b2)": 975.9782362530665,
+          "Estimated people": 1594041.019557841,
+          "Built-up surface (m\u00b2)": 15377459.801919462
+        },
+        {
+          "Depth band": ">2\u20135 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 482,
+          "Area (km\u00b2)": 373.18149433652974,
+          "Estimated people": 490746.0299710149,
+          "Built-up surface (m\u00b2)": 5678027.927776128
+        },
+        {
+          "Depth band": ">5 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 124,
+          "Area (km\u00b2)": 95.87562939818301,
+          "Estimated people": 257450.18566284646,
+          "Built-up surface (m\u00b2)": 3753757.0243421025
+        }
+      ],
+      "screening_at_0m": {
+        "Screening definition": "Depth-weighted exposure screening \u2014 not a validated vulnerability model.",
+        "Depth strictly greater than (m)": 0.0,
+        "Depth-weighted population (person-metres)": 5886687.358580744,
+        "Depth-weighted built-up surface (m\u00b2\u00b7m)": 69256330.44088395,
+        "Population at depth >1 m (people)": 2342237.2351917024,
+        "Population at depth >2 m (people)": 748196.2156338613,
+        "Population at depth >5 m (people)": 257450.18566284646,
+        "Domain": "Common-data footprint; not all of Patna district.",
+        "Built-up indicator interpretation": "m\u00b2\u00b7m (dimensionally m\u00b3); not flood volume or building damage",
+        "Not estimated": "Vulnerability, casualties, displacement, damage, monetary loss or annualized impacts"
+      }
+    },
+    {
+      "id": "RCP85_2050_T25",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp8p5_0000HadGEM2-ES_2050_rp00025",
+      "climate": "RCP85_2050",
+      "return_period": 25,
+      "summary_at_0m": {
+        "Analysis domain": "Complete common WRI cells in the uploaded buffered bounding rectangle; NOT all of Patna district",
+        "Depth strictly greater than (m)": 0.0,
+        "Estimated exposed population (people)": 3870128.976630357,
+        "Exposed built-up surface (m\u00b2)": 47998547.57477421,
+        "Common flooded area (km\u00b2)": 2174.2788739874322,
+        "Common flooded cells": 2810,
+        "Uploaded hazard flooded cells": 6451,
+        "Excluded flooded cells (incomplete joint coverage)": 3641,
+        "Common cells": 6113,
+        "Valid uploaded hazard cells": 10920,
+        "Joint coverage (% of valid hazard cells)": 55.97985347985348,
+        "Common domain area (km\u00b2)": 4730.679260130684,
+        "Interpretation": "Modeled screening exposure; not observed impacts, damage or monetary loss"
+      },
+      "bands_at_0m": [
+        {
+          "Depth band": ">0\u20131 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 956,
+          "Area (km\u00b2)": 739.3476186468797,
+          "Estimated people": 1485080.7847764618,
+          "Built-up surface (m\u00b2)": 23041053.796400726
+        },
+        {
+          "Depth band": ">1\u20132 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 1497,
+          "Area (km\u00b2)": 1158.8620408667762,
+          "Estimated people": 1825828.832843803,
+          "Built-up surface (m\u00b2)": 18296978.86207152
+        },
+        {
+          "Depth band": ">2\u20135 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 275,
+          "Area (km\u00b2)": 212.71255802060554,
+          "Estimated people": 348444.9345907458,
+          "Built-up surface (m\u00b2)": 3269965.49581524
+        },
+        {
+          "Depth band": ">5 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 82,
+          "Area (km\u00b2)": 63.35665645317093,
+          "Estimated people": 210774.42441934656,
+          "Built-up surface (m\u00b2)": 3390549.420486722
+        }
+      ],
+      "screening_at_0m": {
+        "Screening definition": "Depth-weighted exposure screening \u2014 not a validated vulnerability model.",
+        "Depth strictly greater than (m)": 0.0,
+        "Depth-weighted population (person-metres)": 6298880.946860116,
+        "Depth-weighted built-up surface (m\u00b2\u00b7m)": 74943232.65735336,
+        "Population at depth >1 m (people)": 2385048.1918538953,
+        "Population at depth >2 m (people)": 559219.3590100923,
+        "Population at depth >5 m (people)": 210774.42441934656,
+        "Domain": "Common-data footprint; not all of Patna district.",
+        "Built-up indicator interpretation": "m\u00b2\u00b7m (dimensionally m\u00b3); not flood volume or building damage",
+        "Not estimated": "Vulnerability, casualties, displacement, damage, monetary loss or annualized impacts"
+      }
+    },
+    {
+      "id": "RCP85_2050_T50",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp8p5_0000HadGEM2-ES_2050_rp00050",
+      "climate": "RCP85_2050",
+      "return_period": 50,
+      "summary_at_0m": {
+        "Analysis domain": "Complete common WRI cells in the uploaded buffered bounding rectangle; NOT all of Patna district",
+        "Depth strictly greater than (m)": 0.0,
+        "Estimated exposed population (people)": 4238060.257932434,
+        "Exposed built-up surface (m\u00b2)": 55046047.03366148,
+        "Common flooded area (km\u00b2)": 2332.8428132056115,
+        "Common flooded cells": 3015,
+        "Uploaded hazard flooded cells": 6788,
+        "Excluded flooded cells (incomplete joint coverage)": 3773,
+        "Common cells": 6113,
+        "Valid uploaded hazard cells": 10920,
+        "Joint coverage (% of valid hazard cells)": 55.97985347985348,
+        "Common domain area (km\u00b2)": 4730.679260130684,
+        "Interpretation": "Modeled screening exposure; not observed impacts, damage or monetary loss"
+      },
+      "bands_at_0m": [
+        {
+          "Depth band": ">0\u20131 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 948,
+          "Area (km\u00b2)": 733.123866654247,
+          "Estimated people": 1543454.7011055725,
+          "Built-up surface (m\u00b2)": 25475614.958588097
+        },
+        {
+          "Depth band": ">1\u20132 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 1345,
+          "Area (km\u00b2)": 1040.9964156302772,
+          "Estimated people": 1762851.830983421,
+          "Built-up surface (m\u00b2)": 18342112.52696335
+        },
+        {
+          "Depth band": ">2\u20135 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 581,
+          "Area (km\u00b2)": 449.70265354515846,
+          "Estimated people": 650845.6717383428,
+          "Built-up surface (m\u00b2)": 7212169.0767090535
+        },
+        {
+          "Depth band": ">5 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 141,
+          "Area (km\u00b2)": 109.01987737592901,
+          "Estimated people": 280908.05410509725,
+          "Built-up surface (m\u00b2)": 4016150.4714009757
+        }
+      ],
+      "screening_at_0m": {
+        "Screening definition": "Depth-weighted exposure screening \u2014 not a validated vulnerability model.",
+        "Depth strictly greater than (m)": 0.0,
+        "Depth-weighted population (person-metres)": 7555662.40772354,
+        "Depth-weighted built-up surface (m\u00b2\u00b7m)": 91599996.8943737,
+        "Population at depth >1 m (people)": 2694605.556826861,
+        "Population at depth >2 m (people)": 931753.7258434402,
+        "Population at depth >5 m (people)": 280908.05410509725,
+        "Domain": "Common-data footprint; not all of Patna district.",
+        "Built-up indicator interpretation": "m\u00b2\u00b7m (dimensionally m\u00b3); not flood volume or building damage",
+        "Not estimated": "Vulnerability, casualties, displacement, damage, monetary loss or annualized impacts"
+      }
+    },
+    {
+      "id": "RCP85_2050_T100",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp8p5_0000HadGEM2-ES_2050_rp00100",
+      "climate": "RCP85_2050",
+      "return_period": 100,
+      "summary_at_0m": {
+        "Analysis domain": "Complete common WRI cells in the uploaded buffered bounding rectangle; NOT all of Patna district",
+        "Depth strictly greater than (m)": 0.0,
+        "Estimated exposed population (people)": 4559002.985716563,
+        "Exposed built-up surface (m\u00b2)": 62077132.81723775,
+        "Common flooded area (km\u00b2)": 2475.940984509159,
+        "Common flooded cells": 3200,
+        "Uploaded hazard flooded cells": 7069,
+        "Excluded flooded cells (incomplete joint coverage)": 3869,
+        "Common cells": 6113,
+        "Valid uploaded hazard cells": 10920,
+        "Joint coverage (% of valid hazard cells)": 55.97985347985348,
+        "Common domain area (km\u00b2)": 4730.679260130684,
+        "Interpretation": "Modeled screening exposure; not observed impacts, damage or monetary loss"
+      },
+      "bands_at_0m": [
+        {
+          "Depth band": ">0\u20131 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 889,
+          "Area (km\u00b2)": 687.5145381681461,
+          "Estimated people": 1447959.190156903,
+          "Built-up surface (m\u00b2)": 25571033.91923648
+        },
+        {
+          "Depth band": ">1\u20132 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 1144,
+          "Area (km\u00b2)": 885.3363144451564,
+          "Estimated people": 1512214.638664982,
+          "Built-up surface (m\u00b2)": 18895469.012817923
+        },
+        {
+          "Depth band": ">2\u20135 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 1007,
+          "Area (km\u00b2)": 779.3777565927006,
+          "Estimated people": 1293789.0314698205,
+          "Built-up surface (m\u00b2)": 13516415.037537886
+        },
+        {
+          "Depth band": ">5 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 160,
+          "Area (km\u00b2)": 123.71237530315555,
+          "Estimated people": 305040.1254248577,
+          "Built-up surface (m\u00b2)": 4094214.847645465
+        }
+      ],
+      "screening_at_0m": {
+        "Screening definition": "Depth-weighted exposure screening \u2014 not a validated vulnerability model.",
+        "Depth strictly greater than (m)": 0.0,
+        "Depth-weighted population (person-metres)": 8861302.920660352,
+        "Depth-weighted built-up surface (m\u00b2\u00b7m)": 109824258.72284988,
+        "Population at depth >1 m (people)": 3111043.7955596605,
+        "Population at depth >2 m (people)": 1598829.1568946782,
+        "Population at depth >5 m (people)": 305040.1254248577,
+        "Domain": "Common-data footprint; not all of Patna district.",
+        "Built-up indicator interpretation": "m\u00b2\u00b7m (dimensionally m\u00b3); not flood volume or building damage",
+        "Not estimated": "Vulnerability, casualties, displacement, damage, monetary loss or annualized impacts"
+      }
+    },
+    {
+      "id": "RCP85_2050_T250",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp8p5_0000HadGEM2-ES_2050_rp00250",
+      "climate": "RCP85_2050",
+      "return_period": 250,
+      "summary_at_0m": {
+        "Analysis domain": "Complete common WRI cells in the uploaded buffered bounding rectangle; NOT all of Patna district",
+        "Depth strictly greater than (m)": 0.0,
+        "Estimated exposed population (people)": 5081431.302050954,
+        "Exposed built-up surface (m\u00b2)": 72298741.8557741,
+        "Common flooded area (km\u00b2)": 2653.0936314039272,
+        "Common flooded cells": 3429,
+        "Uploaded hazard flooded cells": 7427,
+        "Excluded flooded cells (incomplete joint coverage)": 3998,
+        "Common cells": 6113,
+        "Valid uploaded hazard cells": 10920,
+        "Joint coverage (% of valid hazard cells)": 55.97985347985348,
+        "Common domain area (km\u00b2)": 4730.679260130684,
+        "Interpretation": "Modeled screening exposure; not observed impacts, damage or monetary loss"
+      },
+      "bands_at_0m": [
+        {
+          "Depth band": ">0\u20131 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 889,
+          "Area (km\u00b2)": 687.5204644663946,
+          "Estimated people": 1577427.3591183266,
+          "Built-up surface (m\u00b2)": 28451580.161674634
+        },
+        {
+          "Depth band": ">1\u20132 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 680,
+          "Area (km\u00b2)": 526.0988164745413,
+          "Estimated people": 1012602.0142307661,
+          "Built-up surface (m\u00b2)": 16769075.9963426
+        },
+        {
+          "Depth band": ">2\u20135 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 1674,
+          "Area (km\u00b2)": 1295.6532940831926,
+          "Estimated people": 2153872.430575351,
+          "Built-up surface (m\u00b2)": 22580875.97530838
+        },
+        {
+          "Depth band": ">5 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 186,
+          "Area (km\u00b2)": 143.8210563797984,
+          "Estimated people": 337529.49812650954,
+          "Built-up surface (m\u00b2)": 4497209.722448492
+        }
+      ],
+      "screening_at_0m": {
+        "Screening definition": "Depth-weighted exposure screening \u2014 not a validated vulnerability model.",
+        "Depth strictly greater than (m)": 0.0,
+        "Depth-weighted population (person-metres)": 10687591.378232228,
+        "Depth-weighted built-up surface (m\u00b2\u00b7m)": 136976360.3200254,
+        "Population at depth >1 m (people)": 3504003.9429326267,
+        "Population at depth >2 m (people)": 2491401.928701861,
+        "Population at depth >5 m (people)": 337529.49812650954,
+        "Domain": "Common-data footprint; not all of Patna district.",
+        "Built-up indicator interpretation": "m\u00b2\u00b7m (dimensionally m\u00b3); not flood volume or building damage",
+        "Not estimated": "Vulnerability, casualties, displacement, damage, monetary loss or annualized impacts"
+      }
+    },
+    {
+      "id": "RCP85_2050_T500",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp8p5_0000HadGEM2-ES_2050_rp00500",
+      "climate": "RCP85_2050",
+      "return_period": 500,
+      "summary_at_0m": {
+        "Analysis domain": "Complete common WRI cells in the uploaded buffered bounding rectangle; NOT all of Patna district",
+        "Depth strictly greater than (m)": 0.0,
+        "Estimated exposed population (people)": 5450417.902910821,
+        "Exposed built-up surface (m\u00b2)": 79320915.39772736,
+        "Common flooded area (km\u00b2)": 2779.1980439871104,
+        "Common flooded cells": 3592,
+        "Uploaded hazard flooded cells": 7662,
+        "Excluded flooded cells (incomplete joint coverage)": 4070,
+        "Common cells": 6113,
+        "Valid uploaded hazard cells": 10920,
+        "Joint coverage (% of valid hazard cells)": 55.97985347985348,
+        "Common domain area (km\u00b2)": 4730.679260130684,
+        "Interpretation": "Modeled screening exposure; not observed impacts, damage or monetary loss"
+      },
+      "bands_at_0m": [
+        {
+          "Depth band": ">0\u20131 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 774,
+          "Area (km\u00b2)": 598.6710935869334,
+          "Estimated people": 1431847.178438763,
+          "Built-up surface (m\u00b2)": 26689043.12146932
+        },
+        {
+          "Depth band": ">1\u20132 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 756,
+          "Area (km\u00b2)": 584.7730775694293,
+          "Estimated people": 1239481.473763363,
+          "Built-up surface (m\u00b2)": 20720384.190222893
+        },
+        {
+          "Depth band": ">2\u20135 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 1844,
+          "Area (km\u00b2)": 1427.1875446539163,
+          "Estimated people": 2396369.1737591363,
+          "Built-up surface (m\u00b2)": 27079732.018395055
+        },
+        {
+          "Depth band": ">5 m",
+          "Threshold (m)": 0.0,
+          "Flooded cells": 218,
+          "Area (km\u00b2)": 168.56632817683143,
+          "Estimated people": 382720.07694955845,
+          "Built-up surface (m\u00b2)": 4831756.067640094
+        }
+      ],
+      "screening_at_0m": {
+        "Screening definition": "Depth-weighted exposure screening \u2014 not a validated vulnerability model.",
+        "Depth strictly greater than (m)": 0.0,
+        "Depth-weighted population (person-metres)": 12134802.456710313,
+        "Depth-weighted built-up surface (m\u00b2\u00b7m)": 158939476.04259613,
+        "Population at depth >1 m (people)": 4018570.724472058,
+        "Population at depth >2 m (people)": 2779089.250708695,
+        "Population at depth >5 m (people)": 382720.07694955845,
+        "Domain": "Common-data footprint; not all of Patna district.",
+        "Built-up indicator interpretation": "m\u00b2\u00b7m (dimensionally m\u00b3); not flood volume or building damage",
+        "Not estimated": "Vulnerability, casualties, displacement, damage, monetary loss or annualized impacts"
+      }
+    }
+  ],
+  "common_cells": 6113,
+  "common_area_km2": 4730.679260130684,
+  "original_common_cells": 6113,
+  "reference_transform": [
+    0.008333333333333333,
+    0.0,
+    84.67500000000001,
+    0.0,
+    -0.008333333333333333,
+    25.741666666666674
+  ],
+  "approach": "Exact CRS/affine/shape/bounds match; reuse unchanged audited extensive exposure; fixed all-scenario valid intersection",
+  "exposure_epoch": 2020,
+  "provenance": {
+    "evidence": "User-attested export configuration supplied in chat; no independent completed-task verification",
+    "recipe_path": "scripts/gee/export_patna_multiscenario.js",
+    "recipe_sha256": "e622ff7cdd4816aa45985886039cd43f848b82c635dd5f8723cded98e35343a2",
+    "catalog_path": "config/catalog_evidence/WRI_Aqueduct_Flood_Hazard_Maps_V2.jsonnet",
+    "catalog_sha256": "a386ad64cc2b22f6d29ae87c29e792f5b095a218ed71b33464fb18e7829c12bf",
+    "catalog_repository": "google/earthengine-catalog",
+    "catalog_commit": "e69b2b9006b4313120b32d8a68b051732a88fbec",
+    "catalog_license": "Apache-2.0, Google Earth Engine catalog; original notice retained",
+    "catalog_check": "Official schema lists inunriver, historical/rcp4p5/rcp8p5, WATCH/HadGEM2-ES, return periods 25/50/100/250/500, inundation_depth in metres. Not a live per-asset property query.",
+    "task_ids": null,
+    "timestamps": null,
+    "completed_task_identities_independently_verified": false,
+    "export": "Each climate uses its T100 projection, Float32, unmask(-9999,false), COG/noData -9999; GAUL IND/Bihar/Patna buffered 500m bounding rectangle",
+    "sources": {
+      "FloodCAT_Patna_WRI_Historical_T25.tif": {
+        "sha256": "7904bd20e858bcc71cc58d60e133389bb04735dc67700bf3952131436c5bd04e",
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_historical_000000000WATCH_1980_rp00025",
+        "band": "inundation_depth",
+        "units": "m"
+      },
+      "FloodCAT_Patna_WRI_Historical_T50.tif": {
+        "sha256": "853087f27520b164764622c4a207fe6526596e26f685d7ace5b3ca21637b9c41",
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_historical_000000000WATCH_1980_rp00050",
+        "band": "inundation_depth",
+        "units": "m"
+      },
+      "FloodCAT_Patna_WRI_Historical_T100.tif": {
+        "sha256": "9983264d5f3ef2c4bebde726c9e6ab10715c2906996002e03ebe89f478f8da8c",
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_historical_000000000WATCH_1980_rp00100",
+        "band": "inundation_depth",
+        "units": "m"
+      },
+      "FloodCAT_Patna_WRI_Historical_T250.tif": {
+        "sha256": "4407aea245a4cc7cc08fa22d7fd4c59646c5b5db622d95cd908696d6a790f181",
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_historical_000000000WATCH_1980_rp00250",
+        "band": "inundation_depth",
+        "units": "m"
+      },
+      "FloodCAT_Patna_WRI_Historical_T500.tif": {
+        "sha256": "8a376a3831eef9893719f8b4bc7b2c158ff86cbb4658da6bc84e94730c7e243d",
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_historical_000000000WATCH_1980_rp00500",
+        "band": "inundation_depth",
+        "units": "m"
+      },
+      "FloodCAT_Patna_WRI_RCP45_2050_T25.tif": {
+        "sha256": "cda3d4deb9ec3bfe4385470d71deafb0e9b0e636f602763816cac8107feb09d5",
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp4p5_0000HadGEM2-ES_2050_rp00025",
+        "band": "inundation_depth",
+        "units": "m"
+      },
+      "FloodCAT_Patna_WRI_RCP45_2050_T50.tif": {
+        "sha256": "121396a653519e67a80dfd1b217066bc70777c860a02f1cae74763f3056f467d",
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp4p5_0000HadGEM2-ES_2050_rp00050",
+        "band": "inundation_depth",
+        "units": "m"
+      },
+      "FloodCAT_Patna_WRI_RCP45_2050_T100.tif": {
+        "sha256": "255eb8a18dd05a6527f59f474eafb83a2335073f9c8a8b943a0907e6271f3022",
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp4p5_0000HadGEM2-ES_2050_rp00100",
+        "band": "inundation_depth",
+        "units": "m"
+      },
+      "FloodCAT_Patna_WRI_RCP45_2050_T250.tif": {
+        "sha256": "790a732f248628d278b5fdaa3ccc8a0a19c31991e270d3f8b5080b90b84b9de6",
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp4p5_0000HadGEM2-ES_2050_rp00250",
+        "band": "inundation_depth",
+        "units": "m"
+      },
+      "FloodCAT_Patna_WRI_RCP45_2050_T500.tif": {
+        "sha256": "70762a9135774fcddb1ac7c7b23e16fa3e1d1c081597275ce6c3f6b54292c867",
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp4p5_0000HadGEM2-ES_2050_rp00500",
+        "band": "inundation_depth",
+        "units": "m"
+      },
+      "FloodCAT_Patna_WRI_RCP85_2050_T25.tif": {
+        "sha256": "830d75324fd90a06e14368c57b4d7739255ffb3568cbd593f4ec320fff20d3cd",
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp8p5_0000HadGEM2-ES_2050_rp00025",
+        "band": "inundation_depth",
+        "units": "m"
+      },
+      "FloodCAT_Patna_WRI_RCP85_2050_T50.tif": {
+        "sha256": "d2d3ff63a7dd78c5b9e77ac502bab413a0203521852fdb500e4c871bb9e0c450",
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp8p5_0000HadGEM2-ES_2050_rp00050",
+        "band": "inundation_depth",
+        "units": "m"
+      },
+      "FloodCAT_Patna_WRI_RCP85_2050_T100.tif": {
+        "sha256": "81f3d53eb50682e93b455f82c887982760228d73027d16ff9b12421678070a38",
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp8p5_0000HadGEM2-ES_2050_rp00100",
+        "band": "inundation_depth",
+        "units": "m"
+      },
+      "FloodCAT_Patna_WRI_RCP85_2050_T250.tif": {
+        "sha256": "1cb7cfadd71798f83c305b09ab4c3e77ed7f4e2e102b221771ac8d0264698666",
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp8p5_0000HadGEM2-ES_2050_rp00250",
+        "band": "inundation_depth",
+        "units": "m"
+      },
+      "FloodCAT_Patna_WRI_RCP85_2050_T500.tif": {
+        "sha256": "608bfca61675aa5e36d0f23e584e2089a68617563ff30c10b84b2f83b0731fa1",
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp8p5_0000HadGEM2-ES_2050_rp00500",
+        "band": "inundation_depth",
+        "units": "m"
+      }
+    }
+  },
+  "hazard_sha256": "871cfc4989467b1d2be53d9a05f34fb2e4a114a9078707de5850db7015a51781",
+  "historical_t100_original_benchmark": {
+    "Analysis domain": "Complete common WRI cells in the uploaded buffered bounding rectangle; NOT all of Patna district",
+    "Depth strictly greater than (m)": 0.0,
+    "Estimated exposed population (people)": 2840320.5021073623,
+    "Exposed built-up surface (m\u00b2)": 32216343.94410771,
+    "Common flooded area (km\u00b2)": 1637.3100663957925,
+    "Common flooded cells": 2116,
+    "Uploaded hazard flooded cells": 5217,
+    "Excluded flooded cells (incomplete joint coverage)": 3101,
+    "Common cells": 6113,
+    "Valid uploaded hazard cells": 10920,
+    "Joint coverage (% of valid hazard cells)": 55.97985347985348,
+    "Common domain area (km\u00b2)": 4730.679260130684,
+    "Interpretation": "Modeled screening exposure; not observed impacts, damage or monetary loss"
+  },
+  "original_budgets": {
+    "population": {
+      "known_source_total": 15827395.092694104,
+      "known_retained_in_wri_extent": 15827395.092694104,
+      "known_clipped_outside_wri_extent": 0.0,
+      "balance_error": 0.0,
+      "relative_balance_error": 0.0,
+      "unknown_source_pixels_excluded": 115214,
+      "known_total_on_common_complete_cells": 9602732.2571902,
+      "known_retained_outside_common_cells": 6224662.835503904
+    },
+    "built_surface_m2": {
+      "known_source_total": 244426882.0,
+      "known_retained_in_wri_extent": 244425812.59697458,
+      "known_clipped_outside_wri_extent": 1069.4030445377978,
+      "balance_error": 1.913309097290039e-05,
+      "relative_balance_error": 7.827735974188138e-14,
+      "unknown_source_pixels_excluded": 141151,
+      "known_total_on_common_complete_cells": 154887440.49699715,
+      "known_retained_outside_common_cells": 89538372.09997743
+    }
+  },
+  "limitations": [
+    "Source selections are user-attested, not independent completed-task authentication",
+    "No live per-asset GEE property query; catalog schema cross-check only",
+    "Fixed 2020 exposure for future scenarios; differences are not solely attributable to climate",
+    "Existing common-footprint, remapping accuracy and source uncertainty remain"
+  ]
+}

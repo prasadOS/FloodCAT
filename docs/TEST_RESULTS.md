@@ -820,3 +820,53 @@ Branch `data/patna-multiscenario`, starting `7d40099`.
 - No multi-scenario browser acceptance or deployment test: app is deliberately unchanged and new scenarios are not activated. No claim of completed M2D integration.
 
 Source-selection ambiguity requires stopping under AGENTS.md. Only Historical T100 has a matching committed export recipe; matching geometry/order cannot authenticate the other filenames. See M2D_INPUT_VALIDATION.md.
+
+## M2D continuation — supplied source recipe and multi-scenario implementation
+
+The user supplied exact 15 asset IDs/band/units and export configuration after
+PR #8's initial source gate. Committed reproducible prospective GEE script and
+hash-bound provenance, plus official Google catalog snapshot/license (commit
+e69b2b9006b4313120b32d8a68b051732a88fbec). Schema supports climate/model/return-period
+and unit selections; **not a live per-asset property query or independent proof
+of completed tasks**. Gate now exits 0 with 15 inputs, zero selection/grid blockers.
+No task IDs, timestamps, credentials or account logs are invented.
+
+Commands from repository root, Python 3.11.17:
+
+- `PYTHONDONTWRITEBYTECODE=1 /workspace/work/m2b-1/venv/bin/python -m scripts.validate_multiscenario_inputs --output config/patna_multiscenario_validation.json` — exit 0, 15 inputs.
+- Same interpreter `-m scripts.prepare_multiscenario --output data/processed_real/patna_scenarios` — exit 0, fixed common cells 6,113. Original bundle remains untouched.
+- Same interpreter `-m unittest discover -s tests -p 'test_multiscenario*.py' -v` — **8 passed, 6.600 s**, no skips.
+- Final same interpreter `-m unittest discover -s tests -v` — **116 passed, 12.866 s**, no failures/errors/skips.
+- Lightweight runtime `/workspace/.floodcat-venv/bin/python -m unittest discover -s tests -v` — **116 discovered: 77 passed / 39 optional science skips, 6.750 s**.
+- `UV_CACHE_DIR=/workspace/.floodcat-cache uv pip check --python /workspace/.floodcat-venv/bin/python` — **35 packages compatible**, no installations/requirement changes.
+- `FLOODCAT_URL=http://localhost:8507 FLOODCAT_SCREENSHOTS=/workspace/work/m2d node tests/browser/patna_scenarios.cjs` — exit 0: default benchmark, future RCP8.5 T500 native depths >14 m, Exposure charts, weighted default map, selected scenario/source/2020 CSV contents, real comparison modes/paired maps and return to Synthetic.
+- Same environment `node tests/browser/patna_map.cjs` — exit 0: all prior bounds, first/last native cells, native products/nulls, three layers, +/−, wheel zoom, drag pan, fit/reset, cell popup, blocked-tile canvas/legend, CSV controls and mobile dimensions.
+
+Final live server starts via scratch Streamlit CLI launcher with telemetry UUID
+stub and statistics off to avoid the managed cloud's read-only home, as previously
+documented; no product/package patch. Browser tile requests deliberately aborted;
+ordinary OSM access and live Community Cloud deployment not verified.
+
+AppTest checks every climate × return period (15) in Overview/Exposure/Vulnerability,
+all comparison choices, defaults and Synthetic isolation. Initial comparison test
+selected the wrong radio via positional indexing; switched to the Comparison label.
+All 15 processed depth/mask grids agree sample-for-sample with independent Pillow
+reads of the original GeoTIFFs. Direct Python iteration over each common grid at
+0/1/2/5/15 m independently reconciles population, built m², flooded cells and
+person-metres; depth bands reconcile population/counts, with prior all-quantity
+band/geometry fixtures retained. Exact shared common mask and exposure arrays are
+asserted for all scenarios. Corrupt/missing NPZ and validation files fail closed.
+A hand fixture verifies absolute differences and zero-reference percentage =
+unavailable. Existing T100 weighted benchmarks and all prior source/area/coverage/
+remapping/conservation tests pass.
+
+No new remapping: WKT/affine/shape/bounds all match exactly. The original population
+and built-surface budgets are reused without alteration. All raw inputs and the
+original audited bundle compare unchanged against task start `7d40099`. Metadata
+records every scenario's native SHA-256, masks/valid zeros, source attestation,
+strict-threshold metrics, depth bands and weighted screening. See M2D.md for full
+per-scenario results/screenshots and remaining scientific limitations.
+
+No merge: independent completed-task authentication/live per-asset properties
+remain unavailable; provenance/hosted integration still needs review. Local tests
+are not claimed to establish a successful live deployment.

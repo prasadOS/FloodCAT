@@ -17,14 +17,16 @@ def same_grid(info, reference):
 
 
 def assess_source(filename, digest, provenance):
-    # The existing signed-by-content recipe/provenance describes only this asset.
-    source = provenance['sources']['hazard']
-    verified = filename == 'FloodCAT_Patna_WRI_Historical_T100.tif' and digest == source['sha256']
-    return {'verified_against_existing_recipe': verified,
-            'asset_id': source.get('asset_id') if verified else None,
-            'basis': 'Existing M2C-1 user-attested recipe, checksums and independent pilot overlap' if verified else
-                     'Filename label only; no matching export recipe or task/source metadata supplied',
-            'task_level_independently_verified': False}
+    evidence=json.loads((ROOT/'config/patna_multiscenario_provenance.json').read_text())
+    import hashlib
+    for path_key, hash_key in [('recipe_path','recipe_sha256'),('catalog_path','catalog_sha256')]:
+        if hashlib.sha256((ROOT/evidence[path_key]).read_bytes()).hexdigest()!=evidence[hash_key]:
+            raise ValueError('Scenario recipe/catalog evidence changed')
+    source=evidence['sources'].get(filename)
+    verified=source is not None and digest==source['sha256']
+    return {'verified_against_existing_recipe':verified,'asset_id':source['asset_id'] if verified else None,
+            'basis':'User-attested recipe and hash binding, official catalog schema compatible; not independently verified task identity',
+            'task_level_independently_verified':False}
 
 
 def validate(directory=ROOT/'data/demo_real'):
@@ -46,9 +48,9 @@ def validate(directory=ROOT/'data/demo_real'):
             if not numeric: blockers.append(key+': invalid depth values')
             entries.append({'id': key, 'filename': name, 'metadata': info,
                 'filename_claim': {'flood_type': 'riverine', 'climate': climate, 'return_period_years': period,
-                                  'gcm': 'WATCH' if climate == 'Historical' else 'HadGEM2-ES (requested, not verified)',
+                                  'gcm': 'WATCH' if climate == 'Historical' else 'HadGEM2-ES (user-attested)' ,
                                   'year': 1980 if climate == 'Historical' else 2050,
-                                  'depth_units': 'metres (expected, not independently stored in TIFF)'},
+                                  'depth_units': 'metres (recipe/catalog; not stored in TIFF)' },
                 'source_identity': identity, 'exact_reference_grid': geometry, 'nonnegative_depth': numeric,
                 'ready_for_dashboard': identity['verified_against_existing_recipe'] and geometry and numeric})
             depths[key], masks[key] = values, valid
@@ -70,7 +72,7 @@ def validate(directory=ROOT/'data/demo_real'):
             'candidate_common_cells':int(comparison.sum()) if compatible else None,
             'original_common_cells':int(bundle[0]['common_valid'].sum()),
             'processing_performed':False,
-            'note':'No scenario exposure published until source identities are evidenced; CMIP5/RCP is not CMIP6/SSP. '
+            'note':'Source selections are user-attested and catalog-compatible; completed tasks not independently verified. CMIP5/RCP is not CMIP6/SSP. '
                    'Missing GEE task provenance is disclosed separately from absent source-selection evidence.'}
 
 
