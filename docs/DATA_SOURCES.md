@@ -49,6 +49,16 @@ No WorldPop or GHSL pixels have been acquired or integrated. The new engine is t
 
 No additional datasets were downloaded. Fabricated population and built-up totals
 exercise area-overlap aggregation, including a fine grid over the native WRI
-transform. This is not evidence of real WorldPop/GHSL coverage. The method accepts
-shared-CRS grids only; native GHSL World Mollweide-to-WRI reprojection remains
-unimplemented. See [coverage, geometry and conservation assumptions](EXPOSURE.md).
+transform. This is not evidence of real WorldPop/GHSL coverage. The M2A-2 method accepts
+shared-CRS grids only. M2A-3 adds a separate cross-CRS calculation API below;
+real GHSL-to-WRI integration remains unverified. See [coverage, geometry and conservation assumptions](EXPOSURE.md).
+
+## M2A-3 calculation-only cross-CRS remapping
+
+No additional data were acquired. Synthetic extensive totals exercise a known
+World Mollweide fixture CRS (`ESRI:54009`) against WRI-style EPSG:4326 grids.
+Exact real GHSL WKT, pixel support, masks, epoch and redistribution terms still
+require source verification; this milestone does not establish real coverage.
+Physical ellipsoid areas are computed after footprint transformation, rather
+than equating native Mollweide projected m² with WGS84 area. See
+[remapping accuracy and limits](REMAPPING.md).
