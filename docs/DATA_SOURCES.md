@@ -40,3 +40,7 @@ GHSL `JRC/GHSL/P2023A/GHS_BUILT_S/2020` returned `built_surface` and `built_surf
 The tile covers 48 rows by 58 columns on the native EPSG:4326 grid, with affine transform `[1/120, 0, 85, 0, -1/120, 25.85]`. Whole native cells extend the eastern bound to 85.4833333333° E. Depth is float32 in metres. The source mask and downloaded depths agree on 1,222 valid dry zeros, 1,562 positive cells, and zero masked cells. Valid coverage is 100% of the snapped tile. The TIFF has no nodata tag. Maximum valid depth is 5.577278 m.
 
 At thresholds of 0, 1, and 2 m, area is respectively 1,206.56, 430.13, and 335.93 km². These sums use whole-cell areas on the WGS84 ellipsoid and strict depth thresholds. Attribution and limitations apply to modeled regional screening. [WRI data and methodology](https://www.wri.org/data/aqueduct-floods-hazard-maps)
+
+## M2A-1 calculation-only extension
+
+No WorldPop or GHSL pixels have been acquired or integrated. The new engine is tested only on hand-calculated fixtures. Its input units, alignment, aggregation, coverage and edge assumptions are specified in [EXPOSURE.md](EXPOSURE.md). Existing catalog inspection is not evidence of usable exposure coverage.

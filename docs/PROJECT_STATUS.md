@@ -1,6 +1,12 @@
 # FloodCAT project status
 
-## Current verified milestone · M1B (2026-11-10)
+## Current engine milestone · M2A-1 (2026-11-10)
+
+Implemented an independent NumPy exposure engine on branch `feature/m2a-exposure-engine`. It accepts already aligned population counts and GHSL built-up m², uses strict valid-depth thresholds, preserves zero, and reports missing exposure and cell coverage separately for both measures. Complete totals remain unknown when flooded exposure is missing. All 24 unit tests pass in the prepared Python 3.11.17 environment, including the original 12 M1B tests. See [engine assumptions and API contract](EXPOSURE.md) and [test evidence](TEST_RESULTS.md).
+
+No real exposure data were acquired or integrated. The application remains the M1B dashboard and REAL — WRI remains hazard-only. No WRI calculations or dependencies changed. The engine is prepared for feature-branch review; merging and deployment remain outside this milestone. Next single task: M2A-2 conservative aggregation on in-memory fixtures with edge, coverage and conservation tests.
+
+## Preserved application baseline · M1B (2026-11-10)
 
 FloodCAT provides two local Streamlit modes. **Synthetic demo** is the default and retains the six illustrative sections. **REAL — WRI** is a hazard-only view backed by one genuine native-grid Patna historical WATCH T100 GeoTIFF. It displays modeled flood depth, thresholded area and counts, source metadata, and downloads. The GeoTIFF and JSON manifest are the only bundled real data assets.
 
