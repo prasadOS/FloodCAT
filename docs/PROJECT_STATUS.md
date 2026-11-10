@@ -1,6 +1,38 @@
 # FloodCAT project status
 
-## Current engine milestone · M2A-3 (2026-11-10)
+## Current milestone · M2B-1 — acquisition prepared, real access blocked (2026-11-10)
+
+Branch `m2b-1-real-exposure-acquisition` starts from freshly fetched remote `main`
+`222577b`, containing merged PR #3. The exact bundled WRI native footprint,
+48×58 shape, EPSG:4326 affine and SHA-256 were independently rechecked.
+
+Verified current product/units/version/licensing statements in Google's official
+Earth Engine catalog source at pinned commit `e69b2b9`: legacy WorldPop is
+deprecated; R2025A v1 is a distinct constrained/nationally adjusted release;
+GHSL R2023A total `built_surface` is m² per 100 m cell, with reuse/source
+acknowledgement terms. Direct producer sites and raster hosts were denied by the
+cloud proxy (CONNECT 403). No Earth Engine credentials are configured. The exact
+legacy public file/model mapping, native WKT, masks/valid zeros and real coverage
+remain unverified. Catalog licensing is not a completed per-artifact review.
+
+No exposure rasters acquired, aligned products created or real exposure totals
+calculated. Added anonymous bounded Range access, two-stage metadata/mask review,
+native-window extraction with a halo, exact metadata/mask preservation and
+provenance/checksum reporting. Checked-in review templates cannot acquire data.
+Optional Rasterio tools are isolated in `requirements-acquisition.txt`; the hosted
+requirements, dashboard, WRI calculations and all M2A engines are unchanged.
+
+Full optional-environment suite: **71 passed**, no skips (55 regressions + 16 new).
+The unchanged application environment passes its 42 applicable tests and Streamlit
+smoke checks; 29 optional tests skip there. See [source evidence and route](ACQUISITION.md),
+[access status](../config/exposure_access_status.json) and [exact test results](TEST_RESULTS.md).
+
+Next single task: resolve permitted producer access and exact native file/variant,
+WKT and mask evidence, then perform bounded acquisition within the existing task
+authorization. Phase 3 and a production REAL exposure dashboard remain unstarted.
+Changes are for a PR targeting `main`; merging is outside this task.
+
+## Previous engine milestone · M2A-3 (2026-11-10)
 
 Branch `m2a-3-cross-crs-remapping` starts from freshly fetched remote `main`
 `45d59d2`, which contains merged PR #2. Added reusable sparse physical-area
@@ -26,7 +58,7 @@ universal projection error bound, global/polar/dateline grids and datum shifts
 are unsupported, and memory scaling remains unvalidated for large rasters.
 Next single task: verify exact candidate source metadata and design a bounded
 acquisition/processing plan before separately authorized raster acquisition.
-Changes are for a PR targeting `main`; merging is outside this task.
+M2A-3 was merged into `main` in PR #3 (`222577b`). Its source-verification next task is recorded above.
 
 ## Previous engine milestone · M2A-2 (2026-11-10)
 

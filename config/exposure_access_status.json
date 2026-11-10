@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "status": "blocked",
+  "reason": "Direct producer, data and catalog website hosts denied by enforced cloud HTTP policy (proxy CONNECT 403). Official Google catalog source is available separately through permitted GitHub access; native raster access remains blocked.",
+  "observed_utc": "2026-11-10T07:51:08.628111+00:00",
+  "observations_current": true,
+  "earth_engine_credentials_configured": false,
+  "exposure_rasters_acquired": 0,
+  "derived_exposure_products_created": 0,
+  "wri_reference": {
+    "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_historical_000000000WATCH_1980_rp00100",
+    "sha256": "9d5c2747166f7cdecb84a7067575b311a4d4552cc2cd5ee482b924159bd91ebc",
+    "bytes": 3801,
+    "shape": [
+      48,
+      58
+    ],
+    "crs": "EPSG:4326",
+    "transform": [
+      0.008333333333333333,
+      0,
+      85.0,
+      0,
+      -0.008333333333333333,
+      25.85
+    ],
+    "bounds_wgs84": [
+      85.0,
+      25.450000000000003,
+      85.48333333333333,
+      25.85
+    ],
+    "dtype": "float32",
+    "nodata": null,
+    "hazard_counts": {
+      "valid_zero": 1222,
+      "positive": 1562
+    }
+  },
+  "probes": [
+    {
+      "url": "https://developers.google.com/earth-engine/datasets/catalog/WorldPop_GP_100m_pop",
+      "checked_utc": "2026-11-10T07:51:08.628111+00:00",
+      "outcome": "proxy_connect_403_forbidden"
+    },
+    {
+      "url": "https://developers.google.com/earth-engine/datasets/catalog/JRC_GHSL_P2023A_GHS_BUILT_S",
+      "checked_utc": "2026-11-10T07:51:08.628592+00:00",
+      "outcome": "proxy_connect_403_forbidden"
+    },
+    {
+      "url": "https://www.worldpop.org/",
+      "checked_utc": "2026-11-10T07:51:08.629005+00:00",
+      "outcome": "proxy_connect_403_forbidden"
+    },
+    {
+      "url": "https://data.worldpop.org/",
+      "checked_utc": "2026-11-10T07:51:08.629287+00:00",
+      "outcome": "proxy_connect_403_forbidden"
+    },
+    {
+      "url": "https://human-settlement.emergency.copernicus.eu/ghs_bu2023.php",
+      "checked_utc": "2026-11-10T07:51:08.630586+00:00",
+      "outcome": "proxy_connect_403_forbidden"
+    },
+    {
+      "url": "https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_BUILT_S_GLOBE_R2023A/",
+      "checked_utc": "2026-11-10T07:51:08.631169+00:00",
+      "outcome": "proxy_connect_403_forbidden"
+    }
+  ],
+  "unverified": [
+    "Exact public WorldPop legacy India 2020 file mapping and adjustment/model variant",
+    "Actual current India 2020 successor image and comparability, despite verified successor collection documentation",
+    "Per-file notices and EC legal-notice details for exact downloadable assets",
+    "Native WorldPop/GHSL TIFF CRS WKT, shape, nodata, masks, valid zeros and usable coverage",
+    "Public native TIFF Range/ETag availability",
+    "Conservative real-data alignment and exposure totals"
+  ],
+  "official_catalog_evidence": {
+    "repository": "google/earthengine-catalog",
+    "commit": "e69b2b9006b4313120b32d8a68b051732a88fbec",
+    "checked_utc": "2026-11-10T08:09:11.126714+00:00",
+    "files": [
+      {
+        "path": "catalog/WorldPop/WorldPop_GP_100m_pop.jsonnet",
+        "url": "https://github.com/google/earthengine-catalog/blob/e69b2b9006b4313120b32d8a68b051732a88fbec/catalog/WorldPop/WorldPop_GP_100m_pop.jsonnet",
+        "sha256": "1058fa3f72f5fb2391d147c622a3c285ae8effb751b6bab971059205f5e3cf23"
+      },
+      {
+        "path": "catalog/WorldPop/WorldPop_GP_100m_R2025A_v1_pop.jsonnet",
+        "url": "https://github.com/google/earthengine-catalog/blob/e69b2b9006b4313120b32d8a68b051732a88fbec/catalog/WorldPop/WorldPop_GP_100m_R2025A_v1_pop.jsonnet",
+        "sha256": "585169cbe4260ec2dd4fd7aa930d6ded902f8b1a7d638b1079173a49e70373df"
+      },
+      {
+        "path": "catalog/WorldPop/templates/pop_versions.libsonnet",
+        "url": "https://github.com/google/earthengine-catalog/blob/e69b2b9006b4313120b32d8a68b051732a88fbec/catalog/WorldPop/templates/pop_versions.libsonnet",
+        "sha256": "8c6d6b2b4627b5c6d46e8c65095e69c6609e57149e36a821fe7b7aabe073f4d1"
+      },
+      {
+        "path": "catalog/JRC/JRC_GHSL_P2023A_GHS_BUILT_S.jsonnet",
+        "url": "https://github.com/google/earthengine-catalog/blob/e69b2b9006b4313120b32d8a68b051732a88fbec/catalog/JRC/JRC_GHSL_P2023A_GHS_BUILT_S.jsonnet",
+        "sha256": "0f566610dc14096c625206f3cc19cd4a041ea4f73ac9dec27bbfc40e749c8717"
+      },
+      {
+        "path": "catalog/spdx.libsonnet",
+        "url": "https://github.com/google/earthengine-catalog/blob/e69b2b9006b4313120b32d8a68b051732a88fbec/catalog/spdx.libsonnet",
+        "sha256": "4971cfb71d59b13f2242941993936f37f306aeff4854059d758090ef2702ba03"
+      },
+      {
+        "path": "catalog/units.libsonnet",
+        "url": "https://github.com/google/earthengine-catalog/blob/e69b2b9006b4313120b32d8a68b051732a88fbec/catalog/units.libsonnet",
+        "sha256": "0b9d91e3156cd924936039cdaf1b56b60fe71a1d5ced86891b59d7fba0ee0ca0"
+      }
+    ],
+    "worldpop_legacy": {
+      "collection_id": "WorldPop/GP/100m/pop",
+      "catalog_version": "0.1",
+      "status": "deprecated",
+      "years": "2000-2020",
+      "band": "population",
+      "semantics": "Estimated number of people residing in each grid cell",
+      "nominal_gsd_m": 92.77,
+      "license": "CC-BY-4.0",
+      "india_2020_image": "IND_2020 observed in prior M1A live inspection, not re-queried here",
+      "adjustment_model_variant": "not specified in this catalog entry"
+    },
+    "worldpop_successor": {
+      "collection_id": "WorldPop/GP/100m/R2025A/v1/pop",
+      "release": "R2025A v1",
+      "years": "2015-2030 annual epochs, including 2020",
+      "semantics": "Settlement-constrained country rasters adjusted to national population estimates",
+      "nominal_gsd_m": 100.0,
+      "citation_resolution": "3 arcseconds, approximately 100 m at equator",
+      "doi": "10.5258/SOTON/WP00839",
+      "license": "CC-BY-4.0",
+      "selected_for_acquisition": false
+    },
+    "ghsl": {
+      "collection_id": "JRC/GHSL/P2023A/GHS_BUILT_S",
+      "selected_epoch": 2020,
+      "dataset_release": "R2023A",
+      "band": "built_surface",
+      "excluded_band": "built_surface_nres",
+      "units": "m^2 per 100 m cell",
+      "nominal_gsd_m": 100.0,
+      "temporal_semantics": "Spatially-temporally interpolated or extrapolated 1975-2030 in five-year intervals",
+      "doi": "10.2905/9F06F36F-4B11-47EC-ABB0-4F8B7B1D72EA",
+      "stated_terms": "Open and free data; reuse authorised provided the source is acknowledged; consult EC Reuse and Copyright Notice",
+      "license_category": "proprietary is the catalog convention for non-standard licenses, both open and closed; not evidence of closed data",
+      "provider_documentation_url": "https://ghsl.jrc.ec.europa.eu/ghs_buS2023.php",
+      "legal_notice_url": "https://ec.europa.eu/info/legal-notice_en",
+      "exact_crs_wkt": null,
+      "mask_semantics": null
+    }
+  }
+}

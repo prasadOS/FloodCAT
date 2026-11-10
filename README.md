@@ -7,6 +7,8 @@ FloodCAT is a Streamlit application for regional flood-hazard and physical expos
 
 WRI depths support regional screening. Real population and built-up exposure, future scenarios, and local hydraulic validation remain outside M1B.
 
+**M2B-1:** official source-catalog facts and a tested bounded acquisition/validation route are documented in [ACQUISITION.md](docs/ACQUISITION.md). Real WorldPop/GHSL acquisition is blocked by the current cloud network policy and unresolved native masks/metadata; no real exposure data or totals are bundled. Optional tools use `requirements-acquisition.txt`.
+
 ## Run locally
 
 Clone the repository or extract the ZIP into a new folder. Open a terminal at the project root and activate an environment with Python 3.11 and the packages in `requirements.txt`.

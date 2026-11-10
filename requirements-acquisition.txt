@@ -1,0 +1,5 @@
+# Optional native-raster acquisition/validation tools, separate from the app.
+-r requirements-science.txt
+rasterio==1.4.4
+requests==2.34.2
+pillow==13.0.0
