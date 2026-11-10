@@ -245,3 +245,131 @@ shifts and rejects unsupported boundaries/failed refinement. Exact real GHSL WKT
 mask semantics, source vintage, usable coverage and raster-scale performance are
 still unverified. See [REMAPPING.md](REMAPPING.md) for the scientific contract,
 explicit missingness/uncertainty and next single task.
+
+## M2B-1 source verification and blocked real acquisition (2026-11-10)
+
+Confirmed `prasadOS/FloodCAT`, fetched remote `main` at
+`222577b7e213ccd6fb15b4ac5ce31f3f1311cfff` (merged PR #3), and created
+`m2b-1-real-exposure-acquisition`. Final remote check returned the same main SHA.
+The working branch was not based on the previous feature branch.
+
+### Source and access evidence
+
+- Managed cloud observations were current/ready; HTTP policy was enforced and
+  restricted to package-manager/GitHub hosts. No Earth Engine credentials or
+  outbound Earth Engine identity were reported in managed configuration. No
+  credential files were read and no Earth Engine/provider authentication attempted.
+- Six bounded direct HTTPS probes to official catalog/WorldPop/JRC websites and
+  storage hosts at **2026-11-10 07:51:08 UTC** failed with proxy CONNECT
+  **403 Forbidden**. No policy/proxy/TLS bypass or dataset-host fallback attempted.
+  Exact URLs/outcomes are in `config/exposure_access_status.json`.
+- Official Google catalog source was available independently on permitted GitHub:
+  `git clone --depth 1 https://github.com/google/earthengine-catalog.git /workspace/work/m2b-1/official-catalog`
+  — exit 0. Read commit `e69b2b9006b4313120b32d8a68b051732a88fbec`, including legacy
+  WorldPop, R2025A v1, version table, GHSL built surface, units and SPDX definitions.
+  Per-document links/checksums and verified claims are recorded in the access
+  status. Catalog source hashes are not dataset hashes.
+- Verified catalog distinctions: deprecated legacy WorldPop version 0.1 versus
+  settlement-constrained/nationally adjusted R2025A v1; people/cell and CC BY 4.0;
+  GHSL total built-up m² per 100 m cell versus NRES, producer release R2023A and
+  reuse/source-acknowledgement terms. Generic GHSL `proprietary` metadata means
+  non-standard license (open or closed), not a closed-data finding. Exact native
+  files/WKT/masks/valid zeros, legacy model/adjustment mapping and artifact notices
+  remain unverified. The pinned catalog lacks those native metadata fields.
+- Revalidated WRI checksum, decoded shape/dtype/pixel support, affine and snapped
+  bounds: 48×58, float32 metres, EPSG:4326,
+  `(1/120,0,85,0,-1/120,25.85)`, east **85.48333333333333°E**, 3,801 bytes,
+  SHA-256 **9d5c2747166f7cdecb84a7067575b311a4d4552cc2cd5ee482b924159bd91ebc**.
+  1,222 valid dry zeros, 1,562 positive cells and no nodata are unchanged.
+
+### Isolated optional packages
+
+The original application and M2A-3 environments were retained unchanged.
+
+```sh
+UV_CACHE_DIR=/workspace/.floodcat-cache uv venv --python /workspace/.floodcat-venv/bin/python /workspace/work/m2b-1/venv
+UV_CACHE_DIR=/workspace/.floodcat-cache uv pip install --python /workspace/work/m2b-1/venv/bin/python -r requirements.txt -r requirements-science.txt 'rasterio==1.4.4'
+```
+
+Both exited 0. Python **3.11.17**, Rasterio **1.4.4**, GDAL **3.10.3**,
+NumPy 2.4.6, pyproj 3.7.2 / PROJ 9.5.1, Shapely 2.1.2 / GEOS 3.13.1.
+The isolated environment has **42 packages**. Relative to the 37-package science
+environment, new packages are Rasterio 1.4.4, affine 3.0.1, click-plugins 1.1.1.2,
+cligj 0.7.2 and pyparsing 3.3.3. Requests 2.34.2 and Pillow 13.0.0 already existed
+and are explicitly declared by `requirements-acquisition.txt` as direct tools.
+Hosted `requirements.txt` is unchanged. No CLIMADA/Earth Engine package added.
+
+### Exact focused and regression results
+
+- Baseline `PYTHONDONTWRITEBYTECODE=1 /workspace/work/m2a-3/venv/bin/python -m unittest discover -s tests -v`
+  — **55 passed**, no failures/errors/skips, in **3.540 s**.
+- `PYTHONDONTWRITEBYTECODE=1 /workspace/work/m2b-1/venv/bin/python -m unittest discover -s tests -p test_acquisition.py -v`
+  — **16 passed**, no failures/errors/skips, in **0.291 s**. Earlier 14-/15-test
+  stages also passed; the final stage adds separate uint16 built-up-like window
+  preservation as well as float32 population-like data. A final metadata-output
+  annotation was subsequently covered by the complete run below.
+- Final full suite:
+  `PYTHONDONTWRITEBYTECODE=1 /workspace/work/m2b-1/venv/bin/python -m unittest discover -s tests -v`
+  — **71 passed**, no failures, errors or skips, in **3.782 s**. Includes all
+  **55 regressions + 16 acquisition tests**.
+- Final lightweight runtime:
+  `PYTHONDONTWRITEBYTECODE=1 /workspace/.floodcat-venv/bin/python -m unittest discover -s tests -v`
+  — 71 discovered in **0.045 s**: **42 passed, 29 optional tests skipped**.
+  This is runtime isolation evidence, not a complete scientific run.
+- `PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 /workspace/.floodcat-venv/bin/python /workspace/work/m2a-2/smoke_app.py`
+  — exit 0. All six synthetic sections; REAL — WRI 0 m / 1 m metrics
+  (1,206.56 / 430.13 km²), three downloads, missing-asset warning and return to
+  Synthetic demo passed. Existing Streamlit warnings remain. No hosted build or
+  browser download clicks tested.
+- `UV_CACHE_DIR=/workspace/.floodcat-cache uv pip check --python /workspace/work/m2b-1/venv/bin/python`
+  — all **42** optional-environment packages compatible.
+- `UV_CACHE_DIR=/workspace/.floodcat-cache uv pip check --python /workspace/.floodcat-venv/bin/python`
+  — all **35** original-runtime packages compatible.
+- Rasterio emitted pending-deprecation warnings for its affine `*` operations
+  with affine 3.0.1; no failing assertions or numerical discrepancies occurred.
+
+The acquisition fixtures make no real network calls. The in-memory HTTP fixture
+requires exact 206/Range/Length/ETag, checks anonymous requests and cache reuse,
+and rejects redirects, whole-response 200, weak/changed ETags, compression,
+truncation, incorrect headers, unsupported hosts/credential URLs and byte caps.
+Review tests reject unverified templates before requests/output, wrong product
+or release (including silent R2025A/NRES changes), incomplete licensing/mask
+review and native metadata/scaling mismatches. Metadata-only inspection is
+separate from pixel/mask read permission and does not establish usable coverage.
+
+Independent native fixtures check an exact 8×7 selection including two-cell halo,
+source extent clipping, pixel budgets, preservation of raw values/dtype/nodata,
+valid zero versus masked pixels, NaN, fractional-mask rejection and sum overflow.
+The float32 fixture's hand-known subtotal is **1,843** (one valid zero, two masked
+cells); the uint16 Mollweide surface-like fixture's is **1,110** (one valid zero,
+one masked cell). Neither is actual exposure data. A separate 4,097-samples-per-edge
+check contains the **actual WRI boundary** with at least 1.99 native halo cells
+in a synthetic 100 m Mollweide grid. Native TIFF hashes/readback/masks and atomic
+failure output are checked; the actual WorldPop/GHSL WKT remains unknown.
+
+### Inventory and expected blocked commands
+
+`PYTHONDONTWRITEBYTECODE=1 /workspace/work/m2b-1/venv/bin/python -m scripts.acquire_exposure_windows`
+— exit 0: actual WRI reference plus candidate inventory, no network/acquisition.
+
+The following both exited **2**, reporting unverified selection/licensing/masks
+and `acquisition_published=false`, before any HTTP request or output dataset:
+
+```sh
+/workspace/work/m2b-1/venv/bin/python -m scripts.acquire_exposure_windows --source worldpop_2020_ind --review config/exposure_review_template.json --inspect
+/workspace/work/m2b-1/venv/bin/python -m scripts.acquire_exposure_windows --source worldpop_2020_ind --review config/exposure_review_template.json --output /workspace/work/m2b-1/not-acquired
+```
+
+Asserted `/workspace/work/m2b-1/not-acquired` does not exist. No live source review
+was marked successful, and no native source/derived dataset is committed.
+
+`git diff --exit-code origin/main -- app.py requirements.txt src/floodcat/wri.py src/floodcat/wri_view.py src/floodcat/exposure.py src/floodcat/aggregation.py src/floodcat/remapping.py src/floodcat/demo.py src/floodcat/exports.py tests/test_wri.py tests/test_demo.py tests/test_exposure.py tests/test_aggregation.py tests/test_remapping.py data`
+— exit 0; existing engines, app, requirements, tests and all assets are unchanged.
+`git diff --check` and staged whitespace checks passed.
+
+**Phase 2 is blocked and phase 3 has not run:** no real source totals, retained or
+clipped contributions, conservation errors, valid-zero counts/coverage or real
+threshold exposure results are available. The complete suite preserves M2A
+fixture evidence without presenting it as real integration. See
+[ACQUISITION.md](ACQUISITION.md) for source/licensing details, native-window
+restrictions, remaining verification and the next single task.

@@ -231,6 +231,7 @@ exact CRS of any future GHSL asset. Verify its actual WKT, affine support, epoch
 band units, mask semantics and license before real use. No WorldPop/GHSL pixels
 were acquired. No within-pixel settlement pattern, location accuracy, raster mask
 truth or exposure uncertainty has been validated. Exposure is not damage or
-observed inundation. Next single task: validate the exact candidate source
-metadata and design a bounded acquisition/processing plan, without acquisition
-until separately authorized.
+observed inundation. M2B-1 authorizes bounded acquisition; its verified catalog facts and current
+network/native-metadata blockers are recorded in [ACQUISITION.md](ACQUISITION.md).
+No real-data remapping has run. Next single task: resolve access and exact native
+file/variant/WKT/mask verification, then acquire within that authorization.

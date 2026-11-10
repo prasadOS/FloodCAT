@@ -174,8 +174,17 @@ performance and limitations. Native GHSL projected m² are not automatically
 physical ellipsoid areas. The World Mollweide fixtures do not verify the exact
 WKT or masks of a future acquired GHSL asset. No real exposure rasters were acquired.
 
+## M2B-1 source verification and acquisition status
+
+[ACQUISITION.md](ACQUISITION.md) records verified official catalog facts and a
+bounded native-window route. Real source hosts are blocked in this cloud;
+actual WorldPop/GHSL masks, WKT and coverage are unavailable. No real exposure
+values, conservative real-raster alignment or flood-exposure totals were produced.
+Existing calculation tests remain fixture evidence only.
+
 ## Next single verifiable milestone
 
-Validate exact candidate WorldPop/GHSL source metadata and design a bounded
-acquisition/processing plan. Acquisition remains separately authorized work;
-no exposure API is connected to the dashboard yet.
+Resolve permitted source access and native file/variant/WKT/mask verification,
+then acquire bounded native windows under the existing M2B-1 authorization.
+Only then validate real-data aggregation/remapping, retained/clipped budgets and
+strict-threshold exposure. No exposure API is connected to the dashboard yet.

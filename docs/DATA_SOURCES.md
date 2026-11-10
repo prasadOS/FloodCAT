@@ -1,14 +1,14 @@
 # FloodCAT data sources
 
-## Data used in this portable starter
+## Synthetic demonstration inputs
 
-**Only generated synthetic data** (`src/floodcat/demo.py`): stylized river corridor, five fictive scenario depth surfaces, hypothetical population counts and built-up surface. Longitude 85.00–85.48 °E, latitude 25.45–25.85 °N, 42×48 analytical grid. No authentic flood, exposure or built-up observations.
+**Generated synthetic grids** (`src/floodcat/demo.py`): stylized river corridor, five fictive scenario depth surfaces, hypothetical population counts and built-up surface. Longitude 85.00–85.48 °E, latitude 25.45–25.85 °N, 42×48 analytical grid. No authentic flood, exposure or built-up observations.
 
 These grids have no external license requirements beyond this source's code rights; they are not public provider datasets. No Earth Engine tokens or datasets are distributed.
 
-## Planned external data — NOT DOWNLOADED
+## Additional external data — NOT DOWNLOADED
 
-- WRI Aqueduct Flood Hazard Maps V2, RCP/CMIP5-era riverine depth scenarios. Confirm actual band/asset IDs, licensing, model comparability and units before use.
+- Additional WRI Aqueduct Flood Hazard Maps V2 scenarios beyond the bundled historical WATCH T100 tile below. Confirm source IDs, licensing, comparability and units before use.
 - WorldPop population (source vintage and counting units to be verified).
 - GHSL built-up surface (epoch and per-pixel units to be verified).
 - Optional genuine CMIP6/SSP future depth only after access and semantics are verified.
@@ -62,3 +62,34 @@ require source verification; this milestone does not establish real coverage.
 Physical ellipsoid areas are computed after footprint transformation, rather
 than equating native Mollweide projected m² with WGS84 area. See
 [remapping accuracy and limits](REMAPPING.md).
+
+## M2B-1 source verification and blocked acquisition
+
+No WorldPop/GHSL rasters or derived exposure products acquired. The original WRI
+48×58 tile and checksum were reverified; use its snapped east bound
+85.48333333333333°E, not only the original ROI ending at 85.48°E.
+
+The official `google/earthengine-catalog` source at
+[`e69b2b9006b4313120b32d8a68b051732a88fbec`](https://github.com/google/earthengine-catalog/tree/e69b2b9006b4313120b32d8a68b051732a88fbec)
+confirms these catalog facts:
+
+| Product | Verified catalog semantics | Remaining file-level gaps |
+| --- | --- | --- |
+| Legacy `WorldPop/GP/100m/pop`, verification target `IND_2020` | Deprecated catalog version 0.1; estimated residential people/cell; nominal 92.77 m; CC BY 4.0 | Public India 2020 file/model/adjustment mapping, current native WKT/shape, masks/nodata, valid zero and usable coverage |
+| Successor `WorldPop/GP/100m/R2025A/v1/pop` | 2015–2030 annual epochs including 2020; constrained to settlements and adjusted to national estimates; CC BY 4.0; DOI 10.5258/SOTON/WP00839 | Actual India 2020 image/file, mask and comparability; not silently substituted for the legacy candidate |
+| `JRC/GHSL/P2023A/GHS_BUILT_S/2020`, `built_surface` | Producer R2023A; total built-up m² per 100 m cell; source acknowledgement/reuse terms; DOI 10.2905/9F06F36F-4B11-47EC-ABB0-4F8B7B1D72EA | Exact public native file, WKT, dtype, nodata/mask/zero semantics and coverage; exact asset/EC legal notices |
+
+WorldPop catalog licensing is explicit CC BY 4.0. GHSL's catalog uses a generic
+non-standard-license category, defined as covering both open and closed licenses,
+while its human terms say open/free reuse with acknowledgement; do not mislabel
+it CC BY or infer closed data. Exact artifact redistribution/size review is still
+pending because no artifact was obtained. Do not confuse catalog minimum/visual
+zero with verified valid-zero pixels, or the M2A-3 Mollweide fixture with actual
+GHSL WKT.
+
+All direct producer/storage/catalog website probes were denied by the configured
+cloud proxy with CONNECT 403; no personal Earth Engine credentials are configured.
+Official catalog source was read through permitted GitHub access. See
+[ACQUISITION.md](ACQUISITION.md) for precise evidence, licensing distinctions,
+blocked metadata, the tested native-window route and phase-3 criteria, and
+[the machine-readable access record](../config/exposure_access_status.json).
