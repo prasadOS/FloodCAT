@@ -1,5 +1,9 @@
 # FloodCAT data sources
 
+Current M2C-1 inputs include three user-uploaded native Earth Engine exports and
+an audited common-cell derivative; see [exact metadata/provenance](PATNA_VALIDATION.md).
+Earlier not-acquired statements below are historical milestone records.
+
 ## Synthetic demonstration inputs
 
 **Generated synthetic grids** (`src/floodcat/demo.py`): stylized river corridor, five fictive scenario depth surfaces, hypothetical population counts and built-up surface. Longitude 85.00–85.48 °E, latitude 25.45–25.85 °N, 42×48 analytical grid. No authentic flood, exposure or built-up observations.
@@ -93,3 +97,17 @@ Official catalog source was read through permitted GitHub access. See
 [ACQUISITION.md](ACQUISITION.md) for precise evidence, licensing distinctions,
 blocked metadata, the tested native-window route and phase-3 criteria, and
 [the machine-readable access record](../config/exposure_access_status.json).
+
+## M2C-1 uploaded real sources
+
+`data/demo_real/FloodCAT_Patna_{WRI_Historical_T100,WorldPop_2020,GHSL_BuiltSurface_2020}.tif`
+are committed BigTIFFs from main `2ee214a`. The user-supplied native-grid recipe
+selects historical WATCH T100, legacy WorldPop `IND_2020` and GHSL R2023A total
+`built_surface`; toFloat/unmask(-9999) preserves zeros and no explicit resampling
+is requested. Exact hashes and source IDs are in `config/patna_upload_provenance.json`.
+Actual decoded WKT/grids/masks are recorded in the processed validation manifest.
+WRI overlap with the old pilot is exact over 2,030 cells. NaN GHSL samples are
+missing despite all-valid stored masks. The footprint is a buffered GAUL bounding
+rectangle; district geometry is not bundled. Common-cell exposure only, licensing,
+known-source budgets, exclusions and remaining provenance limits are documented
+in [PATNA_VALIDATION.md](PATNA_VALIDATION.md). No raw sources were modified or copied.

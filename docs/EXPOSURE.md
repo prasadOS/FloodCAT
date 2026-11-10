@@ -188,3 +188,12 @@ Resolve permitted source access and native file/variant/WKT/mask verification,
 then acquire bounded native windows under the existing M2B-1 authorization.
 Only then validate real-data aggregation/remapping, retained/clipped budgets and
 strict-threshold exposure. No exposure API is connected to the dashboard yet.
+
+## M2C-1 real common-footprint validation
+
+The user-uploaded source grids and recipe are now validated and processed using
+these unchanged engines. [PATNA_VALIDATION.md](PATNA_VALIDATION.md) records units,
+explicit NaN/nodata handling, the 6,113-cell common domain, real exposure,
+conservation and known exclusions. Earlier not-acquired statements are historical.
+Only complete common cells contribute to the published totals; no complete
+district/whole-upload total is inferred. The working dashboard remains unchanged.

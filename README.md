@@ -5,11 +5,13 @@ FloodCAT is a Streamlit application for regional flood-hazard and physical expos
 - **Synthetic demo** opens by default. It provides six sections with five illustrative depth scenarios, hypothetical population and built-up exposure, and CSV and JSON exports.
 - **REAL — WRI** shows modeled riverine flood depth for one historical WATCH 100-year return-period tile near Patna. It reports thresholded flooded area and cell counts and provides GeoTIFF, source manifest, and summary CSV downloads. The view reads the bundled files locally without Earth Engine credentials. If either file is missing, it shows a warning and Synthetic demo remains selectable.
 
-WRI depths support regional screening. Real population and built-up exposure, future scenarios, and local hydraulic validation remain outside M1B.
+WRI depths support regional screening. Real exposure remains outside the preserved M1B dashboard; M2C-1 now validates uploaded native rasters and prepares a separate common-footprint bundle. Future scenarios and local hydraulic validation remain unimplemented.
 
-**M2B-1:** official source-catalog facts and a tested bounded acquisition/validation route are documented in [ACQUISITION.md](docs/ACQUISITION.md). Real WorldPop/GHSL acquisition is blocked by the current cloud network policy and unresolved native masks/metadata; no real exposure data or totals are bundled. Optional tools use `requirements-acquisition.txt`.
+**M2B-1:** official source-catalog facts and a tested bounded acquisition/validation route are documented in [ACQUISITION.md](docs/ACQUISITION.md). Direct producer acquisition was blocked in that milestone. M2C-1 subsequently validates user-uploaded exports below; this is distinct from a successful provider download. Optional tools use `requirements-acquisition.txt`.
 
 **M2B-2:** a [manual GitHub Actions provider-access diagnostic](docs/ACTIONS_ACCESS_CHECK.md) is available for review. It runs only via `workflow_dispatch`, saves bounded HTTP metadata, and does not acquire rasters. GitHub-hosted access remains unverified until a real manual run is reviewed.
+
+**M2C-1:** [uploaded real Patna rasters are validated](docs/PATNA_VALIDATION.md), with a compact audited common-cell exposure bundle. Metrics apply to complete cells in the export bounding rectangle, **not the district polygon or whole upload**. The working dashboard is unchanged.
 
 ## Run locally
 

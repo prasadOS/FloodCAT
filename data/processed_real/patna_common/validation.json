@@ -1,0 +1,381 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-10T09:57:05.635238+00:00",
+  "sources": {
+    "hazard": {
+      "filename": "FloodCAT_Patna_WRI_Historical_T100.tif",
+      "bytes": 13086,
+      "sha256": "9983264d5f3ef2c4bebde726c9e6ab10715c2906996002e03ebe89f478f8da8c",
+      "format": "BigTIFF",
+      "shape": [
+        65,
+        168
+      ],
+      "bands": 1,
+      "crs": "EPSG:4326",
+      "crs_wkt": "GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AXIS[\"Latitude\",NORTH],AXIS[\"Longitude\",EAST],AUTHORITY[\"EPSG\",\"4326\"]]",
+      "transform": [
+        0.008333333333333333,
+        0.0,
+        84.67500000000001,
+        0.0,
+        -0.008333333333333333,
+        25.741666666666674
+      ],
+      "bounds": [
+        84.67500000000001,
+        25.200000000000006,
+        86.07500000000002,
+        25.741666666666674
+      ],
+      "dtype": "float32",
+      "nodata": -9999.0,
+      "mask_flags": [
+        "nodata"
+      ],
+      "tags": {
+        "AREA_OR_POINT": "Area"
+      },
+      "band_tags": {},
+      "band_description": "inundation_depth",
+      "stored_unit": null,
+      "scales": [
+        1.0
+      ],
+      "offsets": [
+        0.0
+      ],
+      "pixels": 10920,
+      "declared_mask_invalid": 0,
+      "nan_pixels": 0,
+      "infinite_pixels": 0,
+      "available_pixels": 10920,
+      "unavailable_pixels": 0,
+      "valid_zero": 5703,
+      "valid_positive": 5217,
+      "minimum": 0.0,
+      "maximum": 7.031288146972656,
+      "known_numeric_sum": 6895.449017731473,
+      "native_array_bytes": 54600
+    },
+    "population": {
+      "filename": "FloodCAT_Patna_WorldPop_2020.tif",
+      "bytes": 5758647,
+      "sha256": "1125b05a9fe37c741a7762ac5ec0d6977f73781f98d01cce7301fdb543d57fb9",
+      "format": "BigTIFF",
+      "shape": [
+        644,
+        1672
+      ],
+      "bands": 1,
+      "crs": "EPSG:4326",
+      "crs_wkt": "GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AXIS[\"Latitude\",NORTH],AXIS[\"Longitude\",EAST],AUTHORITY[\"EPSG\",\"4326\"]]",
+      "transform": [
+        0.0008333333300071276,
+        0.0,
+        84.68124967549109,
+        0.0,
+        -0.0008333333299997101,
+        25.737916764723398
+      ],
+      "bounds": [
+        84.68124967549109,
+        25.201250100203584,
+        86.074583003263,
+        25.737916764723398
+      ],
+      "dtype": "float32",
+      "nodata": -9999.0,
+      "mask_flags": [
+        "nodata"
+      ],
+      "tags": {
+        "AREA_OR_POINT": "Area"
+      },
+      "band_tags": {},
+      "band_description": "population",
+      "stored_unit": null,
+      "scales": [
+        1.0
+      ],
+      "offsets": [
+        0.0
+      ],
+      "pixels": 1076768,
+      "declared_mask_invalid": 115214,
+      "nan_pixels": 0,
+      "infinite_pixels": 0,
+      "available_pixels": 961554,
+      "unavailable_pixels": 115214,
+      "valid_zero": 0,
+      "valid_positive": 961554,
+      "minimum": 0.5546262264251709,
+      "maximum": 416.09808349609375,
+      "known_numeric_sum": 15827395.092694104,
+      "native_array_bytes": 5383840
+    },
+    "built_surface": {
+      "filename": "FloodCAT_Patna_GHSL_BuiltSurface_2020.tif",
+      "bytes": 1741467,
+      "sha256": "c4c5f4d188c58fae04d056caaedc0a9328d4d79d9d44c8b621a8b9f252432393",
+      "format": "BigTIFF",
+      "shape": [
+        638,
+        1532
+      ],
+      "bands": 1,
+      "crs": "ESRI:54009",
+      "crs_wkt": "PROJCS[\"World_Mollweide\",GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Mollweide\"],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "transform": [
+        100.0,
+        0.0,
+        7955800.0,
+        0.0,
+        -100.0,
+        3141100.0
+      ],
+      "bounds": [
+        7955800.0,
+        3077300.0,
+        8109000.0,
+        3141100.0
+      ],
+      "dtype": "float32",
+      "nodata": -9999.0,
+      "mask_flags": [
+        "nodata"
+      ],
+      "tags": {
+        "AREA_OR_POINT": "Area"
+      },
+      "band_tags": {},
+      "band_description": "built_surface",
+      "stored_unit": null,
+      "scales": [
+        1.0
+      ],
+      "offsets": [
+        0.0
+      ],
+      "pixels": 977416,
+      "declared_mask_invalid": 0,
+      "nan_pixels": 141151,
+      "infinite_pixels": 0,
+      "available_pixels": 836265,
+      "unavailable_pixels": 141151,
+      "valid_zero": 628967,
+      "valid_positive": 207298,
+      "minimum": 0.0,
+      "maximum": 10000.0,
+      "known_numeric_sum": 244426882.0,
+      "native_array_bytes": 4887080
+    }
+  },
+  "provenance": {
+    "evidence": "User-supplied Earth Engine export recipe accompanying uploads; source selection checked in recipe, WRI overlap independently compared to pilot",
+    "recipe_path": "scripts/gee/export_patna_native.js",
+    "recipe_sha256": "1c112b550e086d5667d89de3ef9a06d34822f54a946d943801c3dbf86c61d760",
+    "source_commit": "2ee214a",
+    "task_ids": null,
+    "acquired_utc": null,
+    "region": "FAO/GAUL/2025/level2 IND/Bihar/Patna, buffer(500 m).bounds(1); bounding rectangle, not district clip",
+    "export": "image.toFloat().unmask(-9999,false); native crs and crsTransform; COG; no explicit resampling",
+    "sources": {
+      "hazard": {
+        "filename": "FloodCAT_Patna_WRI_Historical_T100.tif",
+        "sha256": "9983264d5f3ef2c4bebde726c9e6ab10715c2906996002e03ebe89f478f8da8c",
+        "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_historical_000000000WATCH_1980_rp00100",
+        "band": "inundation_depth",
+        "units": "m"
+      },
+      "population": {
+        "filename": "FloodCAT_Patna_WorldPop_2020.tif",
+        "sha256": "1125b05a9fe37c741a7762ac5ec0d6977f73781f98d01cce7301fdb543d57fb9",
+        "asset_id": "WorldPop/GP/100m/pop/IND_2020",
+        "band": "population",
+        "units": "people/cell"
+      },
+      "built_surface": {
+        "filename": "FloodCAT_Patna_GHSL_BuiltSurface_2020.tif",
+        "sha256": "c4c5f4d188c58fae04d056caaedc0a9328d4d79d9d44c8b621a8b9f252432393",
+        "asset_id": "JRC/GHSL/P2023A/GHS_BUILT_S/2020",
+        "band": "built_surface",
+        "units": "m2/cell"
+      }
+    },
+    "attribution": {
+      "hazard": "World Resources Institute, Aqueduct Floods Hazard Maps Version 2, via Earth Engine",
+      "population": "WorldPop, University of Southampton, India 2020 legacy population, CC BY 4.0",
+      "built_surface": "European Commission Joint Research Centre; Pesaresi and Politis (2023), GHS-BUILT-S R2023A, DOI 10.2905/9F06F36F-4B11-47EC-ABB0-4F8B7B1D72EA; reuse with source acknowledgement"
+    },
+    "terms_evidence": "config/exposure_access_status.json official catalog source at e69b2b9006b4313120b32d8a68b051732a88fbec; WorldPop CC BY 4.0; GHSL open/free reuse with source acknowledgement; WRI existing deployment terms apply"
+  },
+  "pilot_overlap": {
+    "cells": 2030,
+    "shape": [
+      35,
+      58
+    ],
+    "equal_cells": 2030,
+    "max_absolute_difference_m": 0.0,
+    "bitwise_equal_values": true,
+    "pilot_sha256": "9d5c2747166f7cdecb84a7067575b311a4d4552cc2cd5ee482b924159bd91ebc",
+    "uploaded_window_col_row": [
+      39,
+      0
+    ],
+    "pilot_window_col_row": [
+      0,
+      13
+    ]
+  },
+  "target_grid": {
+    "shape": [
+      65,
+      168
+    ],
+    "transform": [
+      0.008333333333333333,
+      0.0,
+      84.67500000000001,
+      0.0,
+      -0.008333333333333333,
+      25.741666666666674
+    ],
+    "crs": "GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AXIS[\"Latitude\",NORTH],AXIS[\"Longitude\",EAST],AUTHORITY[\"EPSG\",\"4326\"]]"
+  },
+  "domain": "Complete common WRI cells in the uploaded buffered bounding rectangle, NOT Patna district polygon",
+  "common_cells": 6113,
+  "common_area_km2": 4730.679260130684,
+  "hazard_valid_cells": 10920,
+  "population_complete_cells": 6113,
+  "built_complete_cells": 10458,
+  "built_uncertain_cells": 0,
+  "budgets": {
+    "population": {
+      "known_source_total": 15827395.092694104,
+      "known_retained_in_wri_extent": 15827395.092694104,
+      "known_clipped_outside_wri_extent": 0.0,
+      "balance_error": 0.0,
+      "relative_balance_error": 0.0,
+      "unknown_source_pixels_excluded": 115214,
+      "known_total_on_common_complete_cells": 9602732.2571902,
+      "known_retained_outside_common_cells": 6224662.835503904
+    },
+    "built_surface_m2": {
+      "known_source_total": 244426882.0,
+      "known_retained_in_wri_extent": 244425812.59697458,
+      "known_clipped_outside_wri_extent": 1069.4030445377978,
+      "balance_error": 1.913309097290039e-05,
+      "relative_balance_error": 7.827735974188138e-14,
+      "unknown_source_pixels_excluded": 141151,
+      "known_total_on_common_complete_cells": 154887440.49699715,
+      "known_retained_outside_common_cells": 89538372.09997743
+    }
+  },
+  "exposure": [
+    {
+      "threshold_m": 0.0,
+      "flooded_area_km2": 1637.3100663957925,
+      "population": {
+        "known_exposed": 2840320.5021073623,
+        "total_exposed": 2840320.5021073623,
+        "valid_hazard_cells": 6113,
+        "available_cells": 6113,
+        "flooded_cells": 2116,
+        "available_flooded_cells": 2116
+      },
+      "built_surface_m2": {
+        "known_exposed": 32216343.94410771,
+        "total_exposed": 32216343.94410771,
+        "valid_hazard_cells": 6113,
+        "available_cells": 6113,
+        "flooded_cells": 2116,
+        "available_flooded_cells": 2116
+      }
+    },
+    {
+      "threshold_m": 1.0,
+      "flooded_area_km2": 204.14047819214085,
+      "population": {
+        "known_exposed": 438591.0037895779,
+        "total_exposed": 438591.0037895779,
+        "valid_hazard_cells": 6113,
+        "available_cells": 6113,
+        "flooded_cells": 264,
+        "available_flooded_cells": 264
+      },
+      "built_surface_m2": {
+        "known_exposed": 6166476.587884915,
+        "total_exposed": 6166476.587884915,
+        "valid_hazard_cells": 6113,
+        "available_cells": 6113,
+        "flooded_cells": 264,
+        "available_flooded_cells": 264
+      }
+    },
+    {
+      "threshold_m": 2.0,
+      "flooded_area_km2": 141.50462578269597,
+      "population": {
+        "known_exposed": 331405.76219787373,
+        "total_exposed": 331405.76219787373,
+        "valid_hazard_cells": 6113,
+        "available_cells": 6113,
+        "flooded_cells": 183,
+        "available_flooded_cells": 183
+      },
+      "built_surface_m2": {
+        "known_exposed": 4659542.437944938,
+        "total_exposed": 4659542.437944938,
+        "valid_hazard_cells": 6113,
+        "available_cells": 6113,
+        "flooded_cells": 183,
+        "available_flooded_cells": 183
+      }
+    },
+    {
+      "threshold_m": 5.0,
+      "flooded_area_km2": 42.48104781106,
+      "population": {
+        "known_exposed": 145829.6454354833,
+        "total_exposed": 145829.6454354833,
+        "valid_hazard_cells": 6113,
+        "available_cells": 6113,
+        "flooded_cells": 55,
+        "available_flooded_cells": 55
+      },
+      "built_surface_m2": {
+        "known_exposed": 2169140.9575118953,
+        "total_exposed": 2169140.9575118953,
+        "valid_hazard_cells": 6113,
+        "available_cells": 6113,
+        "flooded_cells": 55,
+        "available_flooded_cells": 55
+      }
+    }
+  ],
+  "performance": {
+    "population_seconds": 1.0651182680012425,
+    "built": {
+      "strips": 33,
+      "max_source_cells": 33250,
+      "strip_seconds_sum": 269.7397379380018,
+      "max_strip_seconds": 9.433031205999214
+    },
+    "peak_process_rss_kib_linux": 318128
+  },
+  "processed_artifact": {
+    "path": "aligned_common.npz",
+    "bytes": 323391,
+    "sha256": "f807ca277167e027435845f00e02b239fb76d18c1020d2df58259e2db8548167"
+  },
+  "limitations": [
+    "Export recipe is user-supplied, not independently re-run; task IDs/times unavailable",
+    "GHSL stored mask is all-valid but NaNs are unavailable; no imputation",
+    "Whole target cells with any missing or uncertain source coverage are excluded from common domain",
+    "Not district-only statistics; the GAUL polygon is not bundled",
+    "Uniform source-pixel exposure per physical area; exposure is not observed damage",
+    "Geometric accuracy controls are empirical; 1 cm edge tolerance, 2 cm classification margin"
+  ]
+}
