@@ -21,3 +21,14 @@ For real rasters, verify the exact source asset and scenario, units, CRS, native
 Keep Earth Engine access in local acquisition scripts. Use authorized credentials and an explicitly provided project ID. Keep credentials, local environment exports, confidential data, and large raw datasets out of Git. Cloud runs from compact, redistributable local files with provenance. Follow the [deployment manifest](docs/DEPLOYMENT.md).
 
 Use [project status](docs/PROJECT_STATUS.md) to determine what has been verified and what awaits approval. Catalog matches and footprints alone establish neither usable pixel coverage nor completed integrations.
+## Codex efficiency and context management
+
+- Prioritize the smallest correct, testable implementation that satisfies the current milestone.
+- Inspect the relevant repository paths before reading large documents. Read only the documentation and source files needed for the task.
+- Treat current `main`, verified tests and source manifests as authoritative. Do not repeatedly rediscover established project facts.
+- Reuse existing modules, dependencies and test utilities whenever appropriate. Avoid speculative refactoring, unnecessary abstractions and unrelated changes.
+- Start with focused tests for modified components. Run the relevant regression suite before completing a pull request. Do not skip essential scientific validation to save tokens.
+- Avoid repeating unsuccessful commands or blocked network requests without a concrete reason to expect a different result.
+- Keep status messages and final reports concise. Report changed files, actual test results, blockers, scientific limitations and the PR link.
+- If a task becomes substantially broader than the approved milestone, stop and report the proposed next milestone instead of expanding the work automatically.
+- Never sacrifice numerical correctness, provenance, mask handling, conservation checks or data safety for efficiency.
