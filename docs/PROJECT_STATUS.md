@@ -1,6 +1,30 @@
 # FloodCAT project status
 
-## Current milestone · M2B-1 — acquisition prepared, real access blocked (2026-11-10)
+## Current milestone · M2B-2 — manual Actions access diagnostic (2026-11-10)
+
+Branch `m2b-2-actions-data-access-check` starts from freshly fetched remote `main`
+`5e9687e`, containing merged PR #4. Added a Python 3.11, Ubuntu GitHub-hosted
+`workflow_dispatch` workflow with no automatic triggers, provider credentials,
+application dependencies or raster acquisition. Six fixed official endpoints
+receive HEAD requests; optional exact approved TIFF URLs receive one-byte Range
+checks, with no redirects/retries and strict byte/time limits. Metadata-only
+reports distinguish origin status, proxy failures and untested raster availability.
+
+All 85 tests pass in the complete optional environment (71 regressions + 14 new),
+with no skips. `actionlint` and YAML trigger/permissions checks pass. The local
+Codex probe records six proxy CONNECT 403 failures, zero body bytes read and no
+Range test because no reviewed native TIFF URLs are known. Existing app,
+requirements, scientific/acquisition engines and assets are unchanged.
+
+**GitHub-hosted provider access remains unverified.** GitHub requires a
+`workflow_dispatch` file on the default branch; no workflow existed on main at
+the start, and this task leaves the new workflow in an unmerged PR. No hosted
+run has completed. Next single task: after owner merge, use Actions → FloodCAT
+provider access check → Run workflow and review its artifact; successful website
+access alone cannot establish raster availability. See [manual instructions and
+limits](ACTIONS_ACCESS_CHECK.md) and [exact validation evidence](TEST_RESULTS.md).
+
+## Previous milestone · M2B-1 — acquisition prepared, real access blocked (2026-11-10)
 
 Branch `m2b-1-real-exposure-acquisition` starts from freshly fetched remote `main`
 `222577b`, containing merged PR #3. The exact bundled WRI native footprint,
@@ -30,7 +54,7 @@ smoke checks; 29 optional tests skip there. See [source evidence and route](ACQU
 Next single task: resolve permitted producer access and exact native file/variant,
 WKT and mask evidence, then perform bounded acquisition within the existing task
 authorization. Phase 3 and a production REAL exposure dashboard remain unstarted.
-Changes are for a PR targeting `main`; merging is outside this task.
+M2B-1 was merged into `main` in PR #4 (`5e9687e`). Producer/raster access and real integration remain unverified.
 
 ## Previous engine milestone · M2A-3 (2026-11-10)
 

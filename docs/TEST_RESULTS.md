@@ -373,3 +373,94 @@ threshold exposure results are available. The complete suite preserves M2A
 fixture evidence without presenting it as real integration. See
 [ACQUISITION.md](ACQUISITION.md) for source/licensing details, native-window
 restrictions, remaining verification and the next single task.
+
+## M2B-2 manual GitHub Actions access check (2026-11-10)
+
+Repository confirmed as `prasadOS/FloodCAT`. `git fetch origin main` obtained
+`5e9687e` (merged PR #4); branch `m2b-2-actions-data-access-check` starts there.
+Read AGENTS, acquisition/source/status/evidence guidance and the existing native
+acquisition/HTTP code. No application, scientific engine, acquisition, dependency
+or asset changes are part of this milestone.
+
+### Local validation
+
+- Baseline:
+  `PYTHONDONTWRITEBYTECODE=1 /workspace/work/m2b-1/venv/bin/python -m unittest discover -s tests -v`
+  — **71 passed**, no failures/errors/skips, **3.750 s**.
+- New standard-library-only tests:
+  `PYTHONDONTWRITEBYTECODE=1 /workspace/.floodcat-venv/bin/python -m unittest discover -s tests -p test_provider_access.py -v`
+  — **14 passed**, no failures/errors/skips, **0.012 s**. Tests cover default
+  HEAD-only plans, no guessed filenames, exact one-byte ranges, ignored/encoded/
+  malformed/truncated range responses, zero body reads on failures, redirects,
+  no auth/cookies, URL/credential rejection, DNS/TLS/proxy failures, shared byte
+  budget, hard deadline, real HTTP parser/CONNECT cleanup and report redaction.
+- The first local live diagnostic exposed a missing `flush` method on the
+  bounded HTTP reader during proxy CONNECT cleanup. Fixed it and added a real
+  HTTP parser/CONNECT regression fixture. Early mock-response/socket fixtures
+  were also corrected before the final passing runs. No erroneous early report
+  is treated as provider/network evidence.
+- Final complete regression:
+  `PYTHONDONTWRITEBYTECODE=1 /workspace/work/m2b-1/venv/bin/python -m unittest discover -s tests -v`
+  — **85 passed**, no failures/errors/skips, **3.704 s** on Python 3.11.17
+  (71 existing tests + 14 new).
+- Lightweight environment:
+  `PYTHONDONTWRITEBYTECODE=1 /workspace/.floodcat-venv/bin/python -m unittest discover -s tests -v`
+  — **85 discovered**, **56 passed / 29 optional tests skipped**, **0.079 s**.
+  New diagnostics do not require any pip dependencies.
+- `/workspace/work/m2b-2/bin/actionlint .github/workflows/provider-access-check.yml`
+  — exit **0**, no findings. Actionlint **1.7.7** was obtained from its official
+  GitHub release in temporary tooling storage; the published archive SHA-256
+  matched **023070a287cd8cccd71515fedc843f1985bf96c436b7effaecce67290e7e0757**.
+  An initial Go-install attempt was unavailable (`Go: Unknown option: install`);
+  the verified standalone binary provided the actual validation. No repository
+  package/dependency files were changed or application packages installed.
+- YAML parsed with existing PyYAML `BaseLoader`: **only workflow_dispatch**, job
+  **ubuntu-latest**, **5-minute timeout**, **contents: read**, no secret references.
+- Official v6 action refs were resolved with `git ls-remote --tags` and pinned:
+  checkout `d23441a48e516b6c34aea4fa41551a30e30af803`, setup-python
+  `ece7cb06caefa5fff74198d8649806c4678c61a1`, upload-artifact
+  `b7c566a772e6b6bfb58ed0dc250532a479d7789f`. Checkout does not persist credentials.
+
+### Local HTTP evidence is not GitHub-hosted evidence
+
+`PYTHONDONTWRITEBYTECODE=1 /workspace/.floodcat-venv/bin/python -m scripts.check_provider_access --output /workspace/work/m2b-2/local-report`
+— exit **0**, metadata report generated. All **six default HEAD requests** recorded
+**proxy CONNECT 403**, no origin HTTP status and **zero body bytes read**. Optional
+WorldPop/GHSL Range probes were skipped: no reviewed exact native TIFF URLs are
+known or supplied. No redirects were followed and no authentication or alternate
+access route attempted. The final table presentation was regenerated from these
+captured observations without another provider request.
+
+The diagnostic has a 5 s socket-operation timeout, 15 s hard per-request process
+deadline, 16,385-byte consumed HTTP response cap per worker, maximum 10 requests
+and maximum two discarded body bytes (only when both optional Range checks
+validate exact 206/Range/Length). Wire/TLS/kernel buffering overhead is not a
+measured byte count. Denials and protocol limits are outcomes, not retries.
+No bodies or rasters are saved; artifacts contain JSON/Markdown metadata only.
+A green diagnostic means report generation completed, not that all providers or
+any raster products are available.
+
+### GitHub execution status and manual handoff
+
+**No GitHub-hosted run completed or is claimed.** `git ls-tree -r --name-only
+origin/main .github/workflows` returned no files on the confirmed default main.
+The official GitHub docs source
+[`data/reusables/actions/workflow-dispatch.md`](https://github.com/github/docs/blob/main/data/reusables/actions/workflow-dispatch.md)
+(blob SHA `682b9ab6b83987a010ab6c9475a927547823fc22`) states that this trigger only
+receives events when the workflow is on the default branch. This new workflow
+is only in an unmerged feature PR, and merging is forbidden by the task. That is
+the precise current hosted-dispatch blocker; no automatic trigger, default-branch
+mutation or bootstrap workaround was added.
+
+After owner merge: **Actions → FloodCAT provider access check → Run workflow →
+main → Run workflow**. Leave optional URLs blank until exact public native TIFF
+identities are known. Inspect the completed summary and **provider-access-report**
+artifact, including run/SHA/runner context. Retention is 14 days. Only completed
+hosted-run observations can establish hosted endpoint/Range access; website HEAD
+success is never raster availability or scientific source validation. See
+[ACTIONS_ACCESS_CHECK.md](ACTIONS_ACCESS_CHECK.md) for the full instructions.
+
+Existing hosted requirements, app, WRI calculations, M2A/M2B-1 source code,
+original tests, acquisition review flags and datasets are unchanged. No CLIMADA,
+real acquisition, source-value processing or deployment. `git diff --check`,
+staged whitespace checks and the explicit unchanged-file comparison passed.

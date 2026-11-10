@@ -1,0 +1,55 @@
+name: FloodCAT provider access check
+
+on:
+  workflow_dispatch:
+    inputs:
+      worldpop_raster_url:
+        description: Optional exact reviewed public TIFF URL on data.worldpop.org; leave blank if unknown
+        type: string
+        required: false
+        default: ''
+      ghsl_raster_url:
+        description: Optional exact reviewed public TIFF URL on jeodpp.jrc.ec.europa.eu; leave blank if unknown
+        type: string
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  access-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out diagnostic code
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Set up Python 3.11
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.11'
+      - name: Validate probe safeguards offline
+        run: python -m unittest discover -s tests -p test_provider_access.py -v
+      - name: Probe official endpoints anonymously
+        env:
+          WORLDPOP_RASTER_URL: ${{ inputs.worldpop_raster_url }}
+          GHSL_RASTER_URL: ${{ inputs.ghsl_raster_url }}
+        run: python -m scripts.check_provider_access --output work/provider-access
+      - name: Publish diagnostic summary
+        if: always()
+        run: |
+          if [ -f work/provider-access/report.md ]; then
+            cat work/provider-access/report.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Upload metadata-only report
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: provider-access-report
+          path: |
+            work/provider-access/report.json
+            work/provider-access/report.md
+          if-no-files-found: error
+          retention-days: 14
