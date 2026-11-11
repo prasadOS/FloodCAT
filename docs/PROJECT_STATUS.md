@@ -1,6 +1,35 @@
 # FloodCAT project status
 
-## Current milestone · M2C-4 — depth-weighted exposure screening (2026-11-10)
+## Current milestone · M2D — multi-scenario feature, pending review
+
+The user supplied exact source-selection/export evidence after the initial gate
+stopped. Fifteen user-attested, hash-bound source selections are compatible with
+the official catalog schema; completed-task identities/live per-asset properties
+are not independently authenticated. All native grids match exactly; independent
+Pillow decoding matches all processed arrays. Reuse of audited extensive exposure
+requires no remapping. Fixed all-scenario common footprint remains 6,113 cells.
+
+All REAL selectors/modules/exports and genuine multi-scenario Compare are wired,
+with fixed 2020 exposure and explicit CMIP5/RCP terminology. Historical T100
+benchmarks, original audits/raw files and dependencies are unchanged. Compact
+products and checksum loader fail closed. See [full scenario findings](M2D.md).
+PR #8 remains unmerged because provenance/hosted verification limitations remain;
+no deployment is claimed. Next task: review source evidence/PR and verify the
+hosted application before deciding on integration.
+
+## M2D attempt — input identity blocker (2026-11-10)
+
+On `data/patna-multiscenario` at `7d40099`, 15 rasters pass native geometry/numeric
+checks, but 14 have no matching export recipe/source-selection provenance.
+Only Historical T100 is identified by the committed M2C-1 recipe. Filename/model
+claims do not establish source identity. Offline validation is reproducible and
+fail-closed; no unverified scenarios are activated and no new scenario exposure
+is published. Candidate fixed common footprint is unchanged at 6,113 cells.
+See [blocker and actual metadata](M2D_INPUT_VALIDATION.md). Stop before M2D
+integration/merge pending exact export/source evidence; existing M2C-4 remains
+operational. No raw data, audited bundle or hosted dependencies changed.
+
+## Previous milestone · M2C-4 — depth-weighted exposure screening (2026-11-10)
 
 Started from freshly fetched remote main `0e28a4f`. User authorized tested commits
 and normal pushes directly to main. REAL navigation is exactly Overview, Hazard,

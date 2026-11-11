@@ -1,0 +1,3 @@
+# M2D input validation — source-selection evidence supplied
+
+The original missing-recipe blocker is superseded by the user-supplied exact source IDs and export configuration. All 15 sources now pass the user-attested recipe/hash/catalog-schema gate, with independent decoded numeric/grid checks. Completed task identities are still not independently authenticated. See [current evidence, full results and limitations](M2D.md), `config/patna_multiscenario_provenance.json` and `config/patna_multiscenario_validation.json`. The earlier blocked-gate behavior remains recorded in Git history and TEST_RESULTS.md.

@@ -1,0 +1,107 @@
+{
+  "evidence": "User-attested export configuration supplied in chat; no independent completed-task verification",
+  "recipe_path": "scripts/gee/export_patna_multiscenario.js",
+  "recipe_sha256": "e622ff7cdd4816aa45985886039cd43f848b82c635dd5f8723cded98e35343a2",
+  "catalog_path": "config/catalog_evidence/WRI_Aqueduct_Flood_Hazard_Maps_V2.jsonnet",
+  "catalog_sha256": "a386ad64cc2b22f6d29ae87c29e792f5b095a218ed71b33464fb18e7829c12bf",
+  "catalog_repository": "google/earthengine-catalog",
+  "catalog_commit": "e69b2b9006b4313120b32d8a68b051732a88fbec",
+  "catalog_license": "Apache-2.0, Google Earth Engine catalog; original notice retained",
+  "catalog_check": "Official schema lists inunriver, historical/rcp4p5/rcp8p5, WATCH/HadGEM2-ES, return periods 25/50/100/250/500, inundation_depth in metres. Not a live per-asset property query.",
+  "task_ids": null,
+  "timestamps": null,
+  "completed_task_identities_independently_verified": false,
+  "export": "Each climate uses its T100 projection, Float32, unmask(-9999,false), COG/noData -9999; GAUL IND/Bihar/Patna buffered 500m bounding rectangle",
+  "sources": {
+    "FloodCAT_Patna_WRI_Historical_T25.tif": {
+      "sha256": "7904bd20e858bcc71cc58d60e133389bb04735dc67700bf3952131436c5bd04e",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_historical_000000000WATCH_1980_rp00025",
+      "band": "inundation_depth",
+      "units": "m"
+    },
+    "FloodCAT_Patna_WRI_Historical_T50.tif": {
+      "sha256": "853087f27520b164764622c4a207fe6526596e26f685d7ace5b3ca21637b9c41",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_historical_000000000WATCH_1980_rp00050",
+      "band": "inundation_depth",
+      "units": "m"
+    },
+    "FloodCAT_Patna_WRI_Historical_T100.tif": {
+      "sha256": "9983264d5f3ef2c4bebde726c9e6ab10715c2906996002e03ebe89f478f8da8c",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_historical_000000000WATCH_1980_rp00100",
+      "band": "inundation_depth",
+      "units": "m"
+    },
+    "FloodCAT_Patna_WRI_Historical_T250.tif": {
+      "sha256": "4407aea245a4cc7cc08fa22d7fd4c59646c5b5db622d95cd908696d6a790f181",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_historical_000000000WATCH_1980_rp00250",
+      "band": "inundation_depth",
+      "units": "m"
+    },
+    "FloodCAT_Patna_WRI_Historical_T500.tif": {
+      "sha256": "8a376a3831eef9893719f8b4bc7b2c158ff86cbb4658da6bc84e94730c7e243d",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_historical_000000000WATCH_1980_rp00500",
+      "band": "inundation_depth",
+      "units": "m"
+    },
+    "FloodCAT_Patna_WRI_RCP45_2050_T25.tif": {
+      "sha256": "cda3d4deb9ec3bfe4385470d71deafb0e9b0e636f602763816cac8107feb09d5",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp4p5_0000HadGEM2-ES_2050_rp00025",
+      "band": "inundation_depth",
+      "units": "m"
+    },
+    "FloodCAT_Patna_WRI_RCP45_2050_T50.tif": {
+      "sha256": "121396a653519e67a80dfd1b217066bc70777c860a02f1cae74763f3056f467d",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp4p5_0000HadGEM2-ES_2050_rp00050",
+      "band": "inundation_depth",
+      "units": "m"
+    },
+    "FloodCAT_Patna_WRI_RCP45_2050_T100.tif": {
+      "sha256": "255eb8a18dd05a6527f59f474eafb83a2335073f9c8a8b943a0907e6271f3022",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp4p5_0000HadGEM2-ES_2050_rp00100",
+      "band": "inundation_depth",
+      "units": "m"
+    },
+    "FloodCAT_Patna_WRI_RCP45_2050_T250.tif": {
+      "sha256": "790a732f248628d278b5fdaa3ccc8a0a19c31991e270d3f8b5080b90b84b9de6",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp4p5_0000HadGEM2-ES_2050_rp00250",
+      "band": "inundation_depth",
+      "units": "m"
+    },
+    "FloodCAT_Patna_WRI_RCP45_2050_T500.tif": {
+      "sha256": "70762a9135774fcddb1ac7c7b23e16fa3e1d1c081597275ce6c3f6b54292c867",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp4p5_0000HadGEM2-ES_2050_rp00500",
+      "band": "inundation_depth",
+      "units": "m"
+    },
+    "FloodCAT_Patna_WRI_RCP85_2050_T25.tif": {
+      "sha256": "830d75324fd90a06e14368c57b4d7739255ffb3568cbd593f4ec320fff20d3cd",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp8p5_0000HadGEM2-ES_2050_rp00025",
+      "band": "inundation_depth",
+      "units": "m"
+    },
+    "FloodCAT_Patna_WRI_RCP85_2050_T50.tif": {
+      "sha256": "d2d3ff63a7dd78c5b9e77ac502bab413a0203521852fdb500e4c871bb9e0c450",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp8p5_0000HadGEM2-ES_2050_rp00050",
+      "band": "inundation_depth",
+      "units": "m"
+    },
+    "FloodCAT_Patna_WRI_RCP85_2050_T100.tif": {
+      "sha256": "81f3d53eb50682e93b455f82c887982760228d73027d16ff9b12421678070a38",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp8p5_0000HadGEM2-ES_2050_rp00100",
+      "band": "inundation_depth",
+      "units": "m"
+    },
+    "FloodCAT_Patna_WRI_RCP85_2050_T250.tif": {
+      "sha256": "1cb7cfadd71798f83c305b09ab4c3e77ed7f4e2e102b221771ac8d0264698666",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp8p5_0000HadGEM2-ES_2050_rp00250",
+      "band": "inundation_depth",
+      "units": "m"
+    },
+    "FloodCAT_Patna_WRI_RCP85_2050_T500.tif": {
+      "sha256": "608bfca61675aa5e36d0f23e584e2089a68617563ff30c10b84b2f83b0731fa1",
+      "asset_id": "WRI/Aqueduct_Flood_Hazard_Maps/V2/inunriver_rcp8p5_0000HadGEM2-ES_2050_rp00500",
+      "band": "inundation_depth",
+      "units": "m"
+    }
+  }
+}

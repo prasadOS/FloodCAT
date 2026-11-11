@@ -1,0 +1,23 @@
+const {chromium,expect}=require('playwright/test');const assert=require('node:assert/strict');const fs=require('node:fs');
+(async()=>{const b=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});try{
+ const p=await b.newPage({viewport:{width:1440,height:1100}});await p.route('https://tile.openstreetmap.org/**',r=>r.abort());
+ await p.goto(process.env.FLOODCAT_URL||'http://localhost:8501');await p.getByText('REAL — Patna',{exact:true}).click();
+ await expect(p.getByText('2,840,321',{exact:true})).toBeVisible();
+ const boxes=p.getByTestId('stSidebar').getByRole('combobox');await boxes.nth(0).click();await p.getByRole('option',{name:'RCP8.5 — HadGEM2-ES, 2050',exact:true}).click();
+ await boxes.nth(1).click();await p.getByRole('option',{name:'500',exact:true}).click();
+ await expect(p.getByText(/RCP8.5.*T500.*depth > 0/)).toBeVisible();
+ const iframe=p.frameLocator('iframe[title="st.iframe"]');await iframe.getByText('Fit study area',{exact:true}).waitFor();
+ let f=p.frames().find(x=>x!==p.mainFrame());await f.waitForFunction(()=>window.floodcatMap&&Math.max(...window.floodcatMap.grid.depth)>14);
+ await p.getByText('Exposure',{exact:true}).click();await expect(p.getByText('Download depth-band CSV',{exact:true})).toBeVisible();
+ await expect(p.getByTestId('stPlotlyChart')).toHaveCount(3);
+ await p.getByText('Vulnerability',{exact:true}).click();await expect(p.getByText('Depth-weighted exposure screening — not a validated vulnerability model.',{exact:true})).toBeVisible();
+ await iframe.getByText('Fit study area',{exact:true}).waitFor();f=p.frames().find(x=>x!==p.mainFrame());await f.waitForFunction(()=>window.floodcatMap?.map.hasLayer(window.floodcatMap.weightedLayer));
+ const out=process.env.FLOODCAT_SCREENSHOTS||'/tmp/floodcat-m2d';fs.mkdirSync(out,{recursive:true});await iframe.locator('#map').scrollIntoViewIfNeeded();await p.screenshot({path:out+'/future-screening.png',fullPage:true});
+ await p.getByText('Export summaries',{exact:true}).click();const event=p.waitForEvent('download');await p.getByText('Download current exposure CSV',{exact:true}).click();
+ const stream=await(await event).createReadStream();let csv='';for await(const c of stream)csv+=c;assert(csv.includes('RCP85_2050_T500'));assert(csv.includes('2050_rp00500'));assert(csv.includes('2020'));
+ await p.getByText('Compare',{exact:true}).click();await p.getByText('T100 climates',{exact:true}).click();await expect(p.getByText('Download scenario comparison CSV',{exact:true})).toBeVisible();
+ await p.getByText('Two scenarios',{exact:true}).click();await p.getByText('Show comparable Flood Depth maps',{exact:true}).click();await expect(p.locator('iframe')).toHaveCount(2);
+ await p.screenshot({path:out+'/compare.png',fullPage:true});
+ await p.getByText('Synthetic Demo',{exact:true}).click();await expect(p.getByText('SYNTHETIC DEMO · Hypothetical hazard and exposure · Not actual flood impacts',{exact:true})).toBeVisible();
+ console.log('PASS selectors, native future depths, Exposure, Vulnerability, selected scenario CSV, comparison modes/maps and Synthetic');
+}finally{await b.close()}})().catch(e=>{console.error(e);process.exit(1)});

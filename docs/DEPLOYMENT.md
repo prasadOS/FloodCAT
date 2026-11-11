@@ -51,3 +51,12 @@ bulk-cache tiles. The app performs no tile downloads server-side. Scientific
 layers and map controls remain usable if tile access fails; geographic context
 is then limited to coordinates and the study raster. Large deployments should
 review an appropriate tile service rather than assume unlimited OSM capacity.
+
+## M2D scenario products
+
+Include `config/patna_scenario_checksums.json` and both files in
+`data/processed_real/patna_scenarios/`, in addition to the original M2C-1 bundle
+and its three-file pins. The runtime does not open the 15 native rasters or import
+Rasterio/pyproj/Shapely. Keep scenario validation/provenance documentation and WRI
+attribution. Review source attestation limitations before integration. New artifacts
+are compact WRI derivatives (~223 KiB combined), not additional raw copies.
