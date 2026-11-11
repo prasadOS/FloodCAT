@@ -2,6 +2,19 @@
 
 Source selection is **user-attested, hash-bound and official-catalog-schema compatible**. It is not independent authentication of completed GEE tasks. The supplied identifiers resolve the previous missing-recipe blocker; task IDs, timestamps, account-side logs and live per-asset GEE property queries remain unavailable. No credentials or network bypass was used. The reproducible prospective GEE script checks floodtype/climate/model/year/returnperiod before creating tasks; it was not executed here and skips re-export of Historical T100.
 
+## Evidence levels
+
+- **Verified in repository checks:** all 15 GeoTIFFs are present; raw checksums,
+  exact grid alignment and raster consistency were checked. Every scenario uses
+  the fixed 6,113-cell common comparison footprint. Historical T100 reproduces
+  the existing audited exposure and depth-weighted results.
+- **Supported, not independently authenticated:** user-supplied GEE recipes
+  identify the intended assets and source selections are compatible with the
+  official WRI Earth Engine catalog schema.
+- **Not independently verified:** completed GEE export task IDs/timestamps,
+  live per-asset Earth Engine properties, successful live Streamlit deployment,
+  observational calibration or independent flood-impact validation.
+
 ## Source/catalog evidence
 
 Exact 15 asset IDs/band/units and raw SHA-256 values are in `config/patna_multiscenario_provenance.json`. All use `inundation_depth`, metres, riverine `inunriver`; historical WATCH 1980 or HadGEM2-ES 2050 under RCP4.5/RCP8.5 (CMIP5-era, not CMIP6/SSP). The official Google Earth Engine catalog snapshot from commit e69b2b9006b4313120b32d8a68b051732a88fbec is retained with Apache-2.0 license and hash. Its schema independently corroborates the climate/model/flood-type tokens, band units, years supported and return periods. It does not authenticate individual exports. Source metadata and valid-zero/mask statistics are in `config/patna_multiscenario_validation.json`.
@@ -55,4 +68,4 @@ WorldPop and GHSL stay fixed at **2020**, including future hazard scenarios. Dif
 
 ## Delivery status
 
-Feature implementation and local tests are reviewable in PR #8. Do not merge automatically: independent per-asset property/task verification remains unavailable, and hosted/browser-provider access is unverified. Source-selection attestation is documented without presenting it as independent task proof. See TEST_RESULTS.md for exact commands and test outcomes.
+PR #8 was merged into `main` at `c7d33ea1cf6aff3b72e7645b03e9920c53567536`. M2D implementation and GitHub integration are complete. Live Streamlit deployment has not been independently verified; the merge does not establish deployment success or independent scientific validation. Source-selection attestation remains distinct from completed-task authentication. See TEST_RESULTS.md for the recorded local commands and outcomes.

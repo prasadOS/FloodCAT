@@ -1,6 +1,10 @@
 # FloodCAT project status
 
-## Current milestone · M2D — multi-scenario feature, pending review
+## Current milestone · M2D — merged multi-scenario dashboard
+
+PR #8 was merged into `main` at `c7d33ea1cf6aff3b72e7645b03e9920c53567536`.
+M2D implementation and GitHub integration are complete; live Streamlit deployment
+has not been independently verified.
 
 The user supplied exact source-selection/export evidence after the initial gate
 stopped. Fifteen user-attested, hash-bound source selections are compatible with
@@ -13,21 +17,23 @@ All REAL selectors/modules/exports and genuine multi-scenario Compare are wired,
 with fixed 2020 exposure and explicit CMIP5/RCP terminology. Historical T100
 benchmarks, original audits/raw files and dependencies are unchanged. Compact
 products and checksum loader fail closed. See [full scenario findings](M2D.md).
-PR #8 remains unmerged because provenance/hosted verification limitations remain;
-no deployment is claimed. Next task: review source evidence/PR and verify the
-hosted application before deciding on integration.
+Source attestation limitations remain scientific qualifications, not a pending
+GitHub integration. Completed GEE tasks/live per-asset properties and observational
+calibration or independent flood-impact validation have not been independently
+verified. Next task: verify the live Streamlit application; no live deployment
+claim follows from the merge.
 
-## M2D attempt — input identity blocker (2026-11-10)
+## Historical M2D attempt — resolved missing-recipe blocker (2026-11-10)
 
-On `data/patna-multiscenario` at `7d40099`, 15 rasters pass native geometry/numeric
-checks, but 14 have no matching export recipe/source-selection provenance.
-Only Historical T100 is identified by the committed M2C-1 recipe. Filename/model
-claims do not establish source identity. Offline validation is reproducible and
-fail-closed; no unverified scenarios are activated and no new scenario exposure
-is published. Candidate fixed common footprint is unchanged at 6,113 cells.
-See [blocker and actual metadata](M2D_INPUT_VALIDATION.md). Stop before M2D
-integration/merge pending exact export/source evidence; existing M2C-4 remains
-operational. No raw data, audited bundle or hosted dependencies changed.
+This records the initial state, not a current integration blocker. On
+`data/patna-multiscenario` at `7d40099`, 15 rasters passed native geometry/numeric
+checks, but 14 had no matching export recipe/source-selection provenance.
+Only Historical T100 was then identified by the committed M2C-1 recipe, so
+scenario activation stopped. The subsequently supplied user-attested recipes
+resolved that missing-evidence gate; the completed implementation is now merged.
+See [source evidence and remaining qualifications](M2D_INPUT_VALIDATION.md).
+The common footprint remained 6,113 cells; raw data, the original audited bundle
+and hosted dependencies were preserved.
 
 ## Previous milestone · M2C-4 — depth-weighted exposure screening (2026-11-10)
 

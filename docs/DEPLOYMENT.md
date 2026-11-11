@@ -1,6 +1,6 @@
 # FloodCAT deployment manifest
 
-Updated for M2C-3 on 2026-11-10. Git publication for this task is owner-authorized; hosted deployment has not been verified. Earlier ZIP references describe the historical M1B snapshot.
+Updated for merged M2D on 2026-11-11. PR #8 is integrated into main at `c7d33ea1cf6aff3b72e7645b03e9920c53567536`; live Streamlit deployment has not been independently verified. Earlier ZIP references describe the historical M1B snapshot.
 
 ## Repository layout
 
@@ -27,7 +27,7 @@ FloodCAT code licensing is a separate owner decision. No source-code license fil
 
 Choose the approved GitHub repository and branch, set the entry point to `app.py`, and select Python 3.11 in Advanced settings. The root `requirements.txt` pins Streamlit, NumPy, pandas, Plotly, and Pillow to the tested local versions. No secrets or OS packages are required by the app. Include the compact processed artifacts and checksum manifest for REAL — Patna (below). The optional pilot needs its matching TIFF/JSON pair. Missing or invalid artifacts show warnings; Synthetic Demo remains selectable. [Community Cloud deployment](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy) · [Dependency setup](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/app-dependencies)
 
-After a hosted build, inspect both modes, real map layers/OSM tiles, attribution and downloads. Current M2C-3 smoke evidence is from Linux, not a verified Community Cloud deployment.
+After a hosted build, inspect both modes, real map layers/OSM tiles, attribution and downloads. Recorded M2D smoke evidence is local Linux testing, not a verified Community Cloud deployment.
 
 ## M2C-2 real common-footprint mode
 
@@ -58,5 +58,11 @@ Include `config/patna_scenario_checksums.json` and both files in
 `data/processed_real/patna_scenarios/`, in addition to the original M2C-1 bundle
 and its three-file pins. The runtime does not open the 15 native rasters or import
 Rasterio/pyproj/Shapely. Keep scenario validation/provenance documentation and WRI
-attribution. Review source attestation limitations before integration. New artifacts
+attribution. GitHub integration is complete; retain source attestation limitations when interpreting results. New artifacts
 are compact WRI derivatives (~223 KiB combined), not additional raw copies.
+
+The merged dashboard uses RCP/CMIP5-era hazards and fixed WorldPop/GHSL 2020
+exposure on the verified common footprint. It provides modeled hazard/physical
+exposure and depth-weighted exposure screening, not validated vulnerability,
+monetary losses or insurance-risk estimates. The merge does not authenticate GEE
+tasks, verify live asset properties or establish observational/impact validation.
